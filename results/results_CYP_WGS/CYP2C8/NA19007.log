@@ -1,0 +1,175 @@
+2026-03-11 04:11:54.457026: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-03-11 04:11:54.494796: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-03-11 04:11:54.494872: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-03-11 04:11:54.494924: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-03-11 04:11:54.503258: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+2026-03-11 04:11:55.591346: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+[info] total indices 224
+[info] total variants 224
+2.001 was filtered out as 96818105 T>A needs A but not covered
+2.002 was filtered out as 96818105 T>A needs A but not covered
+3.001 was filtered out as 96827029 C>T needs T but not covered
+3.002 was filtered out as 96827029 C>T needs T but not covered
+4.001 was filtered out as 96818118 G>C needs C but not covered
+4.002 was filtered out as 96818118 G>C needs C but not covered
+5.001 was filtered out as 96826970 delT needs N but not covered
+6.001 was filtered out as 96824687 C>T needs T but not covered
+7.001 was filtered out as 96824642 G>A needs A but not covered
+8.001 was filtered out as 96824642 G>C needs C but not covered
+9.001 was filtered out as 96818170 T>C needs C but not covered
+10.001 was filtered out as 96802646 C>A needs A but not covered
+11.001 was filtered out as 96805707 C>A needs A but not covered
+12.001 was filtered out as 96796973 delCAA needs N but not covered
+13.001 was filtered out as 96818241 A>C needs C but not covered
+14.001 was filtered out as 96818198 C>G needs G but not covered
+15.001 was filtered out as 96824657 C>T needs T but not covered
+16.001 was filtered out as 96802803 A>G needs G but not covered
+17.001 was filtered out as 96818180 T>C needs C but not covered
+18.001 was filtered out as 96802714 G>A needs A but not covered
+[filter] CYP2C8 1.001 => 1.001; 1.002; 1.003; 1.004; 1.005; 1.006; 1.007; 1.008; 1.009; 1.010; 1.011; 1.012; 1.013; 1.014; 1.015; 1.016; 1.017; 1.018
+[filter] valid_alleles=18
+CYP2C8:96796795 → A:0, C:0, G*:53, M:0, N:0, P:0, T:0
+CYP2C8:96796830 → A:0, C:0, G:0, M:0, N:0, P:0, T*:59
+CYP2C8:96796860 → A:31, C:0, G*:20, M:0, N:0, P:0, T:0
+CYP2C8:96798714 → A:27, C:0, G*:28, M:0, N:0, P:0, T:0
+CYP2C8:96802736 → A:0, C:0, G*:47, M:0, N:0, P:0, T:0
+CYP2C8:96805591 → A:0, C:0, G*:51, M:0, N:0, P:0, T:0
+CYP2C8:96826965 → A:0, C*:47, G:0, M:0, N:0, P:0, T:0
+CYP2C8:96829244 → A:0, C:0, G:0, M:0, N:0, P:0, T*:50
+CYP2C8:96829280 → A:0, C:0, G:0, M:0, N:0, P:0, T*:46
+CYP2C8:96829291 → A:0, C:0, G:0, M:0, N:0, P:0, T*:47
+CYP2C8:96829405 → A*:41, C:0, G:0, M:0, N:0, P:0, T:0
+CYP2C8:96829429 → A:0, C:0, G*:13, M:0, N:0, P:0, T:24
+CYP2C8:96829528 → A*:20, C:20, G:0, M:0, N:0, P:0, T:0
+CYP2C8:96829569 → A:43, C:0, G*:0, M:0, N:0, P:0, T:0
+Step 0: Loss=0.1828, CN=[2.0999167]
+Step 100: Loss=0.0368, CN=[2.5908198]
+Step 200: Loss=0.0368, CN=[2.5933244]
+Step 300: Loss=0.0368, CN=[2.5933213]
+Step 400: Loss=0.0368, CN=[2.593321]
+
+=== Fit ===
+Region 0: obs=2.568, exp=2.593, diff=-0.026 
+Region 1: obs=2.605, exp=2.593, diff=+0.011 
+Region 2: obs=2.079, exp=2.593, diff=-0.514 *
+Region 3: obs=2.282, exp=2.593, diff=-0.312 
+Region 4: obs=2.192, exp=2.593, diff=-0.402 
+Region 5: obs=2.016, exp=2.593, diff=-0.577 *
+Region 6: obs=2.617, exp=2.593, diff=+0.023 
+Region 7: obs=2.807, exp=2.593, diff=+0.214 
+Region 8: obs=3.064, exp=2.593, diff=+0.470 
+Region 9: obs=2.470, exp=2.593, diff=-0.124 
+Region 10: obs=2.961, exp=2.593, diff=+0.367 
+Region 11: obs=2.687, exp=2.593, diff=+0.094 
+Region 12: obs=2.876, exp=2.593, diff=+0.283 
+Region 13: obs=2.624, exp=2.593, diff=+0.030 
+Region 14: obs=2.622, exp=2.593, diff=+0.029 
+Region 15: obs=2.560, exp=2.593, diff=-0.033 
+Region 16: obs=2.889, exp=2.593, diff=+0.296 
+Region 17: obs=2.521, exp=2.593, diff=-0.072 
+Region 18: obs=2.442, exp=2.593, diff=-0.151 
+Region 19: obs=2.860, exp=2.593, diff=+0.266 
+Region 20: obs=2.628, exp=2.593, diff=+0.034 
+
+[Gene CN Results]
+  CYP2C8: 2.59 → 2.5933213233947754
+Using device: cuda
+num_sparse_entries: 252
+max sparse_flat_index: 1763
+expected max: 1763
+
+=== Running VAE with seed 42 ===
+Global Pooled JS: 0.000000
+Seed 42, Step    0: Loss = 373.73 (Recon: 323.34, Allele KL: 21.33, Base KL: 1879.55, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 42, Step  500: Loss = 133.98 (Recon: 81.66, Allele KL: 24.69, Base KL: 3111.52, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 42, Step 1000: Loss = 136.20 (Recon: 93.36, Allele KL: 14.33, Base KL: 3164.12, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 42, Step 1500: Loss = 130.62 (Recon: 83.33, Allele KL: 18.88, Base KL: 3142.28, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 42, Step 2000: Loss = 132.52 (Recon: 81.90, Allele KL: 22.71, Base KL: 3122.23, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 42, Step 2500: Loss = 123.39 (Recon: 76.59, Allele KL: 18.87, Base KL: 3156.97, Functional KL: 0.00
+
+Top Variants with Coverage Mismatches:
+Rank   Variant                        Expected     Observed     Diff       |Div|       
+------------------------------------------------------------------------------------------
+New best model with final loss: 131.74
+
+=== Running VAE with seed 123 ===
+Global Pooled JS: 0.000000
+Seed 123, Step    0: Loss = 293.00 (Recon: 247.80, Allele KL: 17.17, Base KL: 1714.06, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 123, Step  500: Loss = 127.12 (Recon: 76.89, Allele KL: 22.17, Base KL: 3160.09, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 123, Step 1000: Loss = 132.30 (Recon: 82.69, Allele KL: 21.56, Base KL: 3142.07, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 123, Step 1500: Loss = 129.79 (Recon: 83.28, Allele KL: 18.23, Base KL: 3167.68, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 123, Step 2000: Loss = 131.01 (Recon: 77.68, Allele KL: 25.48, Base KL: 3037.05, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 123, Step 2500: Loss = 130.63 (Recon: 81.66, Allele KL: 20.57, Base KL: 3183.27, Functional KL: 0.00
+
+Top Variants with Coverage Mismatches:
+Rank   Variant                        Expected     Observed     Diff       |Div|       
+------------------------------------------------------------------------------------------
+
+=== Running VAE with seed 456 ===
+Global Pooled JS: 0.000000
+Seed 456, Step    0: Loss = 312.78 (Recon: 262.03, Allele KL: 21.39, Base KL: 1791.54, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 456, Step  500: Loss = 128.79 (Recon: 82.97, Allele KL: 17.73, Base KL: 3138.00, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 456, Step 1000: Loss = 125.32 (Recon: 80.11, Allele KL: 17.07, Base KL: 3151.28, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 456, Step 1500: Loss = 134.22 (Recon: 89.49, Allele KL: 16.67, Base KL: 3172.20, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 456, Step 2000: Loss = 129.24 (Recon: 81.25, Allele KL: 20.10, Base KL: 3101.49, Functional KL: 0.00
+Global Pooled JS: 0.000000
+Seed 456, Step 2500: Loss = 122.79 (Recon: 76.08, Allele KL: 18.89, Base KL: 3178.99, Functional KL: 0.00
+
+Top Variants with Coverage Mismatches:
+Rank   Variant                        Expected     Observed     Diff       |Div|       
+------------------------------------------------------------------------------------------
+New best model with final loss: 128.14
+
+=== Multi-Seed VAE Results ===
+Best model had seed 456 with final loss: 128.14
+All seeds final losses:
+  Seed 42: Total=131.74 (Recon=83.43, A_KL=19.97, B_KL=3264.99)
+  Seed 123: Total=138.81 (Recon=94.82, A_KL=15.36, B_KL=3219.17)
+  Seed 456: Total=128.14 (Recon=79.87, A_KL=20.04, B_KL=3123.19) <- Best
+
+[Raw]:
+CYP2C8*1: Normalized=1.0000, Unnormalized=1.00
+
+[Alleles]
+CYP2C8*1
+CYP2C8*1
+	Command being timed: "python /home/qinghuiz/aidy/push/Neretva/neretva/cyp.py CYP2C8 /project/shared/aldy-data/wgs/NA19007.wgs.cram"
+	User time (seconds): 147.47
+	System time (seconds): 30.34
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:58.32
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2675216
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 714272
+	Voluntary context switches: 22713
+	Involuntary context switches: 124
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 40
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
