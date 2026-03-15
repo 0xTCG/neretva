@@ -14,6 +14,4 @@ python cyp.py CYP2C8 [bam_path] > [out_path]
 python cyp.py CYP2C9 [bam_path] > [out_path]
 python cyp.py CYP2C19 [bam_path] > [out_path]
 python cyp.py CYP2D6 [bam_path] > [out_path]
-# Or
-./eval_CYP.sh
 ```
