@@ -1,0 +1,62 @@
+[
+    {
+        "input": "/project/home/pouria/opt/src/SpecImmune/runs/ont_chr22/20230726_PAQ25595_barcode18/20230726_PAQ25595_barcode18/20230726_PAQ25595_barcode18.refined.sorted.bam",
+        "diplotype": "CYP2D6 *1/*10/*68",
+        "copynumber": 3,
+        "haplotypes": [
+            {
+                "call": "*1",
+                "alleles": [
+                    {
+                        "call": "*1",
+                        "num_reads": 82,
+                        "meanCover": 65.67,
+                        "maxCover": 82,
+                        "minCover": 45,
+                        "rsIDs": []
+                    }
+                ]
+            },
+            {
+                "call": "*10",
+                "alleles": [
+                    {
+                        "call": "*10",
+                        "num_reads": 51,
+                        "meanCover": 17.83,
+                        "maxCover": 42,
+                        "minCover": 2,
+                        "rsIDs": [
+                            "rs1135840",
+                            "rs1065852"
+                        ]
+                    }
+                ]
+            },
+            {
+                "call": "*68",
+                "alleles": [
+                    {
+                        "call": "*68",
+                        "num_reads": 18,
+                        "meanCover": 7.9,
+                        "maxCover": 10,
+                        "minCover": 5,
+                        "rsIDs": []
+                    }
+                ]
+            }
+        ],
+        "warnings": [
+            "Query names do not look like HiFi reads -- use \"consensus\" mode for consensus",
+            "Unlabeled Clipped Reads\n50b421d1-475c-4579-9aa7-8f685cca8108\n59887d79-94b5-4fa6-bf0e-e6a87abe5128",
+            "LOW COVERAGE VARIANTS CALLED",
+            "Low-coverage hybrid called: () (1<3)",
+            "NO HYBRID parent found for ('*68',) (singleton)",
+            "Extra haplotypes called: [('*1', ['noSV_0']), ('*10', ['noSV_1']), ('*68', ['hybrid_0'])]",
+            "1306 bases in variant region with no coverage",
+            "4272 bases in variant region with coverage < 3",
+            "284 bases in variant region with coverage < 3"
+        ]
+    }
+]

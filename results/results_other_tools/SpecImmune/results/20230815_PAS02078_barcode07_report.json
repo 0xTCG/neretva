@@ -1,0 +1,70 @@
+[
+    {
+        "input": "/project/home/pouria/opt/src/SpecImmune/runs/ont_chr22/20230815_PAS02078_barcode07/20230815_PAS02078_barcode07/20230815_PAS02078_barcode07.refined.sorted.bam",
+        "diplotype": "CYP2D6 *1/*2x2/*79",
+        "copynumber": 4,
+        "haplotypes": [
+            {
+                "call": "*1",
+                "alleles": [
+                    {
+                        "call": "*1",
+                        "num_reads": 39,
+                        "meanCover": 26.98,
+                        "maxCover": 30,
+                        "minCover": 25,
+                        "rsIDs": []
+                    }
+                ]
+            },
+            {
+                "call": "*2x2",
+                "alleles": [
+                    {
+                        "call": "*2",
+                        "num_reads": 49,
+                        "meanCover": 23.5,
+                        "maxCover": 28,
+                        "minCover": 17,
+                        "rsIDs": [
+                            "rs16947",
+                            "rs1135840"
+                        ]
+                    },
+                    {
+                        "call": "*2",
+                        "num_reads": 18,
+                        "meanCover": 10.87,
+                        "maxCover": 14,
+                        "minCover": 8,
+                        "rsIDs": [
+                            "rs16947",
+                            "rs1135840"
+                        ]
+                    }
+                ]
+            },
+            {
+                "call": "*79",
+                "alleles": [
+                    {
+                        "call": "*79",
+                        "num_reads": 6,
+                        "meanCover": 0.16,
+                        "maxCover": 1,
+                        "minCover": 0,
+                        "rsIDs": []
+                    }
+                ]
+            }
+        ],
+        "warnings": [
+            "Query names do not look like HiFi reads -- use \"consensus\" mode for consensus",
+            "Unlabeled Clipped Reads\nca1a6e3c-6def-4d14-aa91-08417a625e98",
+            "NO HYBRID parent found for ('*79',) (singleton)",
+            "Extra haplotypes called: [('*1', ['noSV_1']), ('*2x2', ['duplicate_1', 'noSV_2']), ('*79', ['hybrid_0'])]",
+            "3575 bases in variant region with no coverage",
+            "4272 bases in variant region with coverage < 3"
+        ]
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "input": "/project/home/pouria/opt/src/SpecImmune/runs/ont_chr22/20230501_PAO22333_barcode13/20230501_PAO22333_barcode13/20230501_PAO22333_barcode13.refined.sorted.bam",
+        "diplotype": "CYP2D6 *1x2/*2/*29",
+        "copynumber": 4,
+        "haplotypes": [
+            {
+                "call": "*1x2",
+                "alleles": [
+                    {
+                        "call": "*1",
+                        "num_reads": 8,
+                        "meanCover": 0.38,
+                        "maxCover": 3,
+                        "minCover": 0,
+                        "rsIDs": []
+                    },
+                    {
+                        "call": "*1",
+                        "num_reads": 0,
+                        "meanCover": 0,
+                        "maxCover": 0,
+                        "minCover": 0,
+                        "rsIDs": []
+                    }
+                ]
+            },
+            {
+                "call": "*2",
+                "alleles": [
+                    {
+                        "call": "*2",
+                        "num_reads": 40,
+                        "meanCover": 28.08,
+                        "maxCover": 40,
+                        "minCover": 18,
+                        "rsIDs": [
+                            "rs16947",
+                            "rs1135840"
+                        ]
+                    }
+                ]
+            },
+            {
+                "call": "*29",
+                "alleles": [
+                    {
+                        "call": "*29",
+                        "num_reads": 59,
+                        "meanCover": 29.87,
+                        "maxCover": 39,
+                        "minCover": 25,
+                        "rsIDs": [
+                            "rs61736512",
+                            "rs59421388",
+                            "rs1058164",
+                            "rs1135840",
+                            "rs16947"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "warnings": [
+            "Query names do not look like HiFi reads -- use \"consensus\" mode for consensus",
+            "LOW COVERAGE VARIANTS CALLED",
+            "Extra haplotypes called: [('*1x2', ['duplicate_1', 'noSV_2']), ('*2', ['noSV_1']), ('*29', ['noSV_0'])]",
+            "3589 bases in variant region with no coverage",
+            "3900 bases in variant region with coverage < 3"
+        ]
+    }
+]
