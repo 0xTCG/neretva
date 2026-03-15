@@ -152,7 +152,7 @@ def main():
             rows.append(row)
 
     print(f"Loaded {len(rows)} KIR HPRC rows, {len(tools)} tools\n")
-
+    
     allele_stats = {name: [0, 0, 0] for name, _, _ in tools}
 
     for row in rows:
