@@ -12,7 +12,7 @@ python cyp.py [GENE] [bam_path] > [out_path]
 ```
 
 ## Results
-| Name | Ablation results location | Script location |
+| Name | Results location | Script location |
 | --- | --- | --- |
 |`KIR HPRC`| [`KIR HPRC Results`](results/results_KIR_HPRC/)| [`kir.py`](kir.py)|
 |`CYP WGS` | [`CYP WGS Results`](results/results_CYP_WGS/) | [`cyp.py`](cyp.py) |
