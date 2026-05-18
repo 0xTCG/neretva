@@ -54,7 +54,7 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     with timing("initializaiton"):
      
-        db = Database("kir.pickle")
+        db = Database("data/kir.pickle")
 
     
 #%% Read BAM reads
@@ -241,10 +241,7 @@ def align_minimap(file, database, MAX_NM, threads):
                 print(a.seq, file=fo)
     with timing("minimap2"):
         cmd = [
-            "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/minimap2/2.24/bin/minimap2",
-            # "/Users/qinghui_zhou/Documents/Flow/minimap2/minimap2",
-            # "/data/qinghuiz/inumanag-kir/minimap2/minimap2",
-
+            "minimap2",
             "-x", "sr", "--secondary=yes",  # short-read preset. TODO: check if normal works or if -k needs decreasing
             "-c",  # calculate CIGAR
             "-P", "--dual=no",  # do all-to-all mapping
