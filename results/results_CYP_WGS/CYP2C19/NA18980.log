@@ -1,11 +1,11 @@
-2026-03-11 05:20:45.335013: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2026-03-11 05:20:45.373509: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2026-03-11 05:20:45.373712: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2026-03-11 05:20:45.373855: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2026-03-11 05:20:45.383640: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2026-05-16 00:49:01.830364: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-16 00:49:01.870090: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-16 00:49:01.870307: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-16 00:49:01.870542: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-16 00:49:01.879379: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-2026-03-11 05:20:46.796425: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-05-16 00:49:03.176265: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [info] total indices 497
 [info] total variants 497
@@ -65,23 +65,6 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [filter] CYP2C19 1.002 => 1.002; 1.003; 1.004; 1.005; 1.006; 1.007; 1.008; 1.009; 1.010
 [filter] CYP2C19 15.001 => 15.001; 15.002
 [filter] valid_alleles=11
-CYP2C19:96520534 → A:0, C:0, G*:42, M:0, N:0, P:0, T:0
-CYP2C19:96520559 → A:0, C:0, G*:41, M:0, N:0, P:0, T:0
-CYP2C19:96521023 → A:0, C:0, G:0, M:0, N:0, P:0, T*:54
-CYP2C19:96521044 → A:0, C*:55, G:0, M:0, N:0, P:0, T:0
-CYP2C19:96521071 → A:0, C:0, G:0, M:0, N:0, P:0, T*:55
-CYP2C19:96521290 → A:0, C:0, G:0, M:0, N:0, P:0, T*:42
-CYP2C19:96521354 → A:0, C:0, G*:44, M:0, N:0, P:0, T:0
-CYP2C19:96521421 → A:0, C:0, G*:56, M:0, N:0, P:0, T:0
-CYP2C19:96521573 → A:0, C:0, G:0, M:0, N:0, P:0, T*:61
-CYP2C19:96521629 → A:0, C:0, G:0, M:0, N:0, P:0, T*:55
-CYP2C19:96521679 → A:0, C*:39, G:0, M:0, N:0, P:0, T:0
-CYP2C19:96521687 → A:0, C:0, G:0, M:0, N:0, P:0, T*:36
-CYP2C19:96522516^ → A*:32, C^:0, G:0, M:0, N:0, P:0, T:0
-CYP2C19:96522560 → A:0, C*:0, G:0, M:0, N:0, P:0, T:45
-CYP2C19:96602622^ → A*:0, C:0, G^:60, M:0, N:0, P:0, T:0
-CYP2C19:96602690 → A:0, C*:53, G:0, M:0, N:0, P:0, T:0
-CYP2C19:96609774 → A*:39, C:0, G:0, M:0, N:0, P:0, T:0
 Step 0: Loss=0.1854, CN=[2.0999167]
 Step 100: Loss=0.0342, CN=[2.600142]
 Step 200: Loss=0.0342, CN=[2.602499]
@@ -114,9 +97,6 @@ Region 20: obs=2.643, exp=2.603, diff=+0.041
 [Gene CN Results]
   CYP2C19: 2.60 → 2.6025094985961914
 Using device: cuda
-num_sparse_entries: 187
-max sparse_flat_index: 1308
-expected max: 1308
 
 === Running VAE with seed 42 ===
 Global Pooled JS: 0.046834
@@ -222,6 +202,7 @@ All seeds final losses:
   Seed 42: Total=133.08 (Recon=88.65, A_KL=15.99, B_KL=6550.79)
   Seed 123: Total=129.85 (Recon=87.37, A_KL=14.07, B_KL=6524.85) <- Best
   Seed 456: Total=139.40 (Recon=91.84, A_KL=19.18, B_KL=6356.42)
+[time] run_vae took 122.34s (2,866.63671875 MB; 2,866.63671875 MB)
 
 [Raw]:
 CYP2C19*1: Normalized=0.9934, Unnormalized=0.99
@@ -229,24 +210,24 @@ CYP2C19*1: Normalized=0.9934, Unnormalized=0.99
 [Alleles]
 CYP2C19*1
 CYP2C19*1
-	Command being timed: "python /home/qinghuiz/aidy/push/Neretva/neretva/cyp.py CYP2C19 /project/shared/aldy-data/wgs/NA18980.wgs.cram"
-	User time (seconds): 149.64
-	System time (seconds): 29.29
+	Command being timed: "python cyp.py CYP2C19 /project/shared/aldy-data/wgs/NA18980.wgs.cram"
+	User time (seconds): 118.32
+	System time (seconds): 18.97
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:59.34
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:17.66
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 2942824
+	Maximum resident set size (kbytes): 2935464
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 1025774
-	Voluntary context switches: 22688
-	Involuntary context switches: 128
+	Minor (reclaiming a frame) page faults: 1132763
+	Voluntary context switches: 22451
+	Involuntary context switches: 171
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 48
+	File system outputs: 56
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0

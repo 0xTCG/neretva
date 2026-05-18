@@ -1,0 +1,84 @@
+2026-05-16 20:55:15.163583: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-16 20:55:15.201583: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-16 20:55:15.201671: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-16 20:55:15.201731: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-16 20:55:15.210354: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+2026-05-16 20:55:16.281223: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+[info] total indices 14
+[info] total variants 14
+2.001 was filtered out as 16008387 A>C needs C but not covered
+3.001 was filtered out as 15990430 C>T needs T but not covered
+4.1001 was filtered out as 16008387 A>C needs C but not covered
+[filter] CYP4F2 1 => 1.001
+[filter] valid_alleles=1
+Step 0: Loss=0.0553, CN=[2.0999167]
+Step 100: Loss=0.0327, CN=[2.219098]
+Step 200: Loss=0.0327, CN=[2.2197878]
+Step 300: Loss=0.0327, CN=[2.2197883]
+Step 400: Loss=0.0327, CN=[2.2197883]
+
+=== Fit ===
+Region 0: obs=2.261, exp=2.220, diff=+0.041 
+Region 1: obs=2.440, exp=2.220, diff=+0.220 
+Region 2: obs=1.951, exp=2.220, diff=-0.269 
+Region 3: obs=2.351, exp=2.220, diff=+0.131 
+Region 4: obs=2.310, exp=2.220, diff=+0.090 
+Region 5: obs=2.530, exp=2.220, diff=+0.310 
+Region 6: obs=2.003, exp=2.220, diff=-0.217 
+Region 7: obs=2.323, exp=2.220, diff=+0.103 
+Region 8: obs=2.093, exp=2.220, diff=-0.127 
+Region 9: obs=2.495, exp=2.220, diff=+0.276 
+Region 10: obs=2.016, exp=2.220, diff=-0.203 
+Region 11: obs=2.402, exp=2.220, diff=+0.182 
+Region 12: obs=2.728, exp=2.220, diff=+0.508 *
+Region 13: obs=2.330, exp=2.220, diff=+0.110 
+Region 14: obs=2.377, exp=2.220, diff=+0.157 
+Region 15: obs=1.821, exp=2.220, diff=-0.399 
+Region 16: obs=1.759, exp=2.220, diff=-0.461 
+Region 17: obs=2.354, exp=2.220, diff=+0.134 
+Region 18: obs=2.210, exp=2.220, diff=-0.010 
+Region 19: obs=1.949, exp=2.220, diff=-0.271 
+Region 20: obs=2.083, exp=2.220, diff=-0.136 
+Region 21: obs=2.209, exp=2.220, diff=-0.011 
+Region 22: obs=1.626, exp=2.220, diff=-0.594 *
+Region 23: obs=2.397, exp=2.220, diff=+0.177 
+Region 24: obs=2.514, exp=2.220, diff=+0.294 
+Region 25: obs=1.999, exp=2.220, diff=-0.220 
+Region 26: obs=2.319, exp=2.220, diff=+0.099 
+
+[Gene CN Results]
+  CYP4F2: 2.22 → 2.219788074493408
+Using device: cuda
+
+[Raw]:
+CYP4F2*1: Normalized=1.0000, Unnormalized=1.00
+
+[Alleles]
+CYP4F2*1
+CYP4F2*1
+	Command being timed: "python cyp.py CYP4F2 /project/shared/aldy-data/wgs/NA07348.wgs.cram"
+	User time (seconds): 7.18
+	System time (seconds): 1.67
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.23
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2597776
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 607392
+	Voluntary context switches: 5271
+	Involuntary context switches: 3946
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -406,7 +406,9 @@ class VAE(nn.Module):
         base_probs_reshaped = base_probs.view(base_probs.size(0), -1, len(BASES))  
         base_entropy = -(base_probs_reshaped * torch.log(base_probs_reshaped + 1e-10)).sum(dim=-1).mean()
         allele_sparsity_loss = self.compute_allele_sparsity_loss(allele_props.squeeze(0))
-        
+
+        # functional_kld_weight = 6e-5
+
         loss = -log_likelihood + kld_weight * allele_kld + base_kld_weight * base_kld + functional_kld_weight*functional_kl + 100*base_entropy + 0.3*allele_sparsity_loss
         
         return loss, -log_likelihood, allele_kld, base_kld, functional_kl
@@ -474,10 +476,10 @@ def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_
     # Train the model
     model.train()
     loss_history = []
-    if list(db.genes.keys())[0] in ['CYP2D6']:
-        functional_kld_weight = 6e5
+    if list(db.genes.keys())[0] in ['CYP2C8','CYP2C9','CYP2C19','CYP2D6']:
+        functional_kld_weight = 0
     else:
-        functional_kld_weight = 6e-1
+        functional_kld_weight = 6e3
     for step in range(num_iterations):
         optimizer.zero_grad()
         
@@ -490,7 +492,7 @@ def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_
         progress = step / num_iterations 
 
         
-        functional_kld_weight = 0 + progress * (functional_kld_end - 0)
+        # functional_kld_weight = 0 + progress * (functional_kld_end - 0)
         # functional_kld_weight = functional_kld_end*(1-progress)
         # functional_kld_weight = functional_kld_end
         # Check if beta has any non-zero values
@@ -684,7 +686,7 @@ def create_strength_parameters(sample, db, lb_factor=0.8, ub_factor=1.2):
 
     return initial_strength, strength_lb, strength_ub
 
-
+@timeit
 def run_vae(total_mut_counts, valid_alleles, mut_counts,
             sample=None, db=None, num_iterations=3000):
     mut_counts = mut_counts.to(device)
@@ -714,12 +716,12 @@ def run_vae(total_mut_counts, valid_alleles, mut_counts,
         mapping_indices[1].to(device), 
         mapping_indices[2].to(device)
     )
-    print(f"num_sparse_entries: {num_sparse_entries}")
-    print(f"max sparse_flat_index: {mapping_indices[2].max().item()}")
-    print(f"expected max: {num_sparse_entries * len(BASES) - 1}")
+    # print(f"num_sparse_entries: {num_sparse_entries}")
+    # print(f"max sparse_flat_index: {mapping_indices[2].max().item()}")
+    # print(f"expected max: {num_sparse_entries * len(BASES) - 1}")
 
-    if mapping_indices[2].max().item() >= num_sparse_entries * len(BASES):
-        print("ERROR: sparse_flat_indices exceeds bounds! Alignment problem!")
+    # if mapping_indices[2].max().item() >= num_sparse_entries * len(BASES):
+    #     print("ERROR: sparse_flat_indices exceeds bounds! Alignment problem!")
         
     functional_indices = create_functional_indices(sample, db)
 

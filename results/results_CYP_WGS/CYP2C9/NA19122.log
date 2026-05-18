@@ -1,11 +1,11 @@
-2026-03-11 04:47:26.530634: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2026-03-11 04:47:26.571154: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2026-03-11 04:47:26.571322: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2026-03-11 04:47:26.571388: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2026-03-11 04:47:26.580510: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2026-05-15 23:24:35.131781: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-15 23:24:35.169305: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-15 23:24:35.169466: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-15 23:24:35.169602: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-15 23:24:35.177880: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-2026-03-11 04:47:27.703774: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-05-15 23:24:36.431455: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [info] total indices 749
 [info] total variants 749
@@ -103,23 +103,6 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [filter] CYP2C9 1.001 => 1.001; 1.002; 1.005; 1.006; 1.007; 1.008; 1.009; 1.010; 1.011; 1.012; 1.013
 [filter] CYP2C9 11.001 => 11.001; 11.002
 [filter] valid_alleles=13
-CYP2C9:96696874 → A:0, C*:49, G:0, M:0, N:0, P:0, T:0
-CYP2C9:96696902 → A:0, C:0, G*:51, M:0, N:0, P:0, T:0
-CYP2C9:96697251 → A:0, C:14, G:0, M:0, N:0, P:0, T*:16
-CYP2C9:96697360 → A:0, C:0, G*:34, M:0, N:0, P:0, T:0
-CYP2C9:96697458 → A:0, C:0, G*:43, M:0, N:0, P:0, T:0
-CYP2C9:96697660 → A:0, C*:36, G:0, M:0, N:0, P:0, T:0
-CYP2C9:96697758 → A:0, C*:36, G:0, M:0, N:0, P:0, T:0
-CYP2C9:96697806 → A:0, C:0, G:0, M:0, N:0, P:0, T*:38
-CYP2C9:96697929 → A:0, C:0, G*:44, M:0, N:0, P:0, T:0
-CYP2C9:96698006 → A:0, C:0, G:0, M:0, N:0, P:0, T*:41
-CYP2C9:96698064 → A:0, C:0, G:0, M:0, N:0, P:0, T*:42
-CYP2C9:96698410 → A:0, C:0, G*:46, M:0, N:0, P:0, T:0
-CYP2C9:96702006 → A:0, C:0, G*:41, M:0, N:0, P:0, T:0
-CYP2C9:96740980^ → A:0, C*:17, G:0, M:0, N:0, P:0, T^:13
-CYP2C9:96748634 → A:0, C*:52, G:0, M:0, N:0, P:0, T:0
-CYP2C9:96748700 → A:0, C*:45, G:0, M:0, N:0, P:0, T:0
-CYP2C9:96748736 → A*:48, C:0, G:0, M:0, N:0, P:0, T:0
 Step 0: Loss=0.0892, CN=[2.0999167]
 Step 100: Loss=0.0459, CN=[2.3179407]
 Step 200: Loss=0.0459, CN=[2.3185863]
@@ -152,9 +135,6 @@ Region 20: obs=2.935, exp=2.319, diff=+0.616 *
 [Gene CN Results]
   CYP2C9: 2.32 → 2.318582057952881
 Using device: cuda
-num_sparse_entries: 221
-max sparse_flat_index: 1546
-expected max: 1546
 
 === Running VAE with seed 42 ===
 Global Pooled JS: 0.020606
@@ -239,6 +219,7 @@ All seeds final losses:
   Seed 42: Total=139.56 (Recon=95.53, A_KL=15.49, B_KL=4205.01)
   Seed 123: Total=139.57 (Recon=94.26, A_KL=16.99, B_KL=4045.73)
   Seed 456: Total=136.20 (Recon=87.29, A_KL=21.00, B_KL=4196.70) <- Best
+[time] run_vae took 111.23s (2,670.21875 MB; 2,670.21875 MB)
 
 [Raw]:
 CYP2C9*1: Normalized=0.6561, Unnormalized=0.66
@@ -247,24 +228,24 @@ CYP2C9*11: Normalized=0.3439, Unnormalized=0.34
 [Alleles]
 CYP2C9*1
 CYP2C9*11
-	Command being timed: "python /home/qinghuiz/aidy/push/Neretva/neretva/cyp.py CYP2C9 /project/shared/aldy-data/wgs/NA19122.wgs.cram"
-	User time (seconds): 149.64
-	System time (seconds): 29.38
+	Command being timed: "python cyp.py CYP2C9 /project/shared/aldy-data/wgs/NA19122.wgs.cram"
+	User time (seconds): 108.51
+	System time (seconds): 14.49
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:00.27
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:03.62
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 2741680
+	Maximum resident set size (kbytes): 2734336
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 917039
-	Voluntary context switches: 22792
-	Involuntary context switches: 133
+	Minor (reclaiming a frame) page faults: 778759
+	Voluntary context switches: 24417
+	Involuntary context switches: 4008
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 56
+	File system outputs: 48
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0

@@ -1,11 +1,11 @@
-2026-03-11 05:29:50.569660: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2026-03-11 05:29:50.611092: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2026-03-11 05:29:50.611300: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2026-03-11 05:29:50.611453: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2026-03-11 05:29:50.621148: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2026-05-16 01:14:25.251343: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-16 01:14:25.289376: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-16 01:14:25.291035: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-16 01:14:25.291186: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-16 01:14:25.299343: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-2026-03-11 05:29:51.919619: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-05-16 01:14:26.711989: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [info] total indices 497
 [info] total variants 497
@@ -66,18 +66,6 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [filter] CYP2C19 1.002 => 1.002; 1.003; 1.004; 1.005; 1.006; 1.007; 1.008; 1.009; 1.010
 [filter] CYP2C19 17.001 => 17.001
 [filter] valid_alleles=10
-CYP2C19:96520534 → A:23, C:0, G*:31, M:0, N:0, P:0, T:0
-CYP2C19:96521044 → A:0, C*:60, G:0, M:0, N:0, P:0, T:0
-CYP2C19:96521071 → A:0, C:0, G:0, M:0, N:0, P:0, T*:59
-CYP2C19:96521290 → A:0, C:0, G:0, M:0, N:0, P:0, T*:46
-CYP2C19:96521421 → A:0, C:0, G*:62, M:0, N:0, P:0, T:0
-CYP2C19:96521573 → A:0, C:0, G:0, M:0, N:0, P:0, T*:55
-CYP2C19:96521656^ → A:0, C*:28, G:0, M:0, N:0, P:0, T^:20
-CYP2C19:96521687 → A:0, C:0, G:0, M:0, N:0, P:0, T*:58
-CYP2C19:96522560 → A:0, C*:0, G:0, M:0, N:0, P:0, T:61
-CYP2C19:96602622^ → A*:0, C:0, G^:39, M:0, N:0, P:0, T:0
-CYP2C19:96602690 → A:0, C*:36, G:0, M:0, N:0, P:0, T:0
-CYP2C19:96609774 → A*:59, C:0, G:0, M:0, N:0, P:0, T:0
 Step 0: Loss=0.1087, CN=[2.0999167]
 Step 100: Loss=0.0464, CN=[2.3823497]
 Step 200: Loss=0.0464, CN=[2.382324]
@@ -110,9 +98,6 @@ Region 20: obs=2.358, exp=2.382, diff=-0.024
 [Gene CN Results]
   CYP2C19: 2.38 → 2.382333278656006
 Using device: cuda
-num_sparse_entries: 120
-max sparse_flat_index: 839
-expected max: 839
 
 === Running VAE with seed 42 ===
 Global Pooled JS: 0.090706
@@ -218,6 +203,7 @@ All seeds final losses:
   Seed 42: Total=122.05 (Recon=76.62, A_KL=20.57, B_KL=4158.41)
   Seed 123: Total=114.25 (Recon=73.33, A_KL=16.04, B_KL=4048.66) <- Best
   Seed 456: Total=115.21 (Recon=72.58, A_KL=17.74, B_KL=4171.35)
+[time] run_vae took 137.28s (2,883.78515625 MB; 2,883.78515625 MB)
 
 [Raw]:
 CYP2C19*1: Normalized=0.5364, Unnormalized=0.54
@@ -226,21 +212,21 @@ CYP2C19*17: Normalized=0.4636, Unnormalized=0.46
 [Alleles]
 CYP2C19*1
 CYP2C19*17
-	Command being timed: "python /home/qinghuiz/aidy/push/Neretva/neretva/cyp.py CYP2C19 /project/shared/aldy-data/wgs/NA19908.wgs.cram"
-	User time (seconds): 153.20
-	System time (seconds): 29.71
+	Command being timed: "python cyp.py CYP2C19 /project/shared/aldy-data/wgs/NA19908.wgs.cram"
+	User time (seconds): 128.97
+	System time (seconds): 23.00
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:03.50
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:32.61
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 2950580
+	Maximum resident set size (kbytes): 2953028
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 1209449
-	Voluntary context switches: 22697
-	Involuntary context switches: 303
+	Minor (reclaiming a frame) page faults: 1000992
+	Voluntary context switches: 24703
+	Involuntary context switches: 4088
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 56

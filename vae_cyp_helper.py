@@ -198,6 +198,25 @@ def decode_allele_beta(allele_idx, allele, sample, db, learned_beta):
     
     return result
 
+@timeit
+def create_variant_bias_priors_cyp(sample, db):
+    for variant_idx in sample.valid_indices:
+        variant = db.variants()[variant_idx]
+        variant.bias_prior_mu = 0.0
+        variant.bias_prior_logvar = -20.0
+
+
+@timeit
+def create_bias_tensors(sample, db):
+    bias_prior_mu = []
+    bias_prior_logvar = []
+    for variant_idx in sample.valid_indices:
+        variant = db.variants()[variant_idx]
+        bias_prior_mu.append(variant.bias_prior_mu)
+        bias_prior_logvar.append(variant.bias_prior_logvar)
+    return (torch.tensor(bias_prior_mu, dtype=torch.float32),
+            torch.tensor(bias_prior_logvar, dtype=torch.float32))
+
 def get_mutation_type_from_variant(allele, position, expected_base):
 
     # Check if this is a cross-gene position (infection)

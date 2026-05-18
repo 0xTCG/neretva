@@ -89,14 +89,14 @@ if __name__ == "__main__":
     from aldy.sam import Sample
     from aldy.common import script_path
     from common_cyp import Database
-    # GENE = 'CYP2D6'
+    # GENE = 'CYP4F2'
     GENE = sys.argv[1]
-
+    # GENE = 'CYP2C19'
     gene = Gene(script_path(f"aldy.resources.genes/{GENE.lower()}.yml"), genome="hg19")
 
     profile = Profile.load(gene, "illumina")
     # /project/shared/aldy-data/wgs/NA07055.wgs.cram'
-    # path = '/project/shared/aldy-data/wgs/HG01190.wgs.cram'
+    # path = '/project/shared/aldy-data/wgs/HG00276.wgs.cram'
 
     path = sys.argv[2]
     aldy_sample = Sample(
@@ -794,7 +794,7 @@ if __name__ == "__main__":
     # prep for solver
     zero_out_low_coverage_variants(sample,db)
     populate_valid_positions(sample)
-    print_variant_counts(sample,db)
+    # print_variant_counts(sample,db)
 
 def rebuild_allele_vectors_for_fusion(db, aldy_gene):
 
@@ -867,7 +867,7 @@ if __name__ == "__main__":
 
     # CYP 2C8, 9, 19, round the estimated CN to 2
     # TODO: CYP 2D6, need to get fusion template CN
-    if GENE in ['CYP2C8', 'CYP2C9', 'CYP2C19']:
+    if GENE in ['CYP2C8', 'CYP2C9', 'CYP2C19', 'CYP2B6', 'CYP3A5', 'CYP4F2', 'SLCO1B1', 'TPMT']:
         db.genes[GENE].estimated_cn = 2.0
     #%%
     # if GENE == 'CYP2D6': need to estimate the per - fusion template CN here.
@@ -1040,15 +1040,20 @@ if __name__ == "__main__":
     valid_allele_names = [f'{a.gene.name}*{a.name}' for a in sample.valid_alleles]
 
     bam_id = path.split('/')[-1]
-    # densities = run_vae(sample.total_mutations, valid_allele_names, mut_counts_tensor,sample.beta,num_iterations=6000)
-    densities, densities_un, learnt_beta = run_vae(
-        total_mut_counts,
-        valid_allele_names,
-        mut_counts_tensor,
-        sample = sample,
-        db = db,
-        num_iterations=3000
-    )
+    if GENE == 'CYP4F2' and len(valid_allele_names) == 1:
+        densities = np.array([1.0])
+        densities_un = np.array([1.0])
+        learnt_beta = None
+    else:
+        # densities = run_vae(sample.total_mutations, valid_allele_names, mut_counts_tensor,sample.beta,num_iterations=6000)
+        densities, densities_un, learnt_beta = run_vae(
+            total_mut_counts,
+            valid_allele_names,
+            mut_counts_tensor,
+            sample = sample,
+            db = db,
+            num_iterations=3000
+        )
     # debug_beta_matrix_detailed(beta, sample, db)
 
     #%%
@@ -1069,7 +1074,7 @@ if __name__ == "__main__":
             major_allele_densities_unnorm[major_key] = 0
         major_allele_densities[major_key] += density
         major_allele_densities_unnorm[major_key] += densities_un[i]
-
+    
     # Report major alleles above threshold
     final_results = []
     # Filter by threshold and group by gene
@@ -1115,10 +1120,18 @@ if __name__ == "__main__":
         else:
             copies = allocate_copies_simple(proportions, gene_cn)
             fusion_allocated = False
-    else:
+    elif GENE in ['CYP2C8', 'CYP2C9', 'CYP2C19']:
         # CYP2C8/9/19: Simple allocation
         gene_cn = db.genes[GENE].estimated_cn
         copies = allocate_copies_simple(proportions, gene_cn)
+    else:
+        sorted_alleles = sorted(proportions.keys(), key=lambda a: -proportions[a])
+        if len(sorted_alleles) >= 2:
+            copies = {sorted_alleles[0]: 1, sorted_alleles[1]: 1}
+        elif len(sorted_alleles) == 1:
+            copies = {sorted_alleles[0]: 2}
+        else:
+            copies = {}
 
     #%%
     print("\n[Alleles]")

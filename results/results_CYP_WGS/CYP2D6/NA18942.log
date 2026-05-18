@@ -1,11 +1,11 @@
-2026-03-11 06:13:14.660627: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2026-03-11 06:13:14.699801: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2026-03-11 06:13:14.699966: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2026-03-11 06:13:14.700123: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2026-03-11 06:13:14.708768: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2026-05-16 02:16:58.181241: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-16 02:16:58.219710: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-16 02:16:58.219881: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-16 02:16:58.220016: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-16 02:16:58.228650: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-2026-03-11 06:13:15.752373: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-05-16 02:16:59.228464: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [info] total indices 2506
 [info] total variants 2506
@@ -307,67 +307,6 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 163.001 was filtered out as 42525157 A>G needs G but not covered
 [filter] CYP2D6 2.001 => 2.001; 2.002; 2.003; 2.005; 2.006; 2.007; 2.008; 2.009; 2.010; 2.011; 2.012; 2.013; 2.014; 2.015; 2.016; 2.017; 2.018; 2.019; 2.020; 2.021; 2.022; 2.023; 2.024; 2.025; 2.026; 2.027; 2.028; 2.030
 [filter] valid_alleles=28
-CYP2D6:42522311 → A:0, C*:0, G:0, M:0, N:0, P:0, T:39
-CYP2D6:42522612^ → A:0, C*:0, G^:39, M:0, N:0, P:0, T:0
-CYP2D6:42522677 → A:0, C:0, G*:29, M:0, N:0, P:0, T:0
-CYP2D6:42522764 → A:0, C:0, G*:27, M:0, N:0, P:0, T:0
-CYP2D6:42522844 → A*:44, C:0, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42523002 → A:41, C:0, G*:0, M:0, N:0, P:0, T:0
-CYP2D6:42523208 → A:0, C*:0, G:0, M:0, N:0, P:0, T:43
-CYP2D6:42523240 → A:0, C:0, G*:35, M:0, N:0, P:0, T:0
-CYP2D6:42523408 → A:0, C:0, G:46, M:0, N:0, P:0, T*:0
-CYP2D6:42523538 → A*:34, C:0, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42523649 → A:0, C*:29, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42523672 → A:0, C*:34, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42523702 → A:0, C*:28, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42523942^ → A^:49, C:0, G*:0, M:0, N:0, P:0, T:0
-CYP2D6:42524131 → A:0, C*:30, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42524217 → A:0, C:0, G*:38, M:0, N:0, P:0, T:0
-CYP2D6:42524312 → A:0, C:0, G*:39, M:0, N:0, P:0, T:0
-CYP2D6:42524322 → A*:34, C:0, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42524501 → A:0, C*:45, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42524577 → A:0, C:0, G:0, M:0, N:0, P:0, T*:40
-CYP2D6:42524669 → A:0, C:0, G*:31, M:0, N:0, P:0, T:0
-CYP2D6:42524695 → A:0, C:0, G:0, M:0, N:0, P:0, T*:32
-CYP2D6:42524794 → A*:34, C:0, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42525035 → A:0, C:0, G*:50, M:0, N:0, P:0, T:0
-CYP2D6:42525068 → A:0, C:0, G*:48, M:0, N:0, P:0, T:0
-CYP2D6:42525131^ → A:0, C*:0, G:38, M^:0, N:0, P:0, T:0
-CYP2D6:42525215 → A:0, C:0, G*:34, M:0, N:0, P:0, T:0
-CYP2D6:42525279 → A:0, C:0, G*:34, M:0, N:0, P:0, T:0
-CYP2D6:42525423 → A:0, C*:38, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42525525 → A:0, C*:39, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42525564 → A:0, C*:37, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42525615 → A:0, C*:38, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42525644 → A:0, C:0, G*:39, M:0, N:0, P:0, T:0
-CYP2D6:42525755 → A:0, C:0, G*:46, M:0, N:0, P:0, T:0
-CYP2D6:42525797 → A:0, C:0, G*:46, M:0, N:0, P:0, T:0
-CYP2D6:42525951 → A*:0, C:48, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42526048 → A:0, C:47, G*:0, M:0, N:0, P:0, T:0
-CYP2D6:42526050 → A:0, C:0, G*:47, M:0, N:0, P:0, T:0
-CYP2D6:42526483 → A:38, C*:0, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42526523 → A:0, C:0, G*:42, M:0, N:0, P:0, T:0
-CYP2D6:42526548 → A:0, C:44, G:0, M:0, N:0, P:0, T*:0
-CYP2D6:42526560 → A:0, C:0, G:42, M:0, N:0, P:0, T*:0
-CYP2D6:42526561 → A:0, C*:0, G:42, M:0, N:0, P:0, T:0
-CYP2D6:42526566 → A*:0, C:0, G:41, M:0, N:0, P:0, T:0
-CYP2D6:42526570 → A:0, C:43, G*:0, M:0, N:0, P:0, T:0
-CYP2D6:42526572 → A:0, C:0, G*:0, M:0, N:0, P:0, T:44
-CYP2D6:42526579 → A:0, C*:0, G:43, M:0, N:0, P:0, T:0
-CYP2D6:42526968 → A:0, C*:56, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42527115 → A*:35, C:0, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42527186 → A:0, C*:38, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42527470 → A:0, C*:0, G:0, M:0, N:0, P:0, T:45
-CYP2D6:42527484 → A:0, C*:39, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42527532 → A:44, C:0, G*:0, M:0, N:0, P:0, T:0
-CYP2D6:42527541 → A:0, C:0, G:0, M:0, N:0, P:0, T*:43
-CYP2D6:42527738 → A:0, C*:43, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42527776 → A:0, C*:39, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42527890 → A:0, C:0, G:0, M:0, N:0, P:0, T*:36
-CYP2D6:42528027 → A:0, C:42, G:0, M:0, N:0, P:0, T*:0
-CYP2D6:42528095 → A:0, C*:42, G:0, M:0, N:0, P:0, T:0
-CYP2D6:42528123 → A:0, C:0, G*:37, M:0, N:0, P:0, T:0
-CYP2D6:42528381 → A:0, C:34, G*:0, M:0, N:0, P:0, T:0
 Step 0: Loss=0.2210, CN=[2.0999167]
 Step 100: Loss=0.1071, CN=[2.5657442]
 Step 200: Loss=0.1071, CN=[2.5679815]
@@ -505,9 +444,6 @@ Kept alleles by cn_config:
 
 [Rebuilding allele vectors for fusion cn_configs]
 Using device: cuda
-num_sparse_entries: 1708
-max sparse_flat_index: 11955
-expected max: 11955
 
 === Running VAE with seed 42 ===
 Global Pooled JS: 0.013681
@@ -635,6 +571,7 @@ All seeds final losses:
   Seed 42: Total=327.51 (Recon=256.38, A_KL=28.56, B_KL=12037.38)
   Seed 123: Total=316.86 (Recon=245.21, A_KL=35.41, B_KL=11822.65)
   Seed 456: Total=316.23 (Recon=243.72, A_KL=37.00, B_KL=11816.38) <- Best
+[time] run_vae took 97.44s (2,664.53125 MB; 2,664.53125 MB)
 
 [Raw]:
 CYP2D6*2: Normalized=1.0000, Unnormalized=1.00
@@ -644,24 +581,24 @@ Allocating by cn_config:
 [Alleles]
 CYP2D6*2
 CYP2D6*2
-	Command being timed: "python /home/qinghuiz/aidy/push/Neretva/neretva/cyp.py CYP2D6 /project/shared/aldy-data/wgs/NA18942.wgs.cram"
-	User time (seconds): 170.73
-	System time (seconds): 34.88
-	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:26.04
+	Command being timed: "python cyp.py CYP2D6 /project/shared/aldy-data/wgs/NA18942.wgs.cram"
+	User time (seconds): 101.49
+	System time (seconds): 6.91
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:49.66
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 2722476
+	Maximum resident set size (kbytes): 2728496
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 798641
-	Voluntary context switches: 22952
-	Involuntary context switches: 150
+	Minor (reclaiming a frame) page faults: 750993
+	Voluntary context switches: 24231
+	Involuntary context switches: 163
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 96
+	File system outputs: 88
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
