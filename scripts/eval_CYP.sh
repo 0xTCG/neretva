@@ -3,11 +3,11 @@
 # SCRIPT=$1
 # SUFFIX=$2
 
-PREFIX="results_CYP_WGS"
+PREFIX="results_CYP_WGS_0511"
 mkdir -p "$PREFIX"
 
-# for gene in CYP2D6; do
-for gene in CYP2C8 CYP2C9 CYP2C19 ; do
+for gene in CYP2D6; do
+# for gene in CYP2C8 CYP2C9 CYP2C19 ; do
 
     mkdir -p "${PREFIX}/${gene}"
     ls /project/shared/aldy-data/wgs/*.wgs.cram | \
