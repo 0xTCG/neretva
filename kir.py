@@ -31,6 +31,7 @@ import pickle
 from helper import * # needs attention of common class import override
 from common_0620B import  *
 
+
 #%%
 # from V5_3 import run_vae
 #%%
@@ -154,6 +155,7 @@ if __name__ == "__main__":
     parser.add_argument('--test', action='store_true', help='Run in test mode with simulated data', default=False)
     parser.add_argument('--input', help='Path to input FASTA/BAM file')
     parser.add_argument('--threads', type=int, default=16, help='Number of threads to use')
+    parser.add_argument('--seed', type=int, default=42)
     
     if not NOTEBOOK:
         args = parser.parse_args()
@@ -240,7 +242,10 @@ def align_minimap(file, database, MAX_NM, threads):
                 print(a.seq, file=fo)
     with timing("minimap2"):
         cmd = [
-            "minimap2",
+            "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/minimap2/2.24/bin/minimap2",
+            # "/Users/qinghui_zhou/Documents/Flow/minimap2/minimap2",
+            # "/data/qinghuiz/inumanag-kir/minimap2/minimap2",
+
             "-x", "sr", "--secondary=yes",  # short-read preset. TODO: check if normal works or if -k needs decreasing
             "-c",  # calculate CIGAR
             "-P", "--dual=no",  # do all-to-all mapping
@@ -1498,7 +1503,7 @@ if __name__ == "__main__":
     # # from V9_2_3_1007_B import *
     # # from V9_2_3_1007 import *
     # from V9_helper_1007 import *
- 
+    
     from vae import *
     from vae_helper import *
     from common_0620B import *
@@ -1521,7 +1526,8 @@ if __name__ == "__main__":
         sample = sample,
         db = db,       
         num_iterations=3000,
-        bam_id = bam_id
+        bam_id = bam_id,
+        seeds = [args.seed]
     )
     
     #%%
@@ -1565,7 +1571,7 @@ if __name__ == "__main__":
             if gene_name not in filtered_by_gene:
                 filtered_by_gene[gene_name] = []
             filtered_by_gene[gene_name].append((major_key, norm_val, major_allele_densities_unnorm[major_key]))
-
+    
     # Apply gene-specific selection
     final_results = []
     for gene_name, alleles in filtered_by_gene.items():
@@ -1582,7 +1588,6 @@ if __name__ == "__main__":
     for major_key, norm_val, unnorm_val in final_results:
         print(f"{major_key}: norm={norm_val:.6f}, unnorm={unnorm_val:.6f}")
 
-
     #### CN processing
     #%%
     # Group by gene
@@ -1592,7 +1597,7 @@ if __name__ == "__main__":
         if gene_name not in gene_alleles:
             gene_alleles[gene_name] = []
         gene_alleles[gene_name].append((major_key, norm_val, unnorm_val))
-
+    
     # Special handling for KIR2DL5: keep only top 1 from each A and B
     if 'KIR2DL5A' in gene_alleles or 'KIR2DL5B' in gene_alleles:
         combined = []

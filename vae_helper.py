@@ -4,12 +4,22 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
+import math
 from common_0620B import *
 
 # BASES = ['A', 'T', 'C', 'G', 'P', 'N']
 BASES = ['A','C','G','N','P','T']
 # TOP_CONFI = 0.9999999999999999999
 TOP_CONFI = 1 - (1e-300)
+HIGH_CONF = 0.9
+PRIOR_MU_DEFAULT = -1000.0
+PRIOR_LOGVAR_DEFAULT = -7.0
+
+LOGVAR_VERY_TIGHT = -15.0   
+LOGVAR_TIGHT      = -8.0 
+LOGVAR_MODERATE   = -5.0
+LOGVAR_LOOSE      = -2.0
+LOGVAR_VERY_LOOSE =  0.0
 
 def classify_mutation_type(allele, position, variant):
   
@@ -46,226 +56,160 @@ def classify_mutation_type(allele, position, variant):
         else:
             return 'type6-novel'  # Unknown mutation type
 
-def get_confidence_for_type(g,a,p, mutation_type):
-    
-    # if g in ['KIR2DS2']:
-    if g in ['KIR2DP1']:
-        if p in [288]:
-                # print('[capture] 288 from KIR2DP1')
-                confidences = {
-            
-                    'type1-func-ref': 0.20,
-                    'type2-func-mut': TOP_CONFI,
-                    'type3-minor-ref': 0.80,
-                    # 'type4-minor-mut': 0.80,
-                    # 'type4-minor-mut': TOP_CONFI,
-                    'type4-minor-mut': 0.90,
-                    
-                    'type5-cross-gene': TOP_CONFI,
-                    'type6-novel': TOP_CONFI,
-                    'type7-wildtype': TOP_CONFI
-                }
-        elif p in [9181]:
-            confidences = {
-            
-                    'type1-func-ref': TOP_CONFI,
-                    'type2-func-mut': 0.20,
-                    'type3-minor-ref': 0.80,
-                    # 'type4-minor-mut': 0.80,
-                    # 'type4-minor-mut': TOP_CONFI,
-                    'type4-minor-mut': 0.90,
-                    
-                    'type5-cross-gene': TOP_CONFI,
-                    'type6-novel': TOP_CONFI,
-                    'type7-wildtype': TOP_CONFI
-                }
-        else:
-            
-            confidences = {
-            
-                    'type1-func-ref': 0.80,
-                    'type2-func-mut': TOP_CONFI,
-                    'type3-minor-ref': 0.80,
-                    # 'type4-minor-mut': 0.80,
-                    # 'type4-minor-mut': TOP_CONFI,
-                    'type4-minor-mut': 0.90,
-                    
-                    'type5-cross-gene': TOP_CONFI,
-                    'type6-novel': TOP_CONFI,
-                    'type7-wildtype': TOP_CONFI
-                }
-     
-    elif g in ['KIR2DL5']:
-     
-        confidences = {
-        
-                'type1-func-ref': TOP_CONFI,
-                'type2-func-mut': TOP_CONFI,
-                'type3-minor-ref': 0.80,
-                # 'type4-minor-mut': 0.80,
-                # 'type4-minor-mut': TOP_CONFI,
-                'type4-minor-mut': 0.90,
-                
-                'type5-cross-gene': TOP_CONFI,
-                'type6-novel': TOP_CONFI,
-                'type7-wildtype': TOP_CONFI
+def get_prior_logvar(g, a, p, mutation_type):
+    if g == 'KIR2DP1':
+        if p == 288:
+            lv = {
+                'type1-func-ref':  LOGVAR_LOOSE,      
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_MODERATE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
             }
-    # elif g in ['KIR2DL1']:
-    #     confidences = {
-
-    #                 'type1-func-ref': TOP_CONFI,
-    #                 'type2-func-mut': TOP_CONFI,
-    #                 'type3-minor-ref': 0.90,
-    #                 'type4-minor-mut': 0.90,
-    #                 'type5-cross-gene': TOP_CONFI,
-    #                 'type6-novel': TOP_CONFI,
-    #                 'type7-wildtype': TOP_CONFI
-    #             }
-    elif g in ['KIR2DL1']:
-        if p in [13433]:
-            confidences = {
-
-                        'type1-func-ref': TOP_CONFI,
-                        'type2-func-mut': 0.30,
-                        'type3-minor-ref': 0.90,
-                        'type4-minor-mut': 0.90,
-                        'type5-cross-gene': TOP_CONFI,
-                        'type6-novel': TOP_CONFI,
-                        'type7-wildtype': TOP_CONFI
-                    }
-        elif p in [5757, 13416]:
-             confidences = {
-
-                        'type1-func-ref': 0.10,
-                        'type2-func-mut': TOP_CONFI,
-                        'type3-minor-ref': 0.90,
-                        'type4-minor-mut': 0.90,
-                        'type5-cross-gene': TOP_CONFI,
-                        'type6-novel': TOP_CONFI,
-                        'type7-wildtype': TOP_CONFI
-                    }
-        elif p in [141, 642, 1983, 2467, 2468, 7049, 11611, 12629, 13643]:
-            confidences = {
-
-                            'type1-func-ref': TOP_CONFI,
-                            'type2-func-mut': TOP_CONFI,
-                            'type3-minor-ref': 0.30,
-                            'type4-minor-mut': 0.90,
-                            'type5-cross-gene': TOP_CONFI,
-                            'type6-novel': TOP_CONFI,
-                            'type7-wildtype': TOP_CONFI
-                    }
+        elif p == 9181:
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_LOOSE,  
+                'type3-minor-ref': LOGVAR_MODERATE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
+            }
         else:
-            confidences = {
-
-                        'type1-func-ref': TOP_CONFI,
-                        'type2-func-mut': TOP_CONFI,
-                        'type3-minor-ref': 0.90,
-                        'type4-minor-mut': 0.90,
-                        'type5-cross-gene': TOP_CONFI,
-                        'type6-novel': TOP_CONFI,
-                        'type7-wildtype': TOP_CONFI
-                    }
-    elif g in ['KIR2DL5']:
-            confidences = {
-
-            'type1-func-ref': TOP_CONFI,
-            'type2-func-mut': TOP_CONFI,
-            'type3-minor-ref': 0.60,
-            'type4-minor-mut': 0.60,
-            'type5-cross-gene': TOP_CONFI,
-            'type6-novel': TOP_CONFI,
-            'type7-wildtype': TOP_CONFI
-        }
-    # elif g in ['KIR2DL4']:
-    #         confidences = {
-
-    #         'type1-func-ref': TOP_CONFI,
-    #         'type2-func-mut': TOP_CONFI,
-    #         'type3-minor-ref': 0.99,
-    #         'type4-minor-mut': 0.99,
-    #         'type5-cross-gene': TOP_CONFI,
-    #         'type6-novel': TOP_CONFI,
-    #         'type7-wildtype': TOP_CONFI
-    #     }
-    elif g in ['KIR3DL3']:    
-
-             confidences = {
-                'type1-func-ref': TOP_CONFI,
-                'type2-func-mut': TOP_CONFI,
-                'type3-minor-ref': 0.30,
-                'type4-minor-mut': 0.60,
-                'type5-cross-gene': TOP_CONFI,
-                'type6-novel': TOP_CONFI,
-                'type7-wildtype': TOP_CONFI
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_MODERATE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
             }
 
-    elif g in ['KIR3DL2','KIR3DP1']:    
-        confidences = {
-
-            'type1-func-ref': TOP_CONFI,
-            'type2-func-mut': TOP_CONFI,
-            'type3-minor-ref': 0.30,
-            'type4-minor-mut': 0.30,
-            'type5-cross-gene': TOP_CONFI,
-            'type6-novel': TOP_CONFI,
-            'type7-wildtype': TOP_CONFI
+    elif g == 'KIR2DL5':
+        lv = {
+            'type1-func-ref':  LOGVAR_VERY_TIGHT,
+            'type2-func-mut':  LOGVAR_VERY_TIGHT,
+            'type3-minor-ref': LOGVAR_MODERATE,
+            'type4-minor-mut': LOGVAR_MODERATE,
+            'type5-cross-gene': LOGVAR_VERY_TIGHT,
+            'type6-novel':      LOGVAR_VERY_TIGHT,
+            'type7-wildtype':   LOGVAR_VERY_TIGHT,
         }
- 
 
-    elif g in ['KIR3DL1']:
-        if p in [18, 1884, 6515, 6798, 7710, 9522, 10519]:
-              confidences = {
-
-            'type1-func-ref': TOP_CONFI,
-            'type2-func-mut': TOP_CONFI,
-            # 'type3-minor-ref': 0.90,
-            # 'type3-minor-ref': TOP_CONFI,
-            'type3-minor-ref': 0.30,
-            
-            'type4-minor-mut': 0.99,
-            'type5-cross-gene': TOP_CONFI,
-            'type6-novel': TOP_CONFI,
-            'type7-wildtype': TOP_CONFI
-        }
-        else:
-            confidences = {
-
-                'type1-func-ref': TOP_CONFI,
-                'type2-func-mut': TOP_CONFI,
-                # 'type3-minor-ref': 0.90,
-                # 'type3-minor-ref': TOP_CONFI,
-                'type3-minor-ref': 0.95,
-                
-                'type4-minor-mut': 0.95,
-                'type5-cross-gene': TOP_CONFI,
-                'type6-novel': TOP_CONFI,
-                'type7-wildtype': TOP_CONFI
+    elif g == 'KIR2DL1':
+        if p == 13433:
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_LOOSE,
+                'type3-minor-ref': LOGVAR_MODERATE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
             }
-        
-    elif g in ['KIR2DL4']:    
-        confidences = {
+        elif p in (5757, 13416):
+            lv = {
+                'type1-func-ref':  LOGVAR_LOOSE,
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_MODERATE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
+            }
+        elif p in (141, 642, 1983, 2467, 2468, 7049, 11611, 12629, 13643):
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_LOOSE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
+            }
+        else:
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_MODERATE,
+                'type4-minor-mut': LOGVAR_MODERATE,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
+            }
 
-            'type1-func-ref': TOP_CONFI,
-            'type2-func-mut': TOP_CONFI,
-            'type3-minor-ref': 0.30,
-            'type4-minor-mut': 0.90,
-            'type5-cross-gene': TOP_CONFI,
-            'type6-novel': TOP_CONFI,
-            'type7-wildtype': TOP_CONFI
+    elif g == 'KIR3DL3':
+        lv = {
+            'type1-func-ref':  LOGVAR_VERY_TIGHT,
+            'type2-func-mut':  LOGVAR_VERY_TIGHT,
+            'type3-minor-ref': LOGVAR_LOOSE,
+            'type4-minor-mut': LOGVAR_LOOSE,
+            'type5-cross-gene': LOGVAR_VERY_TIGHT,
+            'type6-novel':      LOGVAR_VERY_TIGHT,
+            'type7-wildtype':   LOGVAR_VERY_TIGHT,
         }
+
+    elif g in ('KIR3DL2', 'KIR3DP1'):
+        lv = {
+            'type1-func-ref':  LOGVAR_VERY_TIGHT,
+            'type2-func-mut':  LOGVAR_VERY_TIGHT,
+            'type3-minor-ref': LOGVAR_LOOSE,
+            'type4-minor-mut': LOGVAR_LOOSE,
+            'type5-cross-gene': LOGVAR_VERY_TIGHT,
+            'type6-novel':      LOGVAR_VERY_TIGHT,
+            'type7-wildtype':   LOGVAR_VERY_TIGHT,
+        }
+
+    elif g == 'KIR3DL1':
+        if p in (18, 1884, 6515, 6798, 7710, 9522, 10519):
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_LOOSE,
+                'type4-minor-mut': LOGVAR_TIGHT,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
+            }
+        else:
+            lv = {
+                'type1-func-ref':  LOGVAR_VERY_TIGHT,
+                'type2-func-mut':  LOGVAR_VERY_TIGHT,
+                'type3-minor-ref': LOGVAR_TIGHT,
+                'type4-minor-mut': LOGVAR_TIGHT,
+                'type5-cross-gene': LOGVAR_VERY_TIGHT,
+                'type6-novel':      LOGVAR_VERY_TIGHT,
+                'type7-wildtype':   LOGVAR_VERY_TIGHT,
+            }
+
+    elif g == 'KIR2DL4':
+        lv = {
+            'type1-func-ref':  LOGVAR_VERY_TIGHT,
+            'type2-func-mut':  LOGVAR_VERY_TIGHT,
+            'type3-minor-ref': LOGVAR_LOOSE,
+            'type4-minor-mut': LOGVAR_MODERATE,
+            'type5-cross-gene': LOGVAR_VERY_TIGHT,
+            'type6-novel':      LOGVAR_VERY_TIGHT,
+            'type7-wildtype':   LOGVAR_VERY_TIGHT,
+        }
+
     else:
-        confidences = {
-            'type1-func-ref': TOP_CONFI,
-            'type2-func-mut': TOP_CONFI,
-            'type3-minor-ref': TOP_CONFI,
-            'type4-minor-mut': TOP_CONFI,
-            'type5-cross-gene': TOP_CONFI,
-            'type6-novel': TOP_CONFI,
-            'type7-wildtype': TOP_CONFI
+        lv = {
+            'type1-func-ref':  LOGVAR_VERY_TIGHT,
+            'type2-func-mut':  LOGVAR_VERY_TIGHT,
+            'type3-minor-ref': LOGVAR_VERY_TIGHT,
+            'type4-minor-mut': LOGVAR_VERY_TIGHT,
+            'type5-cross-gene': LOGVAR_VERY_TIGHT,
+            'type6-novel':      LOGVAR_VERY_TIGHT,
+            'type7-wildtype':   LOGVAR_VERY_TIGHT,
         }
 
-    return confidences.get(mutation_type, TOP_CONFI)
+    return lv.get(mutation_type, PRIOR_LOGVAR_DEFAULT)
+
 
 def create_priors(sample, db):
     # valid_positions = [pos for gene in db.genes.values() for pos in gene.positions.values() if pos.is_valid]
@@ -308,7 +252,7 @@ def create_priors(sample, db):
                 for variant in pos_obj.variants.values()
             )
             if has_variant_at_position:
-                mask[allele_idx, pos_idx, :] = 1.0  # All 6 bases get 1
+                mask[allele_idx, pos_idx, :] = 1.0  
             allele_variant = None
             for variant in pos_obj.variants.values():
                 if allele.extended_allele_vector[variant.index] == 1:
@@ -530,27 +474,23 @@ def create_sparse_priors_V2(sample, db):
                 allele_variant = allele_variants[0]
                 
                 mut_type = classify_mutation_type(allele, pos_obj, allele_variant)
-                confidence = get_confidence_for_type(allele.gene.name, allele.name, pos_obj.position, mut_type)
-                
-                if mut_type in ['type1-func-ref', 'type2-func-mut']:
-                    log_var = -8.0
-                elif mut_type in ['type3-minor-ref', 'type4-minor-mut']:
-                    log_var = -7.0
-                else:
-                    log_var = PRIOR_LOGVAR_DEFAULT
-                
+                # confidence = get_confidence_for_type(allele.gene.name, allele.name, pos_obj.position, mut_type)
+                log_var = get_prior_logvar(
+                    allele.gene.name, allele.name, pos_obj.position, mut_type
+                )
+
+
                 num_other_variants = len(pos_obj.variants.values()) - 1
-                non_variant_confidence = (1.0 - confidence) / num_other_variants if num_other_variants > 0 else 0.0
+                other_conf = (1.0 - HIGH_CONF) / num_other_variants if num_other_variants > 0 else 0.0
                 
-                # Create 6-dimensional prior for this (allele, position) pair
                 position_mus = []
                 position_logvars = []
                 
                 for base in BASES:
                     if allele_variant.variant == base:
-                        position_mus.append(logit(confidence))
+                        position_mus.append(logit(HIGH_CONF))
                     elif any(variant.variant == base for variant in pos_obj.variants.values()):
-                        position_mus.append(logit(non_variant_confidence))
+                        position_mus.append(logit(other_conf))
                     else:
                         position_mus.append(PRIOR_MU_DEFAULT)
                     position_logvars.append(log_var)
@@ -802,12 +742,506 @@ def decode_all_alleles_beta(sample, db, learned_beta, save_to_file=None):
 
     return all_results
 
+@timeit
+def create_variant_bias_priors(sample, db):
+    print('[Debug] creating position base bias priors')
+
+    cross_contributions = {}
+    for target_allele in sample.valid_alleles:
+        for variant, source_dict in target_allele.infection_sources.items():
+            if variant.gene.name == target_allele.gene.name:
+                assert False
+            evidence = sum(len(pd) for pd in source_dict.values())
+            if variant not in cross_contributions:
+                cross_contributions[variant] = []
+            cross_contributions[variant].append(
+                (target_allele.gene.name, target_allele.name, evidence)
+            )
+            
+    alleles_per_gene = {}
+    for a in sample.valid_alleles:
+        alleles_per_gene.setdefault(a.gene.name, []).append(a.name)
+    
+    processed = set()
+    for variant_idx in sample.valid_indices:
+        variant = db.variants()[variant_idx]
+        if variant in processed:
+            assert False
+        processed.add(variant)
+        
+        gene_name = variant.gene.name
+        pos = variant.position.position
+        base = variant.variant
+        obs = variant.coverage.count
+        cn = db.genes[gene_name].estimated_cn
+        cov = sample.expected_coverage
+        tag = f"[{gene_name}:{pos}:{base}]"
+        print(f"Procressing {variant.gene.name} {variant.position.position} {variant.variant}")
+        variant.cross_source_priors = {}
+        if variant.gene.name == 'KIR2DS1' and variant.position.position == 3950 and variant.variant == 'C':
+            Debug = 1
+        entries = cross_contributions.get(variant, [])
+        entries = [e for e in entries if db.genes[e[0]].estimated_cn > 0]
+
+        source_caps = []
+        if entries:
+            source_genes_seen = set(e[0] for e in entries)
+            for source_gene in source_genes_seen:
+                gene_entries = [e for e in entries if e[0] == source_gene]
+                contributing = set(e[1] for e in gene_entries)
+                evidences = [e[2] for e in gene_entries]
+                all_source = set(alleles_per_gene.get(source_gene, []))
+                all_contribute = contributing == all_source
+                same_strength = len(set(evidences)) == 1
+                source_cn = db.genes[source_gene].estimated_cn
+                
+                if all_contribute and same_strength:
+                    capped = min(evidences[0], source_cn * cov)
+                    unambig = True
+                else:
+                    avg = sum(evidences) / len(evidences)
+                    capped = min(avg, source_cn * cov)
+                    unambig = False
+                source_caps.append((source_gene, capped, unambig))
+
+        THRESHOLD = 4
+        valid_sources = [(sg, ev, unambig) for sg, ev, unambig in source_caps if ev >= THRESHOLD]
+
+        thr = 3
+        bases_observed = sum(
+            1 for v in variant.position.variants.values()
+            if v.coverage.count > thr
+        )
+        EPS = 1e-23
+        if not valid_sources:
+            # No cross map case
+            if cn == 0:
+                mu = math.log(EPS)
+                logvar = -20.0
+                print(f"{tag} [1] obs={obs} cn={cn} bases_obs={bases_observed} | "
+                      f"NO_CROSS, cn=0 -> mu=log(0) = -inf, logvar=-20 (frozen at zero)")
+            elif bases_observed <= 1:
+                mu = math.log(obs / cn / cov + EPS)
+                logvar = -2.0
+                print(f"{tag} [2] obs={obs} cn={cn} cov={cov} bases_obs={bases_observed} | "
+                      f"NO_CROSS, single base → all CN copies share, "
+                      f"mu=log({obs}/{cn}/{cov})={mu:.3f}, logvar=-2 (moderate)")
+            else:
+                mu = math.log(obs / cov + EPS)
+                logvar = -20.0
+                print(f"{tag} [3] obs={obs} cn={cn} cov={cov} bases_obs={bases_observed} | "
+                      f"NO_CROSS, multi-base -> one allele per base, "
+                      f"mu=log({obs}/{cov})={mu:.3f}, logvar=-20 (tight, structural)")
+        else:
+            obs_ratio = obs / cov
+            naive_cross_sum = sum(ev for _, ev, _ in valid_sources)
+            cross_summary = ','.join(f'{sg}={ev:.0f}' for sg, ev, _ in valid_sources)
+            
+            if cn == 0:
+                same_estimate = 0
+                same_logvar = -20.0
+                cross_budget = obs
+                mu = math.log(EPS)
+                logvar = same_logvar
+                print(f"{tag} [CN=0+CROSS] [3-0] obs={obs} cn=0 cov={cov} bases_obs={bases_observed} ratio={obs_ratio:.2f} | "
+                    f"CROSS({cross_summary}, naive={naive_cross_sum:.0f}) | "
+                    f"same-gene frozen, all to cross_budget={cross_budget:.1f} | mu={mu:.3f} logvar={logvar:.1f}")
+
+            elif obs_ratio < 0.5:
+                same_estimate = obs * 0.2
+                same_logvar = 1.0
+                cross_budget = obs - same_estimate
+                case = "[4] VERY_LOW (obs<0.5x cov)"
+                rationale = f"mostly noise, same=0.20, wide var"
+            elif obs_ratio < 1.0:
+                if bases_observed > 1:
+                    if naive_cross_sum <= obs:
+                        same_estimate = max(obs - naive_cross_sum, 0)
+                        cross_budget = naive_cross_sum
+                        same_logvar = -2.0
+                        case = "LOW [5] (0.5-1.0x), multi-base, cross fits"
+                        rationale = f"direct subtract: {obs}-{naive_cross_sum:.0f}={same_estimate:.1f}"
+                    else:
+                        same_estimate = min(obs * 0.6, cov * 0.8)
+                        cross_budget = max(obs - same_estimate, 0)
+                        same_logvar = -1.0
+                        case = "LOW [6] (0.5-1.0x), multi-base, cross overshoots"
+                        rationale = f"conservative: min(obs*0.6, cov*0.8)={same_estimate:.1f}"
+                else:
+                    if naive_cross_sum <= obs:
+                        same_estimate = max(obs - naive_cross_sum, 0)
+                        cross_budget = naive_cross_sum
+                        same_logvar = -2.0
+                        case = "LOW [7] (0.5-1.0x), single-base, cross fits"
+                        rationale = f"direct subtract: {obs}-{naive_cross_sum:.0f}={same_estimate:.1f}"
+                    else:
+                        same_estimate = obs / cn
+                        cross_budget = max(obs - same_estimate, 0)
+                        same_logvar = -1.0
+                        case = "LOW [8] (0.5-1.0x), single-base, cross overshoots"
+                        rationale = f"obs/cn={obs}/{cn}={same_estimate:.1f}"
+            elif obs_ratio < 1.5:
+                if bases_observed > 1:
+                    same_estimate = cov
+                    same_logvar = -3.0
+                    case = "NORMAL [9] (1.0-1.5x), multi-base"
+                    rationale = f"one allele per base, same=cov={cov}"
+                else:
+                    same_estimate = obs / cn
+                    same_logvar = -2.0
+                    case = "NORMAL [10] (1.0-1.5x), single-base"
+                    rationale = f"all CN copies share, same={obs}/{cn}={same_estimate:.1f}"
+                cross_budget = max(obs - same_estimate, 0)
+            elif obs_ratio < cn + 0.5:
+                if bases_observed > 1:
+                    same_estimate = obs * 0.85
+                    same_logvar = -2.0
+                    case = f"MULTI-COPY [11] (1.5-{cn+0.5}x), multi-base"
+                    rationale = f"mostly same-gene, 85% of obs={same_estimate:.1f}"
+                else:
+                    same_estimate = obs / cn
+                    same_logvar = -3.0
+                    case = f"MULTI-COPY  [12] (1.5-{cn+0.5}x), single-base"
+                    rationale = f"all CN share, same=obs/cn={same_estimate:.1f}"
+                cross_budget = max(obs - same_estimate, 0)
+            # else:
+            #     if bases_observed > 1:
+            #         same_estimate = cov
+            #         case_extra = "[13] multi-base"
+            #     else:
+            #         same_estimate = cn * cov
+            #         case_extra = "[14] single-base"
+            #     same_logvar = -2.0
+            #     cross_budget = max(obs - same_estimate, 0)
+            #     case = f"OVERFLOW (>{cn+0.5}x), {case_extra}"
+            #     rationale = f"same-gene maxed at {same_estimate:.1f}"
+            else:  # OVERFLOW
+                if bases_observed > 1:
+                    same_estimate = cn * cov
+                    case_extra = "[13] multi-base"
+                else:
+                    same_estimate = cn * cov
+                    case_extra = "[14] single-base"
+                same_logvar = -2.0
+                cross_budget = max(obs - same_estimate, 0)
+                case = f"OVERFLOW (>{cn+0.5}x), {case_extra}"
+                rationale = f"all CN copies share, same={cn}*{cov}={same_estimate:.1f}"
+
+            
+            if cn != 0:
+                divisor = cn if bases_observed <= 1 else 1
+                mu = math.log(max(same_estimate / cov / divisor, 0.01))
+                logvar = same_logvar
+            
+            print(f"{tag} obs={obs} cn={cn} cov={cov} bases_obs={bases_observed} ratio={obs_ratio:.2f} | "
+                  f"CROSS({cross_summary}, naive={naive_cross_sum:.0f}) | "
+                  f"{case} → {rationale} | mu={mu:.3f} logvar={logvar:.1f} cross_budget={cross_budget:.1f}")
+            
+            # Set cross source priors
+            if valid_sources:
+                if naive_cross_sum <= cross_budget:
+                    for sg, ev, unambig in valid_sources:
+                        prior_logvar = -3.0 if unambig else -1.0
+                        prior_mu_val = math.log(max(ev / cov, 0.01))
+                        variant.cross_source_priors[sg] = (prior_mu_val, prior_logvar)
+                        print(f"   cross[{sg}]  FITS: mu=log({ev:.0f}/{cov})={prior_mu_val:.3f}, "
+                              f"logvar={prior_logvar} ({'unambig' if unambig else 'ambig'})")
+                else:
+                    total_ev = sum(ev for _, ev, _ in valid_sources)
+                    for sg, ev, unambig in valid_sources:
+                        share = (ev / total_ev) * cross_budget
+                        prior_mu_val = math.log(max(share / cov, 0.01))
+                        variant.cross_source_priors[sg] = (prior_mu_val, 1.5)
+                        print(f"   cross[{sg}] OVERFLOW: ev={ev:.0f}/{total_ev:.0f}*{cross_budget:.1f}={share:.1f}, "
+                              f"mu={prior_mu_val:.3f}, logvar=1.5 (wide)")
+            
+            for sg, ev, unambig in source_caps:
+                if ev < THRESHOLD and sg not in variant.cross_source_priors:
+                    variant.cross_source_priors[sg] = (math.log(0.01), -20.0)
+                    print(f"   cross[{sg}] FILTERED: ev={ev:.0f}<{THRESHOLD}, frozen at zero")
+        
+        variant.bias_prior_mu = mu
+        variant.bias_prior_logvar = logvar
+
+
+# @timeit
+# def create_variant_bias_priors_old(sample, db):
+#     print('[Debug] creating position base bias priors')
+    
+#     cross_contributions = {}
+#     for target_allele in sample.valid_alleles:
+#         for variant, source_dict in target_allele.infection_sources.items():
+#             evidence = sum(len(pd) for pd in source_dict.values())
+#             cross_contributions.setdefault(variant, {}).setdefault(target_allele.gene.name, []).append(evidence)
+    
+#     cov = sample.expected_coverage
+    
+#     for variant_idx in sample.valid_indices:
+#         variant = db.variants()[variant_idx]
+#         tag = f"[{variant.gene.name}:{variant.position.position}:{variant.variant}]"
+        
+#         variant.bias_prior_mu = 0.0
+#         variant.bias_prior_logvar = -10.0
+        
+#         variant.cross_source_priors = {}
+#         for source_gene, evidences in cross_contributions.get(variant, {}).items():
+#             avg_evidence = sum(evidences) / len(evidences)
+#             strength = min(avg_evidence / cov, 1.0)
+#             variant.cross_source_priors[source_gene] = (math.log(max(strength, 0.01)), -10.0)
+#             print(f"{tag} cross[{source_gene}] strength={strength:.3f}")
+
+# @timeit
+# def create_variant_bias_priors_old(sample, db):
+#     cov = sample.expected_coverage
+    
+#     cross_per_allele = {}
+#     for target_allele in sample.valid_alleles:
+#         for variant, source_dict in target_allele.infection_sources.items():
+#             evidence = sum(len(pd) for pd in source_dict.values())
+#             cross_per_allele.setdefault(variant, {}).setdefault(target_allele.gene.name, {})[target_allele.name] = evidence
+    
+#     for variant_idx in sample.valid_indices:
+#         variant = db.variants()[variant_idx]
+#         variant.bias_prior_mu = 0.0
+#         variant.bias_prior_logvar = -10.0
+#         variant.cross_source_priors = {}
+        
+#         for source_gene, allele_evidences in cross_per_allele.get(variant, {}).items():
+#             ev = max(allele_evidences.values())
+#             strength = min(ev / cov, 1.0)
+#             variant.cross_source_priors[source_gene] = (math.log(max(strength, 0.01)), -10.0)
+
+# @timeit
+# def create_variant_bias_priors_old(sample, db):
+#     for variant_idx in sample.valid_indices:
+#         variant = db.variants()[variant_idx]
+#         variant.bias_prior_mu = 0.0
+#         variant.bias_prior_logvar = -3.0 
+
+@timeit
+def create_variant_bias_priors_old(sample, db):
+    cov = sample.expected_coverage
+    cross_target_variants = set()
+    for allele in sample.valid_alleles:
+        for variant in allele.infection_sources.keys():
+            cross_target_variants.add(variant)
+    
+    BASE_THR = 3
+    
+    for variant_idx in sample.valid_indices:
+        variant = db.variants()[variant_idx]
+        gene_name = variant.gene.name
+        cn = db.genes[gene_name].estimated_cn
+        obs = variant.coverage.count
+        tag = f"[{gene_name}:{variant.position.position}:{variant.variant}]"
+        
+        variant.bias_prior_mu = 0.0
+        variant.bias_prior_logvar = -3.0
+        
+        if variant in cross_target_variants:
+            continue
+        
+        position_clean = all(
+            v not in cross_target_variants
+            for v in variant.position.variants.values()
+        )
+        if not position_clean:
+            continue
+        
+        bases_observed = sum(
+            1 for v in variant.position.variants.values()
+            if v.coverage.count > BASE_THR
+        )
+        
+        if cn == 1 and bases_observed == 1:
+            strength = obs / cov
+            variant.bias_prior_mu = math.log(max(strength, 0.01))
+            variant.bias_prior_logvar = -10.0  
+            # print(f"{tag} cn=1 clean: bias=obs/cov={strength:.3f}")
+        
+        elif cn == 2 and bases_observed > 1:
+            strength = obs / cov
+            variant.bias_prior_mu = math.log(max(strength, 0.01))
+            variant.bias_prior_logvar = -10.0
+            # print(f"{tag} cn=2 het: bias=obs/cov={strength:.3f}")
+
+@timeit
+def create_bias_tensors(sample, db):
+    bias_prior_mu = []
+    bias_prior_logvar = []
+    for variant_idx in sample.valid_indices:
+        variant = db.variants()[variant_idx]
+        bias_prior_mu.append(variant.bias_prior_mu)
+        bias_prior_logvar.append(variant.bias_prior_logvar)
+    return torch.tensor(bias_prior_mu, dtype=torch.float32), torch.tensor(bias_prior_logvar, dtype=torch.float32)
+
+@timeit
+def create_cross_tensors(sample, db):
+    cov = sample.expected_coverage
+    entries = []
+    
+    for allele_idx, allele in enumerate(sample.valid_alleles):
+        for variant, source_dict in allele.infection_sources.items():
+            if variant.index not in sample.valid_indices:
+                continue
+            mut_idx = sample.valid_indices.index(variant.index)
+            evidence = sum(len(pd) for pd in source_dict.values())
+            strength = min(evidence / cov, 1.0)
+            
+            entries.append((
+                allele_idx,
+                mut_idx,
+                math.log(max(strength, 0.01)),
+                -2.0,
+            ))
+    
+    entries.sort(key=lambda e: (e[0], e[1]))
+    
+    cross_prior_mu     = torch.tensor([e[2] for e in entries], dtype=torch.float32)
+    cross_prior_logvar = torch.tensor([e[3] for e in entries], dtype=torch.float32)
+    cross_allele_idx   = torch.tensor([e[0] for e in entries], dtype=torch.long)
+    cross_mut_idx      = torch.tensor([e[1] for e in entries], dtype=torch.long)
+    
+    return cross_prior_mu, cross_prior_logvar, cross_allele_idx, cross_mut_idx
+
+
+def decode_cross_strengths(sample, db, model):
+    print("\n[debug: cross-gene strengths per (allele, variant)]")
+    if model.cross_mu.numel() == 0:
+        print("  No cross entries")
+        return
+    
+    with torch.no_grad():
+        learned_c = torch.exp(model.cross_mu).cpu()
+        prior_c = torch.exp(model.cross_prior_mu).cpu()
+    
+    entries = []
+    for entry_idx in range(len(model.cross_allele_idx)):
+        a = model.cross_allele_idx[entry_idx].item()
+        m = model.cross_mut_idx[entry_idx].item()
+        allele = sample.valid_alleles[a]
+        variant = db.variants()[sample.valid_indices[m]]
+        entries.append((
+            f"{allele.gene.name}*{allele.name}",
+            f"{variant.gene.name}:{variant.pos}:{variant.variant}",
+            prior_c[entry_idx].item(),
+            learned_c[entry_idx].item()
+        ))
+    
+    entries.sort()
+    for allele_str, var_str, p, l in entries:
+        print(f"  {allele_str} @ {var_str}: prior={p:.3f} learned={l:.3f}")
+    
+
+# @timeit
+# def create_cross_lookup(sample, db, cross_allele_idx, cross_mut_idx):
+#     num_alleles = len(sample.valid_alleles)
+#     num_mutations = len(sample.valid_indices)
+    
+#     lookup = torch.full((num_alleles, num_mutations), -1, dtype=torch.long)
+#     for entry_idx in range(len(cross_allele_idx)):
+#         a = cross_allele_idx[entry_idx].item()
+#         m = cross_mut_idx[entry_idx].item()
+#         lookup[a, m] = entry_idx
+    
+#     return lookup
+
+@timeit
+def create_coverage_masks(sample, db):
+    num_alleles = len(sample.valid_alleles)
+    num_mutations = len(sample.valid_indices)
+    
+    variant_genes = [db.variants()[vi].gene.name for vi in sample.valid_indices]
+    same_gene_entries = torch.zeros(num_alleles, num_mutations, dtype=torch.bool)
+    cross_gene_mask = torch.zeros(num_alleles, num_mutations, dtype=torch.bool)
+    
+    for allele_idx, allele in enumerate(sample.valid_alleles):
+        for mut_idx, variant_idx in enumerate(sample.valid_indices):
+            if variant_genes[mut_idx] == allele.gene.name:
+                same_gene_entries[allele_idx, mut_idx] = True
+    
+    for allele_idx, allele in enumerate(sample.valid_alleles):
+        for pos_obj in allele.generatable_positions:
+            if pos_obj.gene.name == allele.gene.name:
+                continue
+            for variant in pos_obj.variants.values():
+                if variant.index not in sample.valid_indices:
+                    continue
+                mut_idx = sample.valid_indices.index(variant.index)
+                if variant in allele.infection_sources:
+                    cross_gene_mask[allele_idx, mut_idx] = True
+    
+    return same_gene_entries, cross_gene_mask
+
+def decode_position_bias(sample, db, model):
+    print("[debug: position coverage bias]")
+    
+    with torch.no_grad():
+        learned_b = torch.exp(model.bias_mu).cpu()
+        prior_b = torch.exp(model.bias_prior_mu).cpu()
+    
+    gene_positions = {}
+    
+    for mut_idx, variant_idx in enumerate(sample.valid_indices):
+        variant = db.variants()[variant_idx]
+        pos_key = (variant.gene.name, variant.pos)
+        if pos_key not in gene_positions:
+            gene_positions[pos_key] = []
+        
+        gene_positions[pos_key].append({
+            'base': variant.variant,
+            'obs': variant.coverage.count,
+            'prior_b': prior_b[mut_idx].item(),
+            'learned_b': learned_b[mut_idx].item()
+        })
+    
+    for key in sorted(gene_positions.keys()):
+        gene, pos = key
+        print(f"\n{gene}: {pos}")
+        for entry in sorted(gene_positions[key], key=lambda x: x['base']):
+            print(f" {entry['base']}: obs = {entry['obs']:<4} "
+                  f"prior_b = {entry['prior_b']:.3f} learned_b={entry['learned_b']:.3f}")
+    
+    return gene_positions
+
+# def decode_cross_strengths(sample, db, model, cross_source_gene_names, cross_target_variant_idx):
+#     print("\n[debug: cross-gene strengths]")
+    
+#     if model.cross_mu.numel() == 0:
+#         print("  No cross entries")
+#         return
+    
+#     with torch.no_grad():
+#         learned_c = torch.exp(model.cross_mu).cpu()
+#         prior_c = torch.exp(model.cross_prior_mu).cpu()
+    
+#     by_target = {}
+#     for entry_idx in range(len(cross_source_gene_names)):
+#         mut_idx = cross_target_variant_idx[entry_idx].item()
+#         variant = db.variants()[sample.valid_indices[mut_idx]]
+#         target_key = (variant.gene.name, variant.pos, variant.variant)
+#         source_gene = cross_source_gene_names[entry_idx]
+        
+#         if target_key not in by_target:
+#             by_target[target_key] = []
+#         by_target[target_key].append({
+#             'source': source_gene,
+#             'prior': prior_c[entry_idx].item(),
+#             'learned': learned_c[entry_idx].item(),
+#         })
+    
+#     for key in sorted(by_target.keys()):
+#         print(f"\n{key[0]}:{key[1]}:{key[2]}")
+#         for entry in sorted(by_target[key], key=lambda x: x['source']):
+#             print(f"  from {entry['source']}: prior={entry['prior']:.3f} learned={entry['learned']:.3f}")
+
+
+
 def create_functional_observation_counts(sample, db):
     num_mutations = len(sample.valid_indices)
     
     observed_counts = torch.zeros(num_mutations)
     
-    # For each variant, get its observed count
     for mut_idx, variant_idx in enumerate(sample.valid_indices):
         variant = db.variants()[variant_idx]
         observed_counts[mut_idx] = variant.coverage.count
@@ -826,27 +1260,6 @@ def create_functional_indices(sample, db):
     
     return functional_indices
 
-
-# def create_gene_masks(sample, db, functional_indices):
-#     gene_names = []
-#     gene_masks_list = []
-    
-#     for gene in db.genes.values():
-#         gene_mask = torch.zeros_like(functional_indices, dtype=torch.bool)
-        
-#         for mut_idx in range(len(functional_indices)):
-#             if functional_indices[mut_idx]:
-#                 variant = db.variants()[sample.valid_indices[mut_idx]]
-#                 if variant.gene.name == gene.name:
-#                     gene_mask[mut_idx] = True
-        
-#         if gene_mask.sum() > 0:
-#             gene_names.append(gene.name)
-#             gene_masks_list.append(gene_mask)
-    
-#     gene_masks_stacked = torch.stack(gene_masks_list) if gene_masks_list else torch.empty(0, len(functional_indices))
-    
-#     return gene_masks_stacked, gene_names
 def create_gene_masks(sample, db, functional_indices):
     import numpy as np
     
@@ -871,27 +1284,3 @@ def create_gene_masks(sample, db, functional_indices):
     
     return gene_masks_stacked, gene_names
 
-# def create_gene_masks(sample, db, functional_indices):
-#     print('np new version')
-#     import numpy as np
-    
-#     functional_indices_np = functional_indices.cpu().numpy() if torch.is_tensor(functional_indices) else functional_indices
-#     num_mutations = len(functional_indices_np)
-    
-#     gene_assignments = [''] * num_mutations
-#     for mut_idx in np.where(functional_indices_np)[0]:
-#         variant = db.variants()[sample.valid_indices[mut_idx]]
-#         gene_assignments[mut_idx] = variant.gene.name
-    
-#     gene_names = []
-#     gene_masks_list = []
-    
-#     for gene in db.genes.values():
-#         mask = np.array([g == gene.name for g in gene_assignments], dtype=bool)
-#         if mask.sum() > 0:
-#             gene_names.append(gene.name)
-#             gene_masks_list.append(torch.from_numpy(mask))
-    
-#     gene_masks_stacked = torch.stack(gene_masks_list) if gene_masks_list else torch.empty(0, num_mutations, dtype=torch.bool)
-    
-#     return gene_masks_stacked, gene_names

@@ -1585,7 +1585,7 @@ if __name__ == "__main__":
     final_results.sort(key=lambda x: x[0])  # Sort by allele name
     for major_key, norm_val, unnorm_val in final_results:
         print(f"{major_key}: norm={norm_val:.6f}, unnorm={unnorm_val:.6f}")
-
+    
     #### CN processing
     #%%
     # Group by gene

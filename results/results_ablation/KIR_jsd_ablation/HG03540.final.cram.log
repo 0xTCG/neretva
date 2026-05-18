@@ -1,12 +1,12 @@
-Processing HG03540.final.cram with /home/qinghuiz/aidy/push/Neretva/neretva/kir_jsd_ablation.py
-2026-03-10 20:52:35.789076: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-2026-03-10 20:52:35.831842: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2026-03-10 20:52:35.832025: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2026-03-10 20:52:35.832181: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2026-03-10 20:52:35.844871: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+Processing HG03540.final.cram with kir_jsd_ablation.py
+2026-05-18 00:44:03.878519: I tensorflow/core/util/port.cc:111] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-18 00:44:03.918468: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-18 00:44:03.918639: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-18 00:44:03.918781: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-18 00:44:03.928852: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
-2026-03-10 20:52:37.033350: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-05-18 00:44:05.228518: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 [!!!] running as script
 [!!!] using 16 threads
@@ -15,18 +15,18 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
     Deletion delATGTCGCTCTTGGTCGTCAGCATGGCGTGTGTTG at 268: can delete 1 positions
     Deletion delGTGGTCAGGACAAGCCCTTGCTGTCTGCCTGGCCAAGCCCTGTGGTGCCTCCAGGACATGTGATTCTTCAGTGTCATTCTTATCTTGGGTTTAACAACTTCAGTCTGTAAAAGGAAGATGGGGTGCCTGTCCCTGAGCTCTACAACATAATATTCTGGAACAGCCTTTTCATGGGCCCTGTGACCCCAGCACACGCAGGGACCTATACATGTCGGGGTTCACAACCACACTACCCCAGTGGGTGGTCGGCACCCAGCAACCCCCTGGAGATCACGGTCACAG at 2029: can delete 4 positions
   KIR2DL2: Processing 4 deletion variants
-    Deletion delTA at 6674: can delete 1 positions
     Deletion delTATATATATATATATATATATATATATATATA at 6674: can delete 1 positions
-    Deletion delTATATATATA at 6674: can delete 1 positions
     Deletion delTATA at 6674: can delete 1 positions
+    Deletion delTATATATATA at 6674: can delete 1 positions
+    Deletion delTA at 6674: can delete 1 positions
     Deletion delTATATATATATATA at 6674: can delete 1 positions
     Deletion delATATATA at 6719: can delete 3 positions
     Deletion delATATA at 6719: can delete 2 positions
   KIR2DL3: Processing 17 deletion variants
-    Deletion delTATATATATTT at 6656: can delete 6 positions
-    Deletion delTATATATATTTTTT at 6656: can delete 7 positions
     Deletion delTATATATATTTTT at 6656: can delete 7 positions
     Deletion delTATATATAT at 6656: can delete 4 positions
+    Deletion delTATATATATTT at 6656: can delete 6 positions
+    Deletion delTATATATATTTTTT at 6656: can delete 7 positions
     Deletion delA at 6657: can delete 1 positions
     Deletion delTATATATT at 6658: can delete 4 positions
     Deletion delTATATATTTTT at 6658: can delete 6 positions
@@ -34,8 +34,8 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
     Deletion delGTGGTCAGGACAAGCCCTTGCTGTCTGCCTGGCCCAGCCTTGTGGTGCCTCTAGGACATGTCATTCTTCGGTGTCACTCTTATCTTGGGTTTAACAACTTCAGTCTGTAAAAGGAAGGTGGGGTGCCTGTCCCTGAGCTCTACAACAGAATATTCTGGAACAGCCTTTTCATGGGCCCTGTGACCCCCGCACACACAGGGACATACAGATGTCGGGGTTCACACACACACTCCCCCAGTGGGTGGTCAGCACCCAGCAACCCCCTGGTGATCGTGGTCATAG at 1973: can delete 3 positions
     Deletion delACACAC at 6599: can delete 1 positions
     Deletion delAA at 6619: can delete 1 positions
-    Deletion delTATATATATATTT at 6654: can delete 6 positions
     Deletion delTATATATATATTTTTTTT at 6654: can delete 7 positions
+    Deletion delTATATATATATTT at 6654: can delete 6 positions
     Deletion delTATATATATATTTTTTT at 6654: can delete 7 positions
   KIR2DL4: Processing 25 deletion variants
     Deletion delTGGCCGTTGCGCATG at 35: can delete 1 positions
@@ -110,16 +110,16 @@ AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
 Total 227 deletions processed
 [info] total indices 24198
 [info] total variants 24198
-[time] initializaiton took 3.30s (1,407.515625 MB; 1,407.515625 MB)
+[time] initializaiton took 3.34s (1,407.81640625 MB; 1,407.81640625 MB)
 [sample] bam: /project/shared/inumanag-kir/data/hprc/HG03540.final.cram
-[time] get_bam_reads took 19.66s (2,632.21484375 MB; 2,643.69921875 MB)
-[time] calculate_coverage took 0.35s (2,632.22265625 MB; 2,643.69921875 MB)
+[time] get_bam_reads took 16.31s (2,614.48046875 MB; 2,637.44921875 MB)
+[time] calculate_coverage took 0.25s (2,616.48046875 MB; 2,637.44921875 MB)
 [read] HG03540.final.cram: 1,505,094 reads loaded (sample.expected_coverage=24.0x)
-[time] prepare FASTA for mapping took 2.96s (2,632.22265625 MB; 2,643.69921875 MB)
+[time] prepare FASTA for mapping took 2.18s (2,616.49609375 MB; 2,637.44921875 MB)
 0...5,000,000...10,000,000...15,000,000...20,000,000...25,000,000...30,000,000...35,000,000...40,000,000...45,000,000...
-[time] minimap2 took 182.88s (6,725.01953125 MB; 6,725.01953125 MB)
+[time] minimap2 took 143.61s (6,724.25390625 MB; 6,724.25390625 MB)
 [minimap2] 6,790,842/48,306,643 mappings handled
-Processing genes:   0%|          | 0/16 [00:00<?, ?it/s]Processing genes:   6%|▋         | 1/16 [00:24<06:08, 24.54s/it]Processing genes:  12%|█▎        | 2/16 [00:45<05:16, 22.59s/it]Processing genes:  19%|█▉        | 3/16 [00:54<03:30, 16.21s/it]Processing genes:  25%|██▌       | 4/16 [01:03<02:42, 13.54s/it]Processing genes:  31%|███▏      | 5/16 [01:04<01:36,  8.76s/it]Processing genes:  38%|███▊      | 6/16 [01:07<01:10,  7.02s/it]Processing genes:  44%|████▍     | 7/16 [01:09<00:47,  5.33s/it]Processing genes:  50%|█████     | 8/16 [01:41<01:49, 13.72s/it]Processing genes:  56%|█████▋    | 9/16 [01:42<01:08,  9.84s/it]Processing genes:  62%|██████▎   | 10/16 [01:45<00:46,  7.74s/it]Processing genes:  69%|██████▉   | 11/16 [01:47<00:29,  5.98s/it]Processing genes:  75%|███████▌  | 12/16 [02:08<00:42, 10.56s/it]Processing genes:  81%|████████▏ | 13/16 [03:03<01:12, 24.11s/it]Processing genes:  88%|████████▊ | 14/16 [03:23<00:45, 22.74s/it]Processing genes:  94%|█████████▍| 15/16 [03:26<00:16, 16.90s/it]Processing genes: 100%|██████████| 16/16 [03:31<00:00, 13.07s/it]Processing genes: 100%|██████████| 16/16 [03:31<00:00, 13.19s/it]
+Processing genes:   0%|          | 0/16 [00:00<?, ?it/s]Processing genes:   6%|▋         | 1/16 [00:18<04:33, 18.25s/it]Processing genes:  12%|█▎        | 2/16 [00:30<03:23, 14.56s/it]Processing genes:  19%|█▉        | 3/16 [00:37<02:23, 11.04s/it]Processing genes:  25%|██▌       | 4/16 [00:44<01:57,  9.80s/it]Processing genes:  31%|███▏      | 5/16 [00:45<01:09,  6.35s/it]Processing genes:  38%|███▊      | 6/16 [00:47<00:50,  5.06s/it]Processing genes:  44%|████▍     | 7/16 [00:49<00:35,  3.90s/it]Processing genes:  50%|█████     | 8/16 [01:04<00:59,  7.38s/it]Processing genes:  56%|█████▋    | 9/16 [01:05<00:37,  5.39s/it]Processing genes:  62%|██████▎   | 10/16 [01:07<00:26,  4.40s/it]Processing genes:  69%|██████▉   | 11/16 [01:08<00:17,  3.45s/it]Processing genes:  75%|███████▌  | 12/16 [01:24<00:29,  7.33s/it]Processing genes:  81%|████████▏ | 13/16 [01:54<00:41, 13.95s/it]Processing genes:  88%|████████▊ | 14/16 [02:08<00:28, 14.21s/it]Processing genes:  94%|█████████▍| 15/16 [02:11<00:10, 10.80s/it]Processing genes: 100%|██████████| 16/16 [02:14<00:00,  8.46s/it]Processing genes: 100%|██████████| 16/16 [02:14<00:00,  8.42s/it]
 [info] KIR2DL3*0010109 was filtered out because all of its minor mutations were not covered.
 
 [info] KIR2DL3*0010115 was filtered out because all of its minor mutations were not covered.
@@ -130,7 +130,7 @@ Total 227 deletions processed
 
 [info] KIR3DP1*00902 was filtered out because all of its minor mutations were not covered.
 
-[time] filtering took 222.36s (15,922.9921875 MB; 15,922.9921875 MB)
+[time] filtering took 142.04s (15,920.6796875 MB; 15,920.6796875 MB)
 [filter] KIR2DL1 003 => 0030203: 97.1%; 0030221: 97.1%; 0030232: 97.1%; 00303: 97.1%; 0030202: 97.1%; 0030204: 97.1%; 0030205: 97.1%; 0030206: 97.1%; 0030207: 97.1%; 0030208: 97.1%; 0030209: 97.1%; 0030210: 97.1%; 0030211: 97.1%; 0030212: 97.1%; 0030213: 97.1%; 0030214: 97.1%; 0030215: 97.1%; 0030216: 97.1%; 0030217: 97.1%; 0030218: 97.1%; 0030219: 97.1%; 0030220: 97.1%; 0030222: 97.1%; 0030223: 97.1%; 0030224: 97.1%; 0030225: 97.1%; 0030226: 97.1%; 0030227: 97.1%; 0030228: 97.1%; 0030229: 97.1%; 0030230: 97.1%; 0030231: 97.1%; 0030233: 97.1%; 0030234: 97.1%; 0030235: 97.1%; 0030239: 97.1%; 0030240: 97.1%; 0030241: 97.1%; 0030243: 97.1%; 0030236: 97.1%; 0030238: 97.1%; 0030242: 97.1%; 0030237: 97.1%; 0030201: 97.1%
 [filter] KIR2DL3 001 => 0010108: 98.2%; 0010112: 98.2%; 0010103: 98.2%; 0010105: 98.2%; 0010106: 98.2%; 0010113: 98.2%; 0010107: 98.2%; 0010104: 98.2%; 0010101: 98.2%; 0010111: 98.2%; 0010102: 98.2%; 0010110: 98.2%; 0010114: 98.2%
 [filter] KIR2DL3 006 => 006: 98.2%
@@ -167,21 +167,21 @@ KIR2DL2 6674 has no coverage
 KIR2DL2 6675 has no coverage
 KIR2DL2 11154 has no coverage
 KIR2DL2 13981 has no coverage
-KIR2DL2 7986 has no coverage
 KIR2DL2 7608 has no coverage
 KIR2DL2 7732 has no coverage
 KIR2DL2 6719 has no coverage
 KIR2DL2 6721 has no coverage
-KIR2DL2 6723 has no coverage
 KIR2DL2 10819 has no coverage
-KIR2DL2 6725 has no coverage
 KIR2DL2 6724 has no coverage
+KIR2DL2 6723 has no coverage
+KIR2DL2 6725 has no coverage
 KIR2DL2 6609 has no coverage
 KIR2DL2 9942 has no coverage
 KIR2DL2 6627 has no coverage
 KIR2DL2 6631 has no coverage
 KIR2DL2 7656 has no coverage
 KIR2DL2 11756 has no coverage
+KIR2DL2 7986 has no coverage
 KIR2DL2 8570 has no coverage
 KIR2DL5 7169 has no coverage
 KIR2DL5 9218 has no coverage
@@ -199,20 +199,20 @@ KIR2DL5 1063 has no coverage
 KIR2DL5 4649 has no coverage
 KIR2DL5 554 has no coverage
 KIR2DL5 4139 has no coverage
-KIR2DL5 556 has no coverage
 KIR2DL5 2092 has no coverage
 KIR2DL5 3629 has no coverage
 KIR2DL5 4142 has no coverage
+KIR2DL5 556 has no coverage
 KIR2DL5 4144 has no coverage
 KIR2DL5 4146 has no coverage
 KIR2DL5 8756 has no coverage
-KIR2DL5 9269 has no coverage
 KIR2DL5 4149 has no coverage
-KIR2DL5 9270 has no coverage
-KIR2DL5 1080 has no coverage
-KIR2DL5 4152 has no coverage
-KIR2DL5 2102 has no coverage
+KIR2DL5 9269 has no coverage
 KIR2DL5 6198 has no coverage
+KIR2DL5 2102 has no coverage
+KIR2DL5 4152 has no coverage
+KIR2DL5 1080 has no coverage
+KIR2DL5 9270 has no coverage
 KIR2DL5 4156 has no coverage
 KIR2DL5 9278 has no coverage
 KIR2DL5 4159 has no coverage
@@ -220,27 +220,27 @@ KIR2DL5 4161 has no coverage
 KIR2DL5 4163 has no coverage
 KIR2DL5 4164 has no coverage
 KIR2DL5 583 has no coverage
-KIR2DL5 2120 has no coverage
 KIR2DL5 6216 has no coverage
+KIR2DL5 2120 has no coverage
 KIR2DL5 4168 has no coverage
 KIR2DL5 4173 has no coverage
 KIR2DL5 4174 has no coverage
-KIR2DL5 4181 has no coverage
 KIR2DL5 9813 has no coverage
+KIR2DL5 4181 has no coverage
 KIR2DL5 9303 has no coverage
-KIR2DL5 1115 has no coverage
-KIR2DL5 4188 has no coverage
-KIR2DL5 5723 has no coverage
 KIR2DL5 2138 has no coverage
-KIR2DL5 8286 has no coverage
+KIR2DL5 1115 has no coverage
 KIR2DL5 4189 has no coverage
+KIR2DL5 4188 has no coverage
+KIR2DL5 8286 has no coverage
+KIR2DL5 5723 has no coverage
 KIR2DL5 4193 has no coverage
-KIR2DL5 9316 has no coverage
 KIR2DL5 1124 has no coverage
+KIR2DL5 9316 has no coverage
 KIR2DL5 1126 has no coverage
 KIR2DL5 1127 has no coverage
-KIR2DL5 4203 has no coverage
 KIR2DL5 7275 has no coverage
+KIR2DL5 4203 has no coverage
 KIR2DL5 4206 has no coverage
 KIR2DL5 9327 has no coverage
 KIR2DL5 7281 has no coverage
@@ -248,23 +248,23 @@ KIR2DL5 4723 has no coverage
 KIR2DL5 4211 has no coverage
 KIR2DL5 629 has no coverage
 KIR2DL5 4215 has no coverage
-KIR2DL5 4217 has no coverage
 KIR2DL5 9337 has no coverage
+KIR2DL5 4217 has no coverage
 KIR2DL5 1146 has no coverage
 KIR2DL5 4221 has no coverage
 KIR2DL5 4223 has no coverage
 KIR2DL5 3200 has no coverage
 KIR2DL5 4227 has no coverage
-KIR2DL5 7813 has no coverage
-KIR2DL5 4230 has no coverage
 KIR2DL5 1157 has no coverage
+KIR2DL5 4230 has no coverage
+KIR2DL5 7813 has no coverage
 KIR2DL5 7817 has no coverage
 KIR2DL5 7819 has no coverage
 KIR2DL5 7821 has no coverage
 KIR2DL5 7822 has no coverage
 KIR2DL5 7827 has no coverage
-KIR2DL5 7828 has no coverage
 KIR2DL5 2707 has no coverage
+KIR2DL5 7828 has no coverage
 KIR2DL5 7835 has no coverage
 KIR2DL5 6300 has no coverage
 KIR2DL5 7840 has no coverage
@@ -279,13 +279,12 @@ KIR2DL5 3252 has no coverage
 KIR2DL5 7861 has no coverage
 KIR2DL5 1206 has no coverage
 KIR2DL5 1208 has no coverage
-KIR2DL5 7864 has no coverage
 KIR2DL5 7865 has no coverage
+KIR2DL5 7864 has no coverage
 KIR2DL5 7867 has no coverage
-KIR2DL5 7160 has no coverage
 KIR2DL5 3261 has no coverage
-KIR2DL5 3262 has no coverage
 KIR2DL5 7870 has no coverage
+KIR2DL5 3262 has no coverage
 KIR2DL5 7875 has no coverage
 KIR2DL5 7876 has no coverage
 KIR2DL5 7878 has no coverage
@@ -294,17 +293,17 @@ KIR2DL5 2764 has no coverage
 KIR2DL5 5325 has no coverage
 KIR2DL5 2766 has no coverage
 KIR2DL5 7887 has no coverage
-KIR2DL5 3793 has no coverage
-KIR2DL5 7890 has no coverage
 KIR2DL5 1233 has no coverage
+KIR2DL5 7890 has no coverage
+KIR2DL5 3793 has no coverage
 KIR2DL5 7896 has no coverage
 KIR2DL5 7899 has no coverage
 KIR2DL5 2267 has no coverage
-KIR2DL5 2269 has no coverage
-KIR2DL5 7902 has no coverage
 KIR2DL5 3805 has no coverage
-KIR2DL5 7904 has no coverage
+KIR2DL5 7902 has no coverage
+KIR2DL5 2269 has no coverage
 KIR2DL5 2272 has no coverage
+KIR2DL5 7904 has no coverage
 KIR2DL5 7393 has no coverage
 KIR2DL5 7908 has no coverage
 KIR2DL5 2278 has no coverage
@@ -325,16 +324,16 @@ KIR2DL5 7934 has no coverage
 KIR2DL5 2304 has no coverage
 KIR2DL5 7936 has no coverage
 KIR2DL5 1282 has no coverage
-KIR2DL5 771 has no coverage
 KIR2DL5 6403 has no coverage
+KIR2DL5 771 has no coverage
 KIR2DL5 2317 has no coverage
 KIR2DL5 784 has no coverage
 KIR2DL5 787 has no coverage
 KIR2DL5 6420 has no coverage
 KIR2DL5 2329 has no coverage
-KIR2DL5 797 has no coverage
-KIR2DL5 1822 has no coverage
 KIR2DL5 3357 has no coverage
+KIR2DL5 1822 has no coverage
+KIR2DL5 797 has no coverage
 KIR2DL5 3372 has no coverage
 KIR2DL5 3374 has no coverage
 KIR2DL5 3375 has no coverage
@@ -353,18 +352,18 @@ KIR2DL5 872 has no coverage
 KIR2DL5 5992 has no coverage
 KIR2DL5 877 has no coverage
 KIR2DL5 879 has no coverage
-KIR2DL5 6511 has no coverage
-KIR2DL5 3441 has no coverage
 KIR2DL5 1392 has no coverage
+KIR2DL5 6511 has no coverage
 KIR2DL5 3440 has no coverage
+KIR2DL5 3441 has no coverage
 KIR2DL5 7542 has no coverage
 KIR2DL5 6524 has no coverage
 KIR2DL5 7549 has no coverage
 KIR2DL5 7551 has no coverage
-KIR2DL5 898 has no coverage
-KIR2DL5 9601 has no coverage
 KIR2DL5 897 has no coverage
+KIR2DL5 9601 has no coverage
 KIR2DL5 900 has no coverage
+KIR2DL5 898 has no coverage
 KIR2DL5 1929 has no coverage
 KIR2DL5 8073 has no coverage
 KIR2DL5 8075 has no coverage
@@ -377,15 +376,16 @@ KIR2DL5 3486 has no coverage
 KIR2DL5 7070 has no coverage
 KIR2DL5 8098 has no coverage
 KIR2DL5 931 has no coverage
-KIR2DL5 7591 has no coverage
 KIR2DL5 4519 has no coverage
+KIR2DL5 7591 has no coverage
 KIR2DL5 7093 has no coverage
 KIR2DL5 981 has no coverage
 KIR2DL5 2008 has no coverage
 KIR2DL5 7643 has no coverage
 KIR2DL5 1521 has no coverage
-KIR2DL5 3060 has no coverage
 KIR2DL5 4084 has no coverage
+KIR2DL5 3060 has no coverage
+KIR2DL5 7160 has no coverage
 KIR2DS1 5634 has no coverage
 KIR2DS1 5635 has no coverage
 KIR2DS1 5779 has no coverage
@@ -437,8 +437,8 @@ KIR2DS2 9049 has no coverage
 KIR2DS2 6504 has no coverage
 KIR2DS2 6505 has no coverage
 KIR2DS2 6506 has no coverage
-KIR2DS2 7019 has no coverage
 KIR2DS2 6507 has no coverage
+KIR2DS2 7019 has no coverage
 KIR2DS2 9071 has no coverage
 KIR2DS2 9076 has no coverage
 KIR2DS2 380 has no coverage
@@ -464,8 +464,8 @@ KIR2DS3 1059 has no coverage
 KIR2DS3 13867 has no coverage
 KIR2DS3 11823 has no coverage
 KIR2DS3 6192 has no coverage
-KIR2DS3 2610 has no coverage
 KIR2DS3 11314 has no coverage
+KIR2DS3 2610 has no coverage
 KIR2DS3 2614 has no coverage
 KIR2DS3 6202 has no coverage
 KIR2DS3 10812 has no coverage
@@ -481,18 +481,18 @@ KIR2DS3 11880 has no coverage
 KIR2DS3 3689 has no coverage
 KIR2DS3 4202 has no coverage
 KIR2DS3 2667 has no coverage
-KIR2DS3 2668 has no coverage
 KIR2DS3 4204 has no coverage
+KIR2DS3 2668 has no coverage
+KIR2DS3 2674 has no coverage
 KIR2DS3 11378 has no coverage
 KIR2DS3 14451 has no coverage
-KIR2DS3 2674 has no coverage
 KIR2DS3 2678 has no coverage
 KIR2DS3 13951 has no coverage
 KIR2DS3 12416 has no coverage
 KIR2DS3 11392 has no coverage
 KIR2DS3 14979 has no coverage
-KIR2DS3 13445 has no coverage
 KIR2DS3 13957 has no coverage
+KIR2DS3 13445 has no coverage
 KIR2DS3 655 has no coverage
 KIR2DS3 4248 has no coverage
 KIR2DS3 6298 has no coverage
@@ -502,8 +502,8 @@ KIR2DS3 10910 has no coverage
 KIR2DS3 14495 has no coverage
 KIR2DS3 4267 has no coverage
 KIR2DS3 12469 has no coverage
-KIR2DS3 14526 has no coverage
 KIR2DS3 6334 has no coverage
+KIR2DS3 14526 has no coverage
 KIR2DS3 6338 has no coverage
 KIR2DS3 14531 has no coverage
 KIR2DS3 14542 has no coverage
@@ -543,14 +543,14 @@ KIR2DS3 5998 has no coverage
 KIR2DS3 13167 has no coverage
 KIR2DS3 2421 has no coverage
 KIR2DS3 11132 has no coverage
+KIR2DS3 6012 has no coverage
 KIR2DS3 11645 has no coverage
 KIR2DS3 3966 has no coverage
-KIR2DS3 6012 has no coverage
 KIR2DS3 6019 has no coverage
 KIR2DS3 8068 has no coverage
 KIR2DS3 6534 has no coverage
-KIR2DS3 2445 has no coverage
 KIR2DS3 4493 has no coverage
+KIR2DS3 2445 has no coverage
 KIR2DS3 6050 has no coverage
 KIR2DS3 2469 has no coverage
 KIR2DS3 11711 has no coverage
@@ -559,10 +559,10 @@ KIR2DS3 1484 has no coverage
 KIR2DS3 12750 has no coverage
 KIR2DS3 464 has no coverage
 KIR2DS3 6099 has no coverage
-KIR2DS3 13781 has no coverage
-KIR2DS3 13782 has no coverage
 KIR2DS3 14293 has no coverage
+KIR2DS3 13781 has no coverage
 KIR2DS3 6615 has no coverage
+KIR2DS3 13782 has no coverage
 KIR2DS3 14298 has no coverage
 KIR2DS3 13793 has no coverage
 KIR2DS3 6114 has no coverage
@@ -585,27 +585,27 @@ KIR2DS4 1006 has no coverage
 KIR2DS5 6146 has no coverage
 KIR2DS5 6147 has no coverage
 KIR2DS5 4 has no coverage
-KIR2DS5 11790 has no coverage
-KIR2DS5 11279 has no coverage
 KIR2DS5 6158 has no coverage
+KIR2DS5 11279 has no coverage
+KIR2DS5 11790 has no coverage
 KIR2DS5 11284 has no coverage
 KIR2DS5 6165 has no coverage
 KIR2DS5 14873 has no coverage
-KIR2DS5 5146 has no coverage
 KIR2DS5 8217 has no coverage
-KIR2DS5 28 has no coverage
 KIR2DS5 11291 has no coverage
+KIR2DS5 28 has no coverage
+KIR2DS5 5146 has no coverage
 KIR2DS5 4132 has no coverage
-KIR2DS5 13862 has no coverage
-KIR2DS5 9766 has no coverage
-KIR2DS5 7208 has no coverage
-KIR2DS5 6186 has no coverage
 KIR2DS5 11302 has no coverage
+KIR2DS5 7208 has no coverage
+KIR2DS5 9766 has no coverage
+KIR2DS5 6186 has no coverage
+KIR2DS5 13862 has no coverage
 KIR2DS5 1068 has no coverage
 KIR2DS5 6182 has no coverage
-KIR2DS5 5171 has no coverage
-KIR2DS5 51 has no coverage
 KIR2DS5 5170 has no coverage
+KIR2DS5 51 has no coverage
+KIR2DS5 5171 has no coverage
 KIR2DS5 9785 has no coverage
 KIR2DS5 59 has no coverage
 KIR2DS5 1598 has no coverage
@@ -628,38 +628,38 @@ KIR2DS5 11364 has no coverage
 KIR2DS5 13924 has no coverage
 KIR2DS5 4198 has no coverage
 KIR2DS5 13927 has no coverage
-KIR2DS5 7274 has no coverage
 KIR2DS5 6250 has no coverage
-KIR2DS5 108 has no coverage
+KIR2DS5 7274 has no coverage
 KIR2DS5 11372 has no coverage
 KIR2DS5 11373 has no coverage
+KIR2DS5 108 has no coverage
 KIR2DS5 13938 has no coverage
 KIR2DS5 14451 has no coverage
 KIR2DS5 13940 has no coverage
 KIR2DS5 13939 has no coverage
 KIR2DS5 6265 has no coverage
 KIR2DS5 14459 has no coverage
+KIR2DS5 1659 has no coverage
 KIR2DS5 13436 has no coverage
 KIR2DS5 6269 has no coverage
-KIR2DS5 1659 has no coverage
 KIR2DS5 129 has no coverage
 KIR2DS5 2693 has no coverage
 KIR2DS5 1161 has no coverage
 KIR2DS5 11406 has no coverage
 KIR2DS5 3735 has no coverage
 KIR2DS5 152 has no coverage
-KIR2DS5 6298 has no coverage
 KIR2DS5 12954 has no coverage
 KIR2DS5 3741 has no coverage
+KIR2DS5 6298 has no coverage
 KIR2DS5 6305 has no coverage
-KIR2DS5 6307 has no coverage
 KIR2DS5 163 has no coverage
+KIR2DS5 6307 has no coverage
 KIR2DS5 13477 has no coverage
 KIR2DS5 4263 has no coverage
 KIR2DS5 2728 has no coverage
 KIR2DS5 3756 has no coverage
-KIR2DS5 1197 has no coverage
 KIR2DS5 2221 has no coverage
+KIR2DS5 1197 has no coverage
 KIR2DS5 2732 has no coverage
 KIR2DS5 4785 has no coverage
 KIR2DS5 2226 has no coverage
@@ -667,35 +667,35 @@ KIR2DS5 6323 has no coverage
 KIR2DS5 13492 has no coverage
 KIR2DS5 10941 has no coverage
 KIR2DS5 3775 has no coverage
-KIR2DS5 6336 has no coverage
+KIR2DS5 3776 has no coverage
 KIR2DS5 6337 has no coverage
 KIR2DS5 4290 has no coverage
-KIR2DS5 3776 has no coverage
+KIR2DS5 6336 has no coverage
 KIR2DS5 2757 has no coverage
 KIR2DS5 710 has no coverage
 KIR2DS5 1224 has no coverage
-KIR2DS5 9929 has no coverage
 KIR2DS5 4297 has no coverage
 KIR2DS5 2250 has no coverage
+KIR2DS5 9929 has no coverage
 KIR2DS5 5328 has no coverage
 KIR2DS5 1235 has no coverage
 KIR2DS5 6869 has no coverage
 KIR2DS5 11483 has no coverage
 KIR2DS5 2781 has no coverage
 KIR2DS5 2788 has no coverage
-KIR2DS5 7913 has no coverage
-KIR2DS5 234 has no coverage
+KIR2DS5 4329 has no coverage
 KIR2DS5 1258 has no coverage
 KIR2DS5 8427 has no coverage
 KIR2DS5 2796 has no coverage
+KIR2DS5 7913 has no coverage
 KIR2DS5 8942 has no coverage
-KIR2DS5 4329 has no coverage
 KIR2DS5 239 has no coverage
 KIR2DS5 2800 has no coverage
 KIR2DS5 5360 has no coverage
+KIR2DS5 234 has no coverage
 KIR2DS5 12025 has no coverage
-KIR2DS5 1274 has no coverage
 KIR2DS5 3322 has no coverage
+KIR2DS5 1274 has no coverage
 KIR2DS5 256 has no coverage
 KIR2DS5 4355 has no coverage
 KIR2DS5 9477 has no coverage
@@ -703,25 +703,25 @@ KIR2DS5 2822 has no coverage
 KIR2DS5 8455 has no coverage
 KIR2DS5 263 has no coverage
 KIR2DS5 10506 has no coverage
+KIR2DS5 1292 has no coverage
 KIR2DS5 268 has no coverage
 KIR2DS5 11021 has no coverage
-KIR2DS5 1292 has no coverage
-KIR2DS5 11024 has no coverage
-KIR2DS5 10001 has no coverage
-KIR2DS5 1297 has no coverage
-KIR2DS5 11537 has no coverage
 KIR2DS5 1808 has no coverage
+KIR2DS5 11024 has no coverage
 KIR2DS5 272 has no coverage
 KIR2DS5 273 has no coverage
 KIR2DS5 1298 has no coverage
+KIR2DS5 1297 has no coverage
+KIR2DS5 10001 has no coverage
+KIR2DS5 11537 has no coverage
 KIR2DS5 10008 has no coverage
 KIR2DS5 3353 has no coverage
 KIR2DS5 11034 has no coverage
-KIR2DS5 10012 has no coverage
 KIR2DS5 8988 has no coverage
-KIR2DS5 8993 has no coverage
+KIR2DS5 10012 has no coverage
 KIR2DS5 1313 has no coverage
 KIR2DS5 290 has no coverage
+KIR2DS5 8993 has no coverage
 KIR2DS5 1317 has no coverage
 KIR2DS5 13097 has no coverage
 KIR2DS5 3371 has no coverage
@@ -739,8 +739,8 @@ KIR2DS5 1873 has no coverage
 KIR2DS5 1365 has no coverage
 KIR2DS5 6998 has no coverage
 KIR2DS5 4439 has no coverage
-KIR2DS5 1372 has no coverage
 KIR2DS5 8028 has no coverage
+KIR2DS5 1372 has no coverage
 KIR2DS5 4958 has no coverage
 KIR2DS5 1375 has no coverage
 KIR2DS5 352 has no coverage
@@ -762,8 +762,8 @@ KIR2DS5 10108 has no coverage
 KIR2DS5 4477 has no coverage
 KIR2DS5 1406 has no coverage
 KIR2DS5 1407 has no coverage
-KIR2DS5 3973 has no coverage
 KIR2DS5 1413 has no coverage
+KIR2DS5 3973 has no coverage
 KIR2DS5 1415 has no coverage
 KIR2DS5 1417 has no coverage
 KIR2DS5 1420 has no coverage
@@ -772,9 +772,9 @@ KIR2DS5 11663 has no coverage
 KIR2DS5 2452 has no coverage
 KIR2DS5 13212 has no coverage
 KIR2DS5 420 has no coverage
+KIR2DS5 4520 has no coverage
 KIR2DS5 11176 has no coverage
 KIR2DS5 5032 has no coverage
-KIR2DS5 4520 has no coverage
 KIR2DS5 6571 has no coverage
 KIR2DS5 4526 has no coverage
 KIR2DS5 6067 has no coverage
@@ -820,27 +820,27 @@ KIR3DS1 12365 has no coverage
 KIR3DS1 13403 has no coverage
 KIR3DS1 3166 has no coverage
 KIR3DS1 11362 has no coverage
-KIR3DS1 10862 has no coverage
 KIR3DS1 14958 has no coverage
+KIR3DS1 10862 has no coverage
 KIR3DS1 11380 has no coverage
 KIR3DS1 7800 has no coverage
 KIR3DS1 14457 has no coverage
 KIR3DS1 13955 has no coverage
 KIR3DS1 8843 has no coverage
-KIR3DS1 4245 has no coverage
 KIR3DS1 2709 has no coverage
+KIR3DS1 4245 has no coverage
 KIR3DS1 11415 has no coverage
 KIR3DS1 10905 has no coverage
 KIR3DS1 4256 has no coverage
-KIR3DS1 10920 has no coverage
 KIR3DS1 14504 has no coverage
+KIR3DS1 10920 has no coverage
 KIR3DS1 11434 has no coverage
 KIR3DS1 8902 has no coverage
 KIR3DS1 6869 has no coverage
 KIR3DS1 6873 has no coverage
 KIR3DS1 13026 has no coverage
-KIR3DS1 10988 has no coverage
 KIR3DS1 10990 has no coverage
+KIR3DS1 10988 has no coverage
 KIR3DS1 7412 has no coverage
 KIR3DS1 8441 has no coverage
 KIR3DS1 13055 has no coverage
@@ -861,8 +861,8 @@ KIR3DS1 2905 has no coverage
 KIR3DS1 10588 has no coverage
 KIR3DS1 2920 has no coverage
 KIR3DS1 9077 has no coverage
-KIR3DS1 12173 has no coverage
 KIR3DS1 14733 has no coverage
+KIR3DS1 12173 has no coverage
 KIR3DS1 9104 has no coverage
 KIR3DS1 10651 has no coverage
 KIR3DS1 2470 has no coverage
@@ -2446,8 +2446,8 @@ KIR3DL2 1
 KIR3DL3 2
 KIR3DP1 2
 [cn config]
-  0%|          | 0/1505094 [00:00<?, ?it/s]  4%|▎         | 53863/1505094 [00:00<00:02, 538098.10it/s]  8%|▊         | 116552/1505094 [00:00<00:02, 590280.40it/s] 12%|█▏        | 182530/1505094 [00:00<00:02, 621995.66it/s] 17%|█▋        | 260683/1505094 [00:00<00:01, 684917.26it/s] 22%|██▏       | 330208/1505094 [00:00<00:01, 688554.80it/s] 27%|██▋       | 406521/1505094 [00:00<00:01, 713897.91it/s] 32%|███▏      | 482450/1505094 [00:00<00:01, 728729.13it/s] 38%|███▊      | 564581/1505094 [00:00<00:01, 757931.84it/s] 43%|████▎     | 643911/1505094 [00:00<00:01, 768977.26it/s] 48%|████▊     | 720809/1505094 [00:01<00:01, 767321.05it/s] 53%|█████▎    | 797542/1505094 [00:01<00:01, 685997.46it/s] 58%|█████▊    | 867710/1505094 [00:01<00:01, 610892.35it/s] 62%|██████▏   | 931116/1505094 [00:01<00:00, 605364.35it/s] 66%|██████▌   | 993213/1505094 [00:01<00:00, 598454.35it/s] 70%|███████   | 1054498/1505094 [00:01<00:00, 602254.64it/s] 74%|███████▍  | 1115489/1505094 [00:01<00:00, 595882.41it/s] 78%|███████▊  | 1176337/1505094 [00:01<00:00, 599355.79it/s] 82%|████████▏ | 1241568/1505094 [00:01<00:00, 614390.48it/s] 87%|████████▋ | 1309623/1505094 [00:02<00:00, 633676.45it/s] 91%|█████████ | 1373278/1505094 [00:02<00:00, 631509.15it/s] 95%|█████████▌| 1436628/1505094 [00:02<00:00, 618169.27it/s]100%|█████████▉| 1502030/1505094 [00:02<00:00, 628527.85it/s]100%|██████████| 1505094/1505094 [00:02<00:00, 648909.28it/s]
-  0%|          | 0/9 [00:00<?, ?it/s]100%|██████████| 9/9 [00:00<00:00, 1850.07it/s]
+  0%|          | 0/1505094 [00:00<?, ?it/s]  6%|▌         | 90117/1505094 [00:00<00:01, 900947.46it/s] 13%|█▎        | 188192/1505094 [00:00<00:01, 947864.62it/s] 19%|█▉        | 287634/1505094 [00:00<00:01, 969109.12it/s] 26%|██▌       | 385568/1505094 [00:00<00:01, 973139.17it/s] 32%|███▏      | 485161/1505094 [00:00<00:01, 981106.39it/s] 39%|███▉      | 583685/1505094 [00:00<00:00, 982398.81it/s] 45%|████▌     | 682230/1505094 [00:00<00:00, 983120.61it/s] 54%|█████▎    | 805827/1505094 [00:00<00:00, 1063529.68it/s] 61%|██████▏   | 923148/1505094 [00:00<00:00, 1097796.32it/s] 69%|██████▊   | 1032930/1505094 [00:01<00:00, 1063344.81it/s] 76%|███████▌  | 1139492/1505094 [00:01<00:00, 1040368.27it/s] 83%|████████▎ | 1246193/1505094 [00:01<00:00, 1048215.91it/s] 90%|████████▉ | 1351194/1505094 [00:01<00:00, 1047395.12it/s] 97%|█████████▋| 1460056/1505094 [00:01<00:00, 1059556.42it/s]100%|██████████| 1505094/1505094 [00:01<00:00, 1034005.17it/s]
+  0%|          | 0/9 [00:00<?, ?it/s]100%|██████████| 9/9 [00:00<00:00, 2783.01it/s]
 Step 0: Loss=0.1528, CN=[1.881286  1.881286  2.1211061 1.881286  1.8812859 1.8812869 1.8812859
  1.881286  1.881286 ]
 Step 100: Loss=0.0856, CN=[1.7553821  1.8203926  2.0049603  1.7775117  0.86960524 2.2658117
@@ -2972,698 +2972,723 @@ KIR3DP1*024:
 === Running VAE with seed 42 ===
 
 === Hybrid JS Divergence ===
-Global Pooled JS: 0.160045
-  KIR3DL2 JS: 0.032756
-  KIR3DL3 JS: 0.059106
-  Gene-specific JS sum: 0.091862
-  Gene-specific weighted: 0.091862
-  TOTAL: 0.251907
-Seed 42, Step    0: Loss = 185375.80 (Recon: 183519.69, Allele KL: 1015.22, Base KL: 818060.00, Functional KL: 0.25
+Global Pooled JS: 0.160800
+  KIR3DL2 JS: 0.036357
+  KIR3DL3 JS: 0.061221
+  Gene-specific JS sum: 0.097578
+  Gene-specific weighted: 0.097578
+  TOTAL: 0.258378
+Seed 42, Step    0: Loss = 979402.25 (Recon: 167023.56, Allele KL: 1015.22, Base KL: 811355264.00, Functional KL: 0.26
 
 === Hybrid JS Divergence ===
-Global Pooled JS: 0.024659
-  KIR3DL2 JS: 0.008165
-  KIR3DL3 JS: 0.023450
-  Gene-specific JS sum: 0.031615
-  Gene-specific weighted: 0.031615
-  TOTAL: 0.056274
-Seed 42, Step  500: Loss = 20857.83 (Recon: 18132.19, Allele KL: 788.41, Base KL: 1915496.25, Functional KL: 0.06
+Global Pooled JS: 0.028282
+  KIR3DL2 JS: 0.011564
+  KIR3DL3 JS: 0.051157
+  Gene-specific JS sum: 0.062721
+  Gene-specific weighted: 0.062721
+  TOTAL: 0.091004
+Seed 42, Step  500: Loss = 21868.48 (Recon: 20179.69, Allele KL: 711.54, Base KL: 969259.56, Functional KL: 0.09
 
 === Hybrid JS Divergence ===
-Global Pooled JS: 0.016237
-  KIR3DL2 JS: 0.009351
-  KIR3DL3 JS: 0.039664
-  Gene-specific JS sum: 0.049015
-  Gene-specific weighted: 0.049015
-  TOTAL: 0.065252
-Seed 42, Step 1000: Loss = 17429.65 (Recon: 14997.69, Allele KL: 544.33, Base KL: 1865888.62, Functional KL: 0.07
+Global Pooled JS: 0.022802
+  KIR3DL2 JS: 0.013474
+  KIR3DL3 JS: 0.023661
+  Gene-specific JS sum: 0.037135
+  Gene-specific weighted: 0.037135
+  TOTAL: 0.059937
+Seed 42, Step 1000: Loss = 17874.71 (Recon: 16472.31, Allele KL: 520.44, Base KL: 874023.69, Functional KL: 0.06
 
 === Hybrid JS Divergence ===
-Global Pooled JS: 0.018588
-  KIR3DL2 JS: 0.009216
-  KIR3DL3 JS: 0.038800
-  Gene-specific JS sum: 0.048016
-  Gene-specific weighted: 0.048016
-  TOTAL: 0.066604
-Seed 42, Step 1500: Loss = 17752.56 (Recon: 15335.38, Allele KL: 565.54, Base KL: 1829874.50, Functional KL: 0.07
+Global Pooled JS: 0.021249
+  KIR3DL2 JS: 0.014169
+  KIR3DL3 JS: 0.011256
+  Gene-specific JS sum: 0.025425
+  Gene-specific weighted: 0.025425
+  TOTAL: 0.046674
+Seed 42, Step 1500: Loss = 17357.62 (Recon: 15916.19, Allele KL: 660.26, Base KL: 773241.25, Functional KL: 0.05
 
 === Hybrid JS Divergence ===
-Global Pooled JS: 0.014076
-  KIR3DL2 JS: 0.008672
-  KIR3DL3 JS: 0.038646
-  Gene-specific JS sum: 0.047318
-  Gene-specific weighted: 0.047318
-  TOTAL: 0.061393
-Seed 42, Step 2000: Loss = 17265.25 (Recon: 14942.44, Allele KL: 458.54, Base KL: 1842523.00, Functional KL: 0.06
+Global Pooled JS: 0.017701
+  KIR3DL2 JS: 0.012519
+  KIR3DL3 JS: 0.010085
+  Gene-specific JS sum: 0.022604
+  Gene-specific weighted: 0.022604
+  TOTAL: 0.040305
+Seed 42, Step 2000: Loss = 16256.58 (Recon: 14995.06, Allele KL: 428.11, Base KL: 825499.50, Functional KL: 0.04
 
 === Hybrid JS Divergence ===
-Global Pooled JS: 0.014799
-  KIR3DL2 JS: 0.008704
-  KIR3DL3 JS: 0.038251
-  Gene-specific JS sum: 0.046954
-  Gene-specific weighted: 0.046954
-  TOTAL: 0.061754
-Seed 42, Step 2500: Loss = 17024.69 (Recon: 14699.19, Allele KL: 457.17, Base KL: 1846578.50, Functional KL: 0.06
+Global Pooled JS: 0.017739
+  KIR3DL2 JS: 0.012826
+  KIR3DL3 JS: 0.010060
+  Gene-specific JS sum: 0.022886
+  Gene-specific weighted: 0.022886
+  TOTAL: 0.040624
+Seed 42, Step 2500: Loss = 16253.22 (Recon: 15108.19, Allele KL: 368.01, Base KL: 769112.00, Functional KL: 0.04
 
 Top Variants with Coverage Mismatches:
 Rank   Variant                        Expected     Observed     Diff       |Div|       
 ------------------------------------------------------------------------------------------
-1      KIR3DL3:3428→T                 0.30         40.00        -39.70     0.000611    
-2      KIR2DL4:2718→A                 2.85         46.00        -43.15     0.000534    
-3      KIR2DL4:2650→G                 2.46         34.00        -31.54     0.000377    
-4      KIR3DL1:2329→N                 21.36        0.00         21.36      0.000357     ⚠️HALLUC
-5      KIR3DL1:2330→N                 21.36        0.00         21.36      0.000357     ⚠️HALLUC
-6      KIR2DP1:3949→G                 31.37        90.00        -58.63     0.000331    
-7      KIR2DL4:9877→A                 0.96         25.00        -24.04     0.000323    
-8      KIR2DL4:9877→N                 53.81        15.00        38.81      0.000289    
-9      KIR2DL4:9837→C                 0.86         22.00        -21.14     0.000283    
-10     KIR3DL3:3428→G                 58.78        21.00        37.78      0.000234    
-11     KIR2DL4:9837→T                 53.91        19.00        34.91      0.000219    
-12     KIR2DP1:3949→C                 12.44        0.00         12.44      0.000208     ⚠️HALLUC
-13     KIR3DP1:3816→A                 3.23         24.00        -20.77     0.000207    
-14     KIR3DP1:5550→T                 5.27         26.00        -20.73     0.000171    
-15     KIR2DL4:2863→C                 2.46         19.00        -16.54     0.000167    
-16     KIR2DP1:3972→A                 44.40        89.00        -44.60     0.000165    
-17     KIR3DP1:5528→G                 5.15         25.00        -19.85     0.000163    
-18     KIR3DL2:268→A                  21.25        53.00        -31.75     0.000156    
-19     KIR3DL2:272→C                  21.25        53.00        -31.75     0.000156    
-20     KIR2DP1:3977→A                 44.40        87.00        -42.60     0.000153    
-21     KIR3DL2:279→T                  21.22        51.00        -29.78     0.000140    
-22     KIR2DP1:3978→G                 44.40        85.00        -40.60     0.000140    
-23     KIR3DP1:3816→G                 45.21        19.00        26.21      0.000140    
-24     KIR3DL2:282→C                  21.25        51.00        -29.75     0.000140    
-25     KIR2DS4:5291→C                 26.44        8.00         18.44      0.000130    
-26     KIR2DS4:5311→G                 26.44        8.00         18.44      0.000130    
-27     KIR2DS4:5320→C                 26.44        8.00         18.44      0.000130    
-28     KIR2DL4:2718→G                 51.93        25.00        26.93      0.000124    
-29     KIR2DP1:288→A                  9.10         29.00        -19.90     0.000123    
-30     KIR3DL1:14009→G                41.17        18.00        23.17      0.000119    
-31     KIR3DL2:16345→T                21.22        48.00        -26.78     0.000117    
-32     KIR2DS4:5290→G                 26.44        9.00         17.44      0.000112    
-33     KIR2DS4:5323→C                 26.44        9.00         17.44      0.000112    
-34     KIR3DL2:293→C                  21.25        47.00        -25.75     0.000110    
-35     KIR2DL4:2650→A                 52.32        27.00        25.32      0.000107    
-36     KIR2DS4:7009→C                 26.44        54.00        -27.56     0.000105    
-37     KIR2DS4:7011→C                 26.44        54.00        -27.56     0.000105    
-38     KIR3DL1:2329→T                 28.05        56.00        -27.95     0.000103    
-39     KIR3DL1:2330→C                 28.05        56.00        -27.95     0.000103    
-40     KIR3DL1:2212→G                 21.36        46.00        -24.64     0.000101    
-41     KIR3DL1:1300→G                 49.41        85.00        -35.59     0.000101    
-42     KIR2DL1:13433→G                22.05        46.00        -23.95     0.000094    
-43     KIR2DS4:6995→A                 26.44        51.00        -24.56     0.000086    
-44     KIR2DS4:3344→G                 26.44        11.00        15.44      0.000083    
-45     KIR2DS4:5346→T                 26.44        11.00        15.44      0.000083    
-46     KIR2DP1:5840→G                 11.91        29.00        -17.09     0.000082    
-47     KIR2DS4:7048→A                 26.44        50.00        -23.56     0.000080    
-48     KIR3DL1:14039→T                35.69        61.00        -25.31     0.000071    
-49     KIR3DL1:2233→T                 21.38        41.00        -19.62     0.000068    
-50     KIR3DL3:5363→A                 24.41        45.00        -20.59     0.000067    
-51     KIR2DL4:1624→G                 54.78        34.00        20.78      0.000066    
-52     KIR2DL4:1639→G                 54.78        34.00        20.78      0.000066    
-53     KIR3DL1:1304→C                 21.36        40.00        -18.64     0.000062    
-54     KIR3DL3:5428→A                 24.47        44.00        -19.53     0.000060    
-55     KIR2DS4:14803→G                26.44        13.00        13.44      0.000060    
-56     KIR2DL4:1632→A                 54.78        35.00        19.78      0.000059    
-57     KIR2DL4:1654→T                 54.78        35.00        19.78      0.000059    
-58     KIR2DL4:1658→G                 54.78        35.00        19.78      0.000059    
-59     KIR2DL4:1667→A                 54.78        35.00        19.78      0.000059    
-60     KIR2DP1:11726→A                11.91        26.00        -14.09     0.000059    
-61     KIR2DL1:3823→G                 13.96        29.00        -15.04     0.000059    
-62     KIR3DL1:1333→T                 49.41        76.00        -26.59     0.000058    
-63     KIR3DL1:5596→A                 27.89        48.00        -20.11     0.000057    
-64     KIR3DL2:16348→A                41.00        65.00        -24.00     0.000057    
-65     KIR3DL1:14039→C                28.58        15.00        13.58      0.000056    
-66     KIR3DL1:1332→A                 49.41        75.00        -25.59     0.000054    
-67     KIR2DS4:5225→T                 26.44        14.00        12.44      0.000051    
-68     KIR2DS4:10434→C                26.44        14.00        12.44      0.000051    
-69     KIR2DS4:14801→C                26.44        14.00        12.44      0.000051    
-70     KIR3DL1:8826→G                 70.66        50.00        20.66      0.000050    
-71     KIR2DL4:1648→T                 54.78        37.00        17.78      0.000048    
-72     KIR2DL4:9866→G                 54.78        37.00        17.78      0.000048    
-73     KIR2DP1:4023→T                 44.40        67.00        -22.60     0.000047    
-74     KIR3DL1:5586→T                 27.89        46.00        -18.11     0.000047    
-75     KIR2DL3:9086→A                 2.68         0.00         2.68       0.000045    
-76     KIR3DL1:14039→P                2.00         8.00         -6.00      0.000044    
-77     KIR2DL3:3850→G                 44.40        66.00        -21.60     0.000043    
-78     KIR3DL1:13897→G                27.91        16.00        11.91      0.000043    
-79     KIR3DL1:5617→T                 49.41        72.00        -22.59     0.000043    
-80     KIR2DL4:9798→G                 54.78        38.00        16.78      0.000042    
-81     KIR2DL4:9815→A                 54.78        38.00        16.78      0.000042    
-82     KIR2DL4:9886→A                 54.78        38.00        16.78      0.000042    
-83     KIR3DL1:13941→G                43.83        29.00        14.83      0.000042    
-84     KIR2DP1:9181→P                 2.41         0.00         2.41       0.000040    
-85     KIR2DP1:9181→C                 2.39         0.00         2.39       0.000040    
-86     KIR2DP1:9181→N                 2.37         0.00         2.37       0.000040    
-87     KIR2DP1:9181→G                 2.36         0.00         2.36       0.000040    
-88     KIR2DP1:9181→T                 2.34         0.00         2.34       0.000039    
-89     KIR3DL1:2207→T                 49.41        71.00        -21.59     0.000039    
-90     KIR3DL1:13943→C                65.35        48.00        17.35      0.000038    
-91     KIR2DL4:1588→A                 54.78        39.00        15.78      0.000037    
-92     KIR3DL1:1304→G                 28.05        44.00        -15.95     0.000037    
-93     KIR2DL1:5612→C                 2.20         0.00         2.20       0.000037    
-94     KIR3DL1:2094→G                 21.36        35.00        -13.64     0.000035    
-95     KIR3DP1:335→N                  48.18        34.00        14.18      0.000034    
-96     KIR3DP1:1080→N                 48.18        34.00        14.18      0.000034    
-97     KIR3DL1:13952→C                68.89        52.00        16.89      0.000034    
-98     KIR3DL1:13971→T                49.14        35.00        14.14      0.000034    
-99     KIR3DL1:13972→A                49.14        35.00        14.14      0.000034    
-100    KIR3DL1:13983→G                49.14        35.00        14.14      0.000034    
-101    KIR2DL4:10647→C                54.78        40.00        14.78      0.000033    
-102    KIR2DL4:10652→A                54.78        40.00        14.78      0.000033    
-103    KIR2DL4:10653→G                54.78        40.00        14.78      0.000033    
-104    KIR2DL4:10655→G                54.78        40.00        14.78      0.000033    
-105    KIR2DL4:10659→T                54.78        40.00        14.78      0.000033    
-106    KIR2DL4:10658→G                54.75        40.00        14.75      0.000033    
-107    KIR2DS4:15323→G                26.44        41.00        -14.56     0.000033    
-108    KIR3DL1:13700→C                70.66        54.00        16.66      0.000033    
-109    KIR2DL3:3824→A                 44.40        63.00        -18.60     0.000032    
-110    KIR2DL3:3861→C                 44.40        63.00        -18.60     0.000032    
-111    KIR2DL3:3873→C                 44.40        63.00        -18.60     0.000032    
-112    KIR3DL1:5581→C                 49.41        69.00        -19.59     0.000032    
-113    KIR3DL1:13886→C                33.23        22.00        11.23      0.000031    
-114    KIR2DL3:3852→T                 29.25        44.00        -14.75     0.000031    
-115    KIR2DL3:14109→C                21.80        13.00        8.80       0.000030    
-116    KIR2DL3:14110→A                21.80        13.00        8.80       0.000030    
-117    KIR3DL1:271→C                  28.03        18.00        10.03      0.000030    
-118    KIR3DL1:13926→T                41.18        29.00        12.18      0.000030    
-119    KIR3DL1:13707→G                70.66        55.00        15.66      0.000029    
-120    KIR3DL1:13740→T                49.14        36.00        13.14      0.000029    
-121    KIR3DL1:13743→G                49.14        36.00        13.14      0.000029    
-122    KIR3DL1:13744→C                49.14        36.00        13.14      0.000029    
-123    KIR3DL1:13985→G                49.14        36.00        13.14      0.000029    
-124    KIR3DL1:2203→A                 49.41        68.00        -18.59     0.000029    
-125    KIR2DP1:5790→G                 44.40        62.00        -17.60     0.000029    
-126    KIR2DL4:9846→T                 54.78        41.00        13.78      0.000029    
-127    KIR2DL4:10638→A                54.78        41.00        13.78      0.000029    
-128    KIR2DL4:10654→C                54.78        41.00        13.78      0.000029    
-129    KIR3DL1:13950→C                67.12        52.00        15.12      0.000028    
-130    KIR3DL1:13743→C                21.52        13.00        8.52       0.000028    
-131    KIR3DL1:13744→G                21.52        13.00        8.52       0.000028    
-132    KIR2DS4:5206→A                 26.44        17.00        9.44       0.000028    
-133    KIR3DL2:1030→G                 21.25        33.00        -11.75     0.000027    
-134    KIR3DL1:2172→G                 49.41        67.00        -17.59     0.000026    
-135    KIR3DL1:2258→G                 49.41        67.00        -17.59     0.000026    
-136    KIR3DL1:2306→A                 49.41        67.00        -17.59     0.000026    
-137    KIR3DL1:271→T                  21.38        33.00        -11.62     0.000026    
-138    KIR3DL1:13710→C                70.66        56.00        14.66      0.000026    
-139    KIR3DL1:13713→A                70.66        56.00        14.66      0.000026    
-140    KIR3DL1:13993→G                70.66        56.00        14.66      0.000026    
-141    KIR2DL4:2727→C                 54.78        73.00        -18.22     0.000025    
-142    KIR2DL4:267→A                  54.78        42.00        12.78      0.000025    
-143    KIR2DL4:1528→C                 54.78        42.00        12.78      0.000025    
-144    KIR2DL4:10539→C                54.78        42.00        12.78      0.000025    
-145    KIR2DL4:10667→C                54.78        42.00        12.78      0.000025    
-146    KIR2DS4:6958→C                 26.44        39.00        -12.56     0.000025    
-147    KIR2DL4:2863→G                 52.32        40.00        12.32      0.000024    
-148    KIR3DL1:2245→A                 49.41        66.00        -16.59     0.000023    
-149    KIR3DL1:2315→C                 49.41        66.00        -16.59     0.000023    
-150    KIR2DL3:3837→G                 44.40        60.00        -15.60     0.000023    
-151    KIR2DL4:2744→C                 54.78        72.00        -17.22     0.000022    
-152    KIR3DL1:13726→A                21.52        14.00        7.52       0.000022    
-153    KIR3DL1:5557→T                 27.89        40.00        -12.11     0.000022    
-154    KIR2DL4:1526→G                 54.78        43.00        11.78      0.000021    
-155    KIR2DL4:10671→G                54.78        43.00        11.78      0.000021    
-156    KIR3DL1:13736→T                49.14        38.00        11.14      0.000021    
-157    KIR3DL1:13737→G                49.14        38.00        11.14      0.000021    
-158    KIR3DL2:8892→C                 49.12        38.00        11.12      0.000021    
-159    KIR3DL2:3829→G                 21.25        14.00        7.25       0.000020    
-160    KIR3DL1:2229→C                 49.41        65.00        -15.59     0.000020    
-161    KIR3DL1:2308→C                 49.41        65.00        -15.59     0.000020    
-162    KIR3DL1:5573→T                 49.41        65.00        -15.59     0.000020    
-163    KIR3DL1:13718→C                70.66        58.00        12.66      0.000020    
-164    KIR2DL4:2717→A                 54.78        71.00        -16.22     0.000020    
-165    KIR2DL4:1523→A                 54.78        44.00        10.78      0.000018    
-166    KIR2DL4:1529→G                 54.78        44.00        10.78      0.000018    
-167    KIR3DL2:16175→G                49.12        39.00        10.12      0.000018    
-168    KIR3DL1:2273→C                 49.41        64.00        -14.59     0.000018    
-169    KIR3DL1:2296→C                 49.41        64.00        -14.59     0.000018    
-170    KIR3DL1:5567→C                 49.41        64.00        -14.59     0.000018    
-171    KIR2DS4:14724→A                26.44        19.00        7.44       0.000017    
-172    KIR3DL3:10986→C                59.08        75.00        -15.92     0.000017    
-173    KIR2DL3:3814→G                 44.40        58.00        -13.60     0.000017    
-174    KIR2DL3:3892→C                 44.40        58.00        -13.60     0.000017    
-175    KIR3DL1:13919→G                56.51        46.00        10.51      0.000017    
-176    KIR2DL1:13433→A                15.17        23.00        -7.83      0.000017    
-177    KIR3DL1:13230→A                21.52        15.00        6.52       0.000016    
-178    KIR3DL1:13722→A                21.52        15.00        6.52       0.000016    
-179    KIR3DL1:13736→C                21.52        15.00        6.52       0.000016    
-180    KIR3DL1:13737→C                21.52        15.00        6.52       0.000016    
-181    KIR3DL1:13740→C                21.52        15.00        6.52       0.000016    
-182    KIR2DL4:1513→C                 54.78        45.00        9.78       0.000015    
-183    KIR2DL4:1565→G                 54.78        45.00        9.78       0.000015    
-184    KIR2DL4:2788→C                 54.78        45.00        9.78       0.000015    
-185    KIR2DL4:2791→G                 54.78        45.00        9.78       0.000015    
-186    KIR2DL4:10564→A                54.78        45.00        9.78       0.000015    
-187    KIR2DL4:10681→G                54.78        45.00        9.78       0.000015    
-188    KIR2DL4:10734→C                54.78        45.00        9.78       0.000015    
-189    KIR3DL1:5570→C                 49.41        63.00        -13.59     0.000015    
-190    KIR3DL2:3691→C                 21.25        30.00        -8.75      0.000015    
-191    KIR3DL2:3729→C                 21.25        30.00        -8.75      0.000015    
-192    KIR3DL2:3730→G                 21.25        30.00        -8.75      0.000015    
-193    KIR3DL2:3751→G                 21.25        30.00        -8.75      0.000015    
-194    KIR2DL4:2686→A                 54.78        69.00        -14.22     0.000015    
-195    KIR3DL2:16199→A                49.12        40.00        9.12       0.000015    
-196    KIR3DL1:13918→C                55.63        46.00        9.63       0.000015    
-197    KIR2DL3:3778→C                 44.40        57.00        -12.60     0.000014    
-198    KIR2DL3:3813→G                 44.40        57.00        -12.60     0.000014    
-199    KIR2DS4:7091→A                 26.44        36.00        -9.56      0.000014    
-200    KIR3DL2:16316→C                47.96        61.00        -13.04     0.000014    
-201    KIR3DL3:3389→G                 34.61        27.00        7.61       0.000014    
-202    KIR2DP1:9181→A                 32.53        43.00        -10.47     0.000014    
-203    KIR3DL1:13866→A                57.40        48.00        9.40       0.000014    
-204    KIR3DL1:13867→C                57.40        48.00        9.40       0.000014    
-205    KIR2DS4:15455→G                26.44        20.00        6.44       0.000013    
-206    KIR3DL1:2190→A                 49.41        62.00        -12.59     0.000013    
-207    KIR3DP1:5528→C                 43.28        55.00        -11.72     0.000013    
-208    KIR2DL1:13433→C                0.76         0.00         0.76       0.000013    
-209    KIR2DL1:13433→N                0.76         0.00         0.76       0.000013    
-210    KIR2DL1:13433→T                0.75         0.00         0.75       0.000013    
-211    KIR2DL1:13433→P                0.75         0.00         0.75       0.000013    
-212    KIR3DL3:5251→A                 24.41        33.00        -8.59      0.000012    
-213    KIR2DL4:1567→G                 54.78        46.00        8.78       0.000012    
-214    KIR2DL4:2608→G                 54.78        46.00        8.78       0.000012    
-215    KIR2DL4:10560→A                54.78        46.00        8.78       0.000012    
-216    KIR2DL4:10745→T                54.78        46.00        8.78       0.000012    
-217    KIR2DL4:10746→A                54.78        46.00        8.78       0.000012    
-218    KIR3DL1:13901→G                50.32        42.00        8.32       0.000012    
-219    KIR2DL3:9063→C                 47.07        59.00        -11.93     0.000012    
-220    KIR3DL1:13230→G                49.14        41.00        8.14       0.000012    
-221    KIR3DL1:13726→G                49.14        41.00        8.14       0.000012    
-222    KIR2DL3:3809→T                 57.78        71.00        -13.22     0.000012    
-223    KIR3DL2:15700→G                49.12        41.00        8.12       0.000012    
-224    KIR3DL2:3660→G                 21.25        29.00        -7.75      0.000012    
-225    KIR3DL2:3715→G                 21.25        29.00        -7.75      0.000012    
-226    KIR2DL1:3789→G                 40.24        51.00        -10.76     0.000012    
-227    KIR2DL3:3778→G                 21.41        16.00        5.41       0.000011    
-228    KIR2DL3:13365→G                44.40        37.00        7.40       0.000011    
-229    KIR3DL1:13910→G                52.97        45.00        7.97       0.000011    
-230    KIR3DL2:3814→G                 21.25        16.00        5.25       0.000011    
-231    KIR3DL1:2110→T                 49.41        61.00        -11.59     0.000011    
-232    KIR3DL1:2162→A                 49.41        61.00        -11.59     0.000011    
-233    KIR2DP1:288→P                  0.63         0.00         0.63       0.000010    
-234    KIR2DP1:288→N                  0.62         0.00         0.62       0.000010    
-235    KIR2DP1:288→C                  0.62         0.00         0.62       0.000010    
-236    KIR3DL3:3389→A                 24.47        19.00        5.47       0.000010    
-237    KIR2DP1:288→T                  0.61         0.00         0.61       0.000010    
-238    KIR2DL4:10521→C                54.78        47.00        7.78       0.000010    
-239    KIR2DL4:10523→G                54.78        47.00        7.78       0.000010    
-240    KIR2DL4:10590→A                54.78        47.00        7.78       0.000010    
-241    KIR2DL4:10622→G                54.78        47.00        7.78       0.000010    
-242    KIR2DL3:3931→T                 44.40        55.00        -10.60     0.000010    
-243    KIR2DL3:9086→G                 44.40        55.00        -10.60     0.000010    
-244    KIR2DP1:12340→G                44.40        55.00        -10.60     0.000010    
-245    KIR2DL3:1210→G                 44.40        55.00        -10.60     0.000010    
-246    KIR2DL3:3801→A                 60.45        73.00        -12.55     0.000010    
-247    KIR3DP1:1080→C                 9.29         6.00         3.29       0.000010    
-248    KIR3DL2:16193→G                49.12        42.00        7.12       0.000009    
-249    KIR2DL3:3852→C                 15.15        21.00        -5.85      0.000009    
-250    KIR2DL1:3823→A                 26.28        34.00        -7.72      0.000009    
-251    KIR3DL2:3678→A                 21.25        28.00        -6.75      0.000009    
-252    KIR3DL2:3680→G                 21.25        28.00        -6.75      0.000009    
-253    KIR3DL2:3685→G                 21.25        28.00        -6.75      0.000009    
-254    KIR3DL2:3686→T                 21.25        28.00        -6.75      0.000009    
-255    KIR2DS4:7108→C                 26.44        34.00        -7.56      0.000009    
-256    KIR3DL1:2112→G                 49.41        60.00        -10.59     0.000009    
-257    KIR3DL1:2132→G                 49.41        60.00        -10.59     0.000009    
-258    KIR3DL1:2165→G                 49.41        60.00        -10.59     0.000009    
-259    KIR2DL1:5612→T                 40.24        34.00        6.24       0.000009    
-260    KIR2DL3:3707→T                 67.65        60.00        7.65       0.000008    
-261    KIR2DL3:13375→T                44.40        38.00        6.40       0.000008    
-262    KIR2DL3:13376→G                44.40        38.00        6.40       0.000008    
-263    KIR3DL3:5428→C                 34.61        29.00        5.61       0.000008    
-264    KIR3DL1:13130→A                21.52        17.00        4.52       0.000008    
-265    KIR3DL1:14009→A                21.52        17.00        4.52       0.000008    
-266    KIR2DL4:1480→G                 54.78        48.00        6.78       0.000008    
-267    KIR2DL4:1481→C                 54.78        48.00        6.78       0.000008    
-268    KIR2DL4:1507→A                 54.78        48.00        6.78       0.000008    
-269    KIR2DL4:5520→T                 54.78        48.00        6.78       0.000008    
-270    KIR2DL4:10619→C                54.78        48.00        6.78       0.000008    
-271    KIR3DL1:13694→A                70.66        83.00        -12.34     0.000008    
-272    KIR3DL1:5407→T                 49.41        43.00        6.41       0.000008    
-273    KIR3DL1:5449→G                 49.41        43.00        6.41       0.000008    
-274    KIR3DL1:5450→G                 49.41        43.00        6.41       0.000008    
-275    KIR2DP1:5840→A                 32.14        40.00        -7.86      0.000008    
-276    KIR3DL2:16381→G                49.13        59.00        -9.87      0.000008    
-277    KIR3DL1:13900→C                50.32        44.00        6.32       0.000008    
-278    KIR3DL2:16188→G                49.12        43.00        6.12       0.000007    
-279    KIR3DL2:1899→G                 21.25        17.00        4.25       0.000007    
-280    KIR3DL2:5427→T                 21.25        17.00        4.25       0.000007    
-281    KIR2DL4:2655→A                 54.78        65.00        -10.22     0.000007    
-282    KIR3DL1:2119→G                 49.41        59.00        -9.59      0.000007    
-283    KIR3DL1:2131→C                 49.41        59.00        -9.59      0.000007    
-284    KIR3DL1:2133→A                 49.41        59.00        -9.59      0.000007    
-285    KIR2DL3:13394→G                44.40        39.00        5.40       0.000006    
-286    KIR2DL3:13412→A                44.40        39.00        5.40       0.000006    
-287    KIR2DL3:13429→T                44.40        39.00        5.40       0.000006    
-288    KIR2DL3:13440→G                44.40        39.00        5.40       0.000006    
-289    KIR2DL3:13441→C                44.40        39.00        5.40       0.000006    
-290    KIR2DL3:13929→T                44.40        39.00        5.40       0.000006    
-291    KIR2DL3:13930→T                44.40        39.00        5.40       0.000006    
-292    KIR2DL3:13954→G                44.40        39.00        5.40       0.000006    
-293    KIR3DL2:3639→C                 21.25        27.00        -5.75      0.000006    
-294    KIR3DL2:3657→G                 21.25        27.00        -5.75      0.000006    
-295    KIR3DL2:3761→A                 21.25        27.00        -5.75      0.000006    
-296    KIR2DL3:268→A                  44.40        53.00        -8.60      0.000006    
-297    KIR2DL3:273→G                  44.40        53.00        -8.60      0.000006    
-298    KIR2DL3:5545→C                 44.40        53.00        -8.60      0.000006    
-299    KIR2DL3:14153→G                36.95        32.00        4.95       0.000006    
-300    KIR2DL4:1498→G                 54.78        49.00        5.78       0.000006    
-301    KIR2DL4:10701→T                54.78        49.00        5.78       0.000006    
-302    KIR3DL3:5251→G                 34.67        42.00        -7.33      0.000006    
-303    KIR3DL3:5297→C                 34.67        42.00        -7.33      0.000006    
-304    KIR3DL2:16392→C                49.13        58.00        -8.87      0.000006    
-305    KIR3DL2:16420→T                49.13        58.00        -8.87      0.000006    
-306    KIR3DL1:5392→C                 49.41        44.00        5.41       0.000006    
-307    KIR3DL1:13897→A                21.52        27.00        -5.48      0.000006    
-308    KIR3DL1:13722→G                49.14        44.00        5.14       0.000005    
-309    KIR3DL1:2168→A                 49.41        58.00        -8.59      0.000005    
-310    KIR3DL1:5515→C                 49.41        58.00        -8.59      0.000005    
-311    KIR3DL1:5516→C                 49.41        58.00        -8.59      0.000005    
-312    KIR3DL2:16190→G                49.12        44.00        5.12       0.000005    
-313    KIR3DP1:5550→C                 43.17        51.00        -7.83      0.000005    
-314    KIR3DL1:13217→G                70.66        65.00        5.66       0.000005    
-315    KIR3DL1:13132→C                21.52        18.00        3.52       0.000005    
-316    KIR3DL1:13133→C                21.52        18.00        3.52       0.000005    
-317    KIR2DL3:293→T                  44.40        52.00        -7.60      0.000005    
-318    KIR2DL3:5582→G                 44.40        52.00        -7.60      0.000005    
-319    KIR2DL3:14147→T                66.20        61.00        5.20       0.000005    
-320    KIR2DL4:2613→A                 54.78        50.00        4.78       0.000005    
-321    KIR2DL3:13449→G                44.40        40.00        4.40       0.000004    
-322    KIR2DL3:13455→A                44.40        40.00        4.40       0.000004    
-323    KIR2DL3:13965→T                44.40        40.00        4.40       0.000004    
-324    KIR3DL2:1803→A                 21.25        18.00        3.25       0.000004    
-325    KIR3DL2:5437→G                 21.25        18.00        3.25       0.000004    
-326    KIR3DL2:5439→C                 21.25        18.00        3.25       0.000004    
-327    KIR3DL2:5538→C                 21.25        18.00        3.25       0.000004    
-328    KIR3DL2:5545→C                 21.25        18.00        3.25       0.000004    
-329    KIR3DL2:5546→G                 21.25        18.00        3.25       0.000004    
-330    KIR2DP1:288→G                  32.82        39.00        -6.18      0.000004    
-331    KIR3DL3:5363→G                 34.67        41.00        -6.33      0.000004    
-332    KIR3DL1:2347→G                 49.41        45.00        4.41       0.000004    
-333    KIR3DL1:3730→C                 49.41        45.00        4.41       0.000004    
-334    KIR3DL1:5415→G                 49.41        45.00        4.41       0.000004    
-335    KIR2DL4:2649→C                 54.78        63.00        -8.22      0.000004    
-336    KIR2DL4:2762→A                 54.78        63.00        -8.22      0.000004    
-337    KIR2DL4:10397→G                54.78        63.00        -8.22      0.000004    
-338    KIR3DP1:335→G                  0.25         0.00         0.25       0.000004    
-339    KIR3DL2:16365→T                45.64        53.00        -7.36      0.000004    
-340    KIR3DL2:16366→G                45.64        53.00        -7.36      0.000004    
-341    KIR2DS4:267→A                  26.44        23.00        3.44       0.000004    
-342    KIR2DS4:5078→G                 26.44        23.00        3.44       0.000004    
-343    KIR3DL2:1012→G                 21.25        26.00        -4.75      0.000004    
-344    KIR3DL2:1978→C                 21.25        26.00        -4.75      0.000004    
-345    KIR3DL2:1994→C                 21.25        26.00        -4.75      0.000004    
-346    KIR3DL2:2015→G                 21.25        26.00        -4.75      0.000004    
-347    KIR3DL2:3775→T                 21.25        26.00        -4.75      0.000004    
-348    KIR3DL1:2084→G                 49.41        57.00        -7.59      0.000004    
-349    KIR3DL1:2087→A                 49.41        57.00        -7.59      0.000004    
-350    KIR3DL1:2125→G                 49.41        57.00        -7.59      0.000004    
-351    KIR3DL1:5504→C                 49.41        57.00        -7.59      0.000004    
-352    KIR3DL1:13886→G                21.51        26.00        -4.49      0.000004    
-353    KIR3DL1:5586→G                 21.52        26.00        -4.48      0.000004    
-354    KIR2DL3:14159→C                66.20        62.00        4.20       0.000003    
-355    KIR3DL2:16345→C                18.62        16.00        2.62       0.000003    
-356    KIR2DL3:5603→A                 44.40        51.00        -6.60      0.000003    
-357    KIR2DL3:5605→C                 44.40        51.00        -6.60      0.000003    
-358    KIR2DL3:14109→T                44.40        51.00        -6.60      0.000003    
-359    KIR2DL3:14110→G                44.40        51.00        -6.60      0.000003    
-360    KIR3DL1:2212→A                 28.05        25.00        3.05       0.000003    
-361    KIR2DL3:14194→G                52.78        49.00        3.78       0.000003    
-362    KIR2DL4:2779→G                 54.78        51.00        3.78       0.000003    
-363    KIR3DL2:16446→C                49.13        56.00        -6.87      0.000003    
-364    KIR2DL4:2642→C                 54.78        62.00        -7.22      0.000003    
-365    KIR2DL4:2644→G                 54.78        62.00        -7.22      0.000003    
-366    KIR2DL3:5745→A                 44.40        41.00        3.40       0.000003    
-367    KIR2DL3:5748→C                 44.40        41.00        3.40       0.000003    
-368    KIR3DL1:5461→T                 49.41        46.00        3.41       0.000003    
-369    KIR3DL1:13211→T                21.52        19.00        2.52       0.000003    
-370    KIR3DL1:13941→C                21.52        19.00        2.52       0.000003    
-371    KIR2DS4:7116→C                 26.44        31.00        -4.56      0.000003    
-372    KIR3DL1:2331→G                 49.41        56.00        -6.59      0.000003    
-373    KIR3DL1:3682→C                 49.41        56.00        -6.59      0.000003    
-374    KIR3DL1:3683→T                 49.41        56.00        -6.59      0.000003    
-375    KIR3DL1:13902→C                70.66        67.00        3.66       0.000003    
-376    KIR3DL2:16499→G                49.13        46.00        3.13       0.000003    
-377    KIR3DL2:16503→G                49.13        46.00        3.13       0.000003    
-378    KIR3DL2:15694→C                49.12        46.00        3.12       0.000003    
-379    KIR3DL3:1876→T                 24.47        22.00        2.47       0.000003    
-380    KIR2DP1:3949→A                 0.15         0.00         0.15       0.000002    
-381    KIR2DP1:3949→T                 0.15         0.00         0.15       0.000002    
-382    KIR2DP1:3949→P                 0.15         0.00         0.15       0.000002    
-383    KIR2DP1:3949→N                 0.15         0.00         0.15       0.000002    
-384    KIR3DL2:2000→G                 21.25        25.00        -3.75      0.000002    
-385    KIR3DL2:2006→G                 21.25        25.00        -3.75      0.000002    
-386    KIR3DL2:2011→T                 21.25        25.00        -3.75      0.000002    
-387    KIR3DL2:3564→G                 21.25        25.00        -3.75      0.000002    
-388    KIR3DL2:1819→C                 21.25        19.00        2.25       0.000002    
-389    KIR3DL2:1828→A                 21.25        19.00        2.25       0.000002    
-390    KIR3DL2:1829→C                 21.25        19.00        2.25       0.000002    
-391    KIR3DL2:1836→G                 21.25        19.00        2.25       0.000002    
-392    KIR3DL2:1837→C                 21.25        19.00        2.25       0.000002    
-393    KIR3DL2:1841→G                 21.25        19.00        2.25       0.000002    
-394    KIR3DL2:1858→C                 21.25        19.00        2.25       0.000002    
-395    KIR3DL2:1862→A                 21.25        19.00        2.25       0.000002    
-396    KIR3DL2:1877→G                 21.25        19.00        2.25       0.000002    
-397    KIR3DL2:2040→G                 21.25        19.00        2.25       0.000002    
-398    KIR3DL2:2041→G                 21.25        19.00        2.25       0.000002    
-399    KIR3DL2:2056→C                 21.25        19.00        2.25       0.000002    
-400    KIR3DL2:5453→C                 21.25        19.00        2.25       0.000002    
-401    KIR3DL2:5510→T                 21.25        19.00        2.25       0.000002    
-402    KIR3DL2:5511→C                 21.25        19.00        2.25       0.000002    
-403    KIR3DL2:5516→A                 21.25        19.00        2.25       0.000002    
-404    KIR3DL2:5528→A                 21.25        19.00        2.25       0.000002    
-405    KIR2DS4:5081→T                 26.44        24.00        2.44       0.000002    
-406    KIR2DS4:5117→A                 26.44        24.00        2.44       0.000002    
-407    KIR2DS4:7156→C                 26.44        24.00        2.44       0.000002    
-408    KIR2DS4:7181→G                 26.44        24.00        2.44       0.000002    
-409    KIR2DS4:7216→C                 26.44        24.00        2.44       0.000002    
-410    KIR2DL3:5531→C                 44.40        50.00        -5.60      0.000002    
-411    KIR2DL3:5532→G                 44.40        50.00        -5.60      0.000002    
-412    KIR2DL3:5558→G                 44.40        50.00        -5.60      0.000002    
-413    KIR2DL3:5559→C                 44.40        50.00        -5.60      0.000002    
-414    KIR2DL3:5677→G                 44.40        50.00        -5.60      0.000002    
-415    KIR2DL3:5691→C                 44.40        50.00        -5.60      0.000002    
-416    KIR2DL3:5709→A                 44.40        50.00        -5.60      0.000002    
-417    KIR2DL4:10349→T                54.78        52.00        2.78       0.000002    
-418    KIR2DL3:13946→C                44.40        42.00        2.40       0.000002    
-419    KIR2DL3:13969→C                44.40        42.00        2.40       0.000002    
-420    KIR2DL3:13972→G                44.40        42.00        2.40       0.000002    
-421    KIR3DL1:3568→A                 49.41        55.00        -5.59      0.000002    
-422    KIR3DL1:3598→G                 49.41        55.00        -5.59      0.000002    
-423    KIR3DL1:3607→A                 49.41        55.00        -5.59      0.000002    
-424    KIR3DL1:3612→C                 49.41        55.00        -5.59      0.000002    
-425    KIR3DL1:3619→C                 49.41        55.00        -5.59      0.000002    
-426    KIR3DL1:3729→C                 49.41        47.00        2.41       0.000002    
-427    KIR3DL1:2094→A                 28.05        26.00        2.05       0.000002    
-428    KIR3DL1:2233→A                 28.03        26.00        2.03       0.000002    
-429    KIR3DL2:16489→G                49.13        47.00        2.13       0.000002    
-430    KIR3DL2:16510→A                49.12        47.00        2.12       0.000002    
-431    KIR2DP1:11726→C                0.09         0.00         0.09       0.000001    
-432    KIR2DP1:5840→P                 0.09         0.00         0.09       0.000001    
-433    KIR2DP1:5840→C                 0.09         0.00         0.09       0.000001    
-434    KIR2DP1:11726→N                0.09         0.00         0.09       0.000001    
-435    KIR2DP1:5840→T                 0.09         0.00         0.09       0.000001    
-436    KIR2DP1:11726→P                0.09         0.00         0.09       0.000001    
-437    KIR2DP1:5840→N                 0.09         0.00         0.09       0.000001    
-438    KIR2DP1:11726→T                0.08         0.00         0.08       0.000001    
-439    KIR2DL3:5616→G                 44.40        49.00        -4.60      0.000001    
-440    KIR2DL3:5721→C                 44.40        49.00        -4.60      0.000001    
-441    KIR3DL1:13147→A                21.52        20.00        1.52       0.000001    
-442    KIR3DL1:13207→C                21.52        20.00        1.52       0.000001    
-443    KIR3DL1:13983→T                21.52        20.00        1.52       0.000001    
-444    KIR3DL1:13985→T                21.52        20.00        1.52       0.000001    
-445    KIR3DL2:16464→A                49.13        54.00        -4.87      0.000001    
-446    KIR2DL4:2862→C                 54.78        60.00        -5.22      0.000001    
-447    KIR2DL4:10376→G                54.78        60.00        -5.22      0.000001    
-448    KIR2DL4:10377→G                54.78        60.00        -5.22      0.000001    
-449    KIR2DL4:10350→G                54.78        53.00        1.78       0.000001    
-450    KIR3DL2:1966→G                 21.25        24.00        -2.75      0.000001    
-451    KIR3DL2:1967→G                 21.25        24.00        -2.75      0.000001    
-452    KIR3DL2:1998→C                 21.25        24.00        -2.75      0.000001    
-453    KIR3DL2:2022→C                 21.25        24.00        -2.75      0.000001    
-454    KIR3DL2:5620→G                 21.25        24.00        -2.75      0.000001    
-455    KIR2DS4:7145→T                 26.44        25.00        1.44       0.000001    
-456    KIR3DL1:3597→G                 49.41        54.00        -4.59      0.000001    
-457    KIR3DL1:3673→C                 49.41        54.00        -4.59      0.000001    
-458    KIR3DL1:3674→C                 49.41        54.00        -4.59      0.000001    
-459    KIR3DL1:3695→G                 49.41        54.00        -4.59      0.000001    
-460    KIR3DL2:1851→C                 21.25        20.00        1.25       0.000001    
-461    KIR3DL2:1855→G                 21.25        20.00        1.25       0.000001    
-462    KIR3DL2:1873→C                 21.25        20.00        1.25       0.000001    
-463    KIR3DL2:1879→G                 21.25        20.00        1.25       0.000001    
-464    KIR3DL2:1912→A                 21.25        20.00        1.25       0.000001    
-465    KIR3DL2:1916→G                 21.25        20.00        1.25       0.000001    
-466    KIR3DL2:1917→C                 21.25        20.00        1.25       0.000001    
-467    KIR3DL2:1919→A                 21.25        20.00        1.25       0.000001    
-468    KIR3DL2:2054→C                 21.25        20.00        1.25       0.000001    
-469    KIR3DL2:5472→C                 21.25        20.00        1.25       0.000001    
-470    KIR3DL2:5473→G                 21.25        20.00        1.25       0.000001    
-471    KIR3DL2:5494→T                 21.25        20.00        1.25       0.000001    
-472    KIR2DL3:14153→A                29.25        28.00        1.25       0.000001    
-473    KIR3DL3:1876→A                 34.61        38.00        -3.39      0.000001    
-474    KIR3DL1:5596→G                 21.52        24.00        -2.48      0.000001    
-475    KIR3DL2:16515→G                49.12        48.00        1.12       0.000001    
-476    KIR3DL3:5297→T                 24.41        27.00        -2.59      0.000001    
-477    KIR3DL2:16470→A                49.13        53.00        -3.87      0.000001    
-478    KIR3DL2:16434→G                49.13        53.00        -3.87      0.000001    
-479    KIR3DL1:13130→T                49.14        53.00        -3.86      0.000001    
-480    KIR3DL1:2335→C                 49.41        53.00        -3.59      0.000000    
-481    KIR3DL1:3626→T                 49.41        53.00        -3.59      0.000000    
-482    KIR3DL2:279→G                  0.03         0.00         0.03       0.000000    
-483    KIR2DL4:10658→A                0.03         0.00         0.03       0.000000    
-484    KIR3DL1:3516→T                 49.41        49.00        0.41       0.000000    
-485    KIR3DL1:3523→G                 49.41        49.00        0.41       0.000000    
-486    KIR3DL1:5334→C                 49.41        49.00        0.41       0.000000    
-487    KIR2DP1:12599→A                44.40        44.00        0.40       0.000000    
-488    KIR2DL3:5735→G                 44.40        44.00        0.40       0.000000    
-489    KIR3DL1:13146→C                21.52        21.00        0.52       0.000000    
-490    KIR3DL1:13174→A                21.52        21.00        0.52       0.000000    
-491    KIR3DL2:1961→T                 21.25        23.00        -1.75      0.000000    
-492    KIR3DL2:2027→T                 21.25        23.00        -1.75      0.000000    
-493    KIR3DL2:3577→C                 21.25        23.00        -1.75      0.000000    
-494    KIR3DL2:3579→C                 21.25        23.00        -1.75      0.000000    
-495    KIR3DL2:3621→A                 21.25        23.00        -1.75      0.000000    
-496    KIR3DL2:5647→C                 21.25        23.00        -1.75      0.000000    
-497    KIR3DL2:5648→G                 21.25        23.00        -1.75      0.000000    
-498    KIR3DL2:5651→C                 21.25        23.00        -1.75      0.000000    
-499    KIR3DL1:13174→T                49.14        49.00        0.14       0.000000    
-500    KIR3DL2:15646→C                49.12        49.00        0.12       0.000000    
-501    KIR3DL1:13127→G                70.66        71.00        -0.34      0.000000    
-502    KIR3DL1:13134→C                70.66        71.00        -0.34      0.000000    
-503    KIR2DP1:11726→G                32.14        32.00        0.14       0.000000    
-504    KIR3DL1:13132→T                49.14        52.00        -2.86      0.000000    
-505    KIR3DL1:13133→G                49.14        52.00        -2.86      0.000000    
-506    KIR3DL1:13207→T                49.14        52.00        -2.86      0.000000    
-507    KIR3DL2:1874→G                 21.25        21.00        0.25       0.000000    
-508    KIR3DL2:1921→G                 21.25        21.00        0.25       0.000000    
-509    KIR3DL2:1927→A                 21.25        21.00        0.25       0.000000    
-510    KIR3DL2:2048→G                 21.25        21.00        0.25       0.000000    
-511    KIR3DL2:3608→T                 21.25        21.00        0.25       0.000000    
-512    KIR3DL2:3794→A                 21.25        21.00        0.25       0.000000    
-513    KIR3DL2:5490→C                 21.25        21.00        0.25       0.000000    
-514    KIR2DL4:2850→C                 54.78        55.00        -0.22      0.000000    
-515    KIR2DL4:2889→C                 54.78        55.00        -0.22      0.000000    
-516    KIR2DL3:5632→C                 44.40        47.00        -2.60      0.000000    
-517    KIR3DL1:5557→C                 21.52        23.00        -1.48      0.000000    
-518    KIR3DL1:292→C                  49.41        52.00        -2.59      0.000000    
-519    KIR3DL1:3625→G                 49.41        52.00        -2.59      0.000000    
-520    KIR3DL1:3635→T                 49.41        52.00        -2.59      0.000000    
-521    KIR3DL1:3669→C                 49.41        52.00        -2.59      0.000000    
-522    KIR3DL1:3699→C                 49.41        52.00        -2.59      0.000000    
-523    KIR3DL1:5379→A                 49.41        52.00        -2.59      0.000000    
-524    KIR3DL1:13865→G                70.66        74.00        -3.34      0.000000    
-525    KIR3DL1:267→A                  49.41        50.00        -0.59      0.000000    
-526    KIR3DL1:3632→A                 49.41        50.00        -0.59      0.000000    
-527    KIR3DL1:5373→A                 49.41        50.00        -0.59      0.000000    
-528    KIR3DL1:5493→A                 49.41        50.00        -0.59      0.000000    
-529    KIR2DL4:2827→G                 54.78        57.00        -2.22      0.000000    
-530    KIR2DL4:2864→C                 54.78        57.00        -2.22      0.000000    
-531    KIR2DL4:2633→C                 54.78        56.00        -1.22      0.000000    
-532    KIR2DL4:2851→G                 54.78        56.00        -1.22      0.000000    
-533    KIR2DL4:2853→G                 54.78        56.00        -1.22      0.000000    
-534    KIR2DL4:10358→A                54.78        56.00        -1.22      0.000000    
-535    KIR3DL2:15628→G                49.12        51.00        -1.88      0.000000    
-536    KIR3DL1:13146→T                49.14        51.00        -1.86      0.000000    
-537    KIR3DL1:13147→G                49.14        51.00        -1.86      0.000000    
-538    KIR3DL1:13211→G                49.14        51.00        -1.86      0.000000    
-539    KIR2DS4:5169→G                 26.44        27.00        -0.56      0.000000    
-540    KIR2DL3:1973→G                 44.40        46.00        -1.60      0.000000    
-541    KIR2DL3:5633→G                 44.40        46.00        -1.60      0.000000    
-542    KIR3DL1:13926→C                21.52        22.00        -0.48      0.000000    
-543    KIR3DL1:13971→C                21.52        22.00        -0.48      0.000000    
-544    KIR3DL1:13972→T                21.52        22.00        -0.48      0.000000    
-545    KIR3DL1:13152→G                70.66        73.00        -2.34      0.000000    
-546    KIR3DL2:1935→C                 21.25        22.00        -0.75      0.000000    
-547    KIR3DL2:1936→G                 21.25        22.00        -0.75      0.000000    
-548    KIR3DL2:3599→C                 21.25        22.00        -0.75      0.000000    
-549    KIR3DL2:3612→A                 21.25        22.00        -0.75      0.000000    
-550    KIR3DL2:3625→G                 21.25        22.00        -0.75      0.000000    
-551    KIR3DL2:5661→C                 21.25        22.00        -0.75      0.000000    
-552    KIR3DL3:3483→G                 59.08        61.00        -1.92      0.000000    
-553    KIR3DL1:3537→G                 49.41        51.00        -1.59      0.000000    
-554    KIR3DL1:3539→G                 49.41        51.00        -1.59      0.000000    
-555    KIR3DL1:3642→T                 49.41        51.00        -1.59      0.000000    
-556    KIR3DL1:3666→C                 49.41        51.00        -1.59      0.000000    
-557    KIR3DL1:3747→T                 49.41        51.00        -1.59      0.000000    
-558    KIR3DL1:3777→A                 49.41        51.00        -1.59      0.000000    
-559    KIR3DL1:5345→C                 49.41        51.00        -1.59      0.000000    
-560    KIR2DL1:3789→A                 0.00         0.00         0.00       0.000000    
-561    KIR2DL1:3789→C                 0.00         0.00         0.00       0.000000    
-562    KIR2DL1:3789→N                 0.00         0.00         0.00       0.000000    
-563    KIR2DL1:3789→P                 0.00         0.00         0.00       0.000000    
-564    KIR2DL1:3789→T                 0.00         0.00         0.00       0.000000    
-565    KIR2DL1:3823→C                 0.00         0.00         0.00       0.000000    
-566    KIR2DL1:3823→N                 0.00         0.00         0.00       0.000000    
-567    KIR2DL1:3823→P                 0.00         0.00         0.00       0.000000    
-568    KIR2DL1:3823→T                 0.00         0.00         0.00       0.000000    
-569    KIR2DL1:5612→A                 0.00         0.00         0.00       0.000000    
-570    KIR2DL1:5612→G                 0.00         0.00         0.00       0.000000    
-571    KIR2DL1:5612→N                 0.00         0.00         0.00       0.000000    
-572    KIR2DL1:5612→P                 0.00         0.00         0.00       0.000000    
-573    KIR2DL3:268→C                  0.00         0.00         0.00       0.000000    
-574    KIR2DL3:268→G                  0.00         0.00         0.00       0.000000    
-575    KIR2DL3:268→N                  0.00         0.00         0.00       0.000000    
-576    KIR2DL3:268→P                  0.00         0.00         0.00       0.000000    
-577    KIR2DL3:268→T                  0.00         0.00         0.00       0.000000    
-578    KIR2DL3:273→A                  0.00         0.00         0.00       0.000000    
-579    KIR2DL3:273→C                  0.00         0.00         0.00       0.000000    
-580    KIR2DL3:273→N                  0.00         0.00         0.00       0.000000    
-581    KIR2DL3:273→P                  0.00         0.00         0.00       0.000000    
-582    KIR2DL3:273→T                  0.00         0.00         0.00       0.000000    
-583    KIR2DL3:293→A                  0.00         0.00         0.00       0.000000    
-584    KIR2DL3:293→C                  0.00         0.00         0.00       0.000000    
-585    KIR2DL3:293→G                  0.00         0.00         0.00       0.000000    
-586    KIR2DL3:293→N                  0.00         0.00         0.00       0.000000    
-587    KIR2DL3:293→P                  0.00         0.00         0.00       0.000000    
-588    KIR2DL3:1210→A                 0.00         0.00         0.00       0.000000    
-589    KIR2DL3:1210→C                 0.00         0.00         0.00       0.000000    
-590    KIR2DL3:1210→N                 0.00         0.00         0.00       0.000000    
-591    KIR2DL3:1210→P                 0.00         0.00         0.00       0.000000    
-592    KIR2DL3:1210→T                 0.00         0.00         0.00       0.000000    
-593    KIR2DL3:1973→A                 0.00         0.00         0.00       0.000000    
-594    KIR2DL3:1973→C                 0.00         0.00         0.00       0.000000    
-595    KIR2DL3:1973→N                 0.00         0.00         0.00       0.000000    
-596    KIR2DL3:1973→P                 0.00         0.00         0.00       0.000000    
-597    KIR2DL3:1973→T                 0.00         0.00         0.00       0.000000    
-598    KIR2DL3:3707→A                 0.00         0.00         0.00       0.000000    
-599    KIR2DL3:3707→C                 0.00         0.00         0.00       0.000000    
-600    KIR2DL3:3707→G                 0.00         0.00         0.00       0.000000    
-New best model with final loss: 16976.54
+1      KIR2DP1:3949→G                 30.03        90.00        -59.97     0.000346    
+2      KIR3DL1:2329→N                 15.97        0.00         15.97      0.000271     ⚠️HALLUC
+3      KIR3DL1:2330→N                 15.97        0.00         15.97      0.000271     ⚠️HALLUC
+4      KIR2DS4:5311→G                 37.46        8.00         29.46      0.000262    
+5      KIR2DS4:5291→C                 37.46        8.00         29.46      0.000262    
+6      KIR2DS4:5320→C                 37.46        8.00         29.46      0.000262    
+7      KIR2DP1:3949→C                 14.91        0.00         14.91      0.000253     ⚠️HALLUC
+8      KIR2DS4:5323→C                 37.46        9.00         28.46      0.000238    
+9      KIR2DS4:5290→G                 37.46        9.00         28.46      0.000238    
+10     KIR2DS4:5346→T                 37.46        11.00        26.46      0.000196    
+11     KIR2DS4:3344→G                 37.46        11.00        26.46      0.000196    
+12     KIR3DL1:2212→G                 15.97        46.00        -30.03     0.000167    
+13     KIR2DS4:14803→G                37.46        13.00        24.46      0.000161    
+14     KIR2DL4:2718→A                 16.56        46.00        -29.44     0.000158    
+15     KIR2DP1:3972→A                 44.84        89.00        -44.16     0.000156    
+16     KIR2DS4:10434→C                37.46        14.00        23.46      0.000145    
+17     KIR2DS4:5225→T                 37.46        14.00        23.46      0.000145    
+18     KIR2DS4:14801→C                37.46        14.00        23.46      0.000145    
+19     KIR2DP1:3977→A                 44.84        87.00        -42.16     0.000143    
+20     KIR3DL1:14009→G                42.75        18.00        24.75      0.000137    
+21     KIR3DL2:268→A                  22.63        53.00        -30.37     0.000135    
+22     KIR3DL2:272→C                  22.63        53.00        -30.37     0.000135    
+23     KIR2DP1:3978→G                 44.84        85.00        -40.16     0.000131    
+24     KIR3DL1:2233→T                 16.03        41.00        -24.97     0.000123    
+25     KIR3DL2:279→T                  22.61        51.00        -28.39     0.000120    
+26     KIR3DL2:282→C                  22.63        51.00        -28.37     0.000120    
+27     KIR3DL1:1304→C                 15.97        40.00        -24.03     0.000116    
+28     KIR2DS4:5206→A                 37.46        17.00        20.46      0.000105    
+29     KIR3DL2:16345→T                22.67        48.00        -25.33     0.000098    
+30     KIR3DL1:1300→G                 49.29        85.00        -35.71     0.000097    
+31     KIR3DL2:293→C                  22.63        47.00        -24.37     0.000092    
+32     KIR2DS4:14724→A                37.46        19.00        18.46      0.000083    
+33     KIR3DL1:2094→G                 15.97        35.00        -19.03     0.000078    
+34     KIR2DL1:3823→G                 12.07        29.00        -16.93     0.000078    
+35     KIR2DS4:15455→G                37.46        20.00        17.46      0.000074    
+36     KIR3DP1:3816→G                 35.25        19.00        16.25      0.000068    
+37     KIR2DL3:3850→G                 39.51        66.00        -26.49     0.000067    
+38     KIR2DL4:2727→C                 45.00        73.00        -28.00     0.000066    
+39     KIR3DL1:14039→C                29.23        15.00        14.23      0.000063    
+40     KIR2DL4:2650→G                 16.76        34.00        -17.24     0.000063    
+41     KIR3DL1:271→C                  33.05        18.00        15.05      0.000062    
+42     KIR2DL4:2744→C                 45.00        72.00        -27.00     0.000062    
+43     KIR3DP1:5528→C                 32.17        55.00        -22.83     0.000061    
+44     KIR3DL1:271→T                  16.36        33.00        -16.64     0.000060    
+45     KIR3DL1:8826→G                 71.92        50.00        21.92      0.000060    
+46     KIR3DL1:2329→T                 33.44        56.00        -22.56     0.000058    
+47     KIR3DL1:2330→C                 33.44        56.00        -22.56     0.000058    
+48     KIR2DL4:2717→A                 45.00        71.00        -26.00     0.000057    
+49     KIR3DL1:1333→T                 49.30        76.00        -26.70     0.000055    
+50     KIR2DL1:5612→C                 3.21         0.00         3.21       0.000054    
+51     KIR3DL1:14039→P                1.55         8.00         -6.45      0.000054    
+52     KIR2DL1:13433→G                26.53        46.00        -19.47     0.000054    
+53     KIR3DL1:13941→G                45.58        29.00        16.58      0.000053    
+54     KIR2DL3:3861→C                 39.51        63.00        -23.49     0.000053    
+55     KIR2DL3:3873→C                 39.51        63.00        -23.49     0.000053    
+56     KIR2DL3:3824→A                 39.51        63.00        -23.49     0.000053    
+57     KIR3DL3:5363→A                 26.05        45.00        -18.95     0.000052    
+58     KIR3DL1:1332→A                 49.30        75.00        -25.70     0.000051    
+59     KIR3DL1:14039→T                38.42        61.00        -22.58     0.000051    
+60     KIR3DL1:13897→G                28.62        16.00        12.62      0.000050    
+61     KIR3DL1:5596→A                 28.60        48.00        -19.40     0.000050    
+62     KIR2DS4:267→A                  37.46        23.00        14.46      0.000050    
+63     KIR2DS4:5078→G                 37.46        23.00        14.46      0.000050    
+64     KIR2DL4:2686→A                 45.00        69.00        -24.00     0.000049    
+65     KIR2DP1:5840→G                 14.96        29.00        -14.04     0.000048    
+66     KIR2DP1:288→A                  15.07        29.00        -13.93     0.000047    
+67     KIR3DL3:5428→A                 26.11        44.00        -17.89     0.000046    
+68     KIR3DL1:13972→A                51.23        35.00        16.23      0.000046    
+69     KIR3DL1:13971→T                51.23        35.00        16.23      0.000046    
+70     KIR3DL1:13983→G                51.23        35.00        16.23      0.000046    
+71     KIR3DL1:13943→C                66.27        48.00        18.27      0.000045    
+72     KIR2DL3:3852→T                 26.47        44.00        -17.53     0.000044    
+73     KIR3DL2:16348→A                42.83        65.00        -22.17     0.000044    
+74     KIR2DL3:9086→A                 2.59         0.00         2.59       0.000044    
+75     KIR3DP1:1080→N                 49.57        34.00        15.57      0.000043    
+76     KIR3DP1:5550→C                 32.00        51.00        -19.00     0.000043    
+77     KIR2DS4:5081→T                 37.46        24.00        13.46      0.000043    
+78     KIR2DS4:5117→A                 37.46        24.00        13.46      0.000043    
+79     KIR2DS4:7156→C                 37.46        24.00        13.46      0.000043    
+80     KIR2DS4:7216→C                 37.46        24.00        13.46      0.000043    
+81     KIR2DS4:7181→G                 37.46        24.00        13.46      0.000043    
+82     KIR3DP1:335→N                  49.42        34.00        15.42      0.000043    
+83     KIR3DL1:13952→C                70.04        52.00        18.04      0.000042    
+84     KIR2DP1:4023→T                 44.84        67.00        -22.16     0.000042    
+85     KIR2DL3:3837→G                 39.51        60.00        -20.49     0.000041    
+86     KIR3DL1:13700→C                71.92        54.00        17.92      0.000041    
+87     KIR3DL1:5586→T                 28.60        46.00        -17.40     0.000040    
+88     KIR3DL1:13985→G                51.23        36.00        15.23      0.000040    
+89     KIR3DL1:13743→G                51.23        36.00        15.23      0.000040    
+90     KIR3DL1:13740→T                51.23        36.00        15.23      0.000040    
+91     KIR3DL1:13744→C                51.23        36.00        15.23      0.000040    
+92     KIR3DL1:5617→T                 49.29        72.00        -22.71     0.000040    
+93     KIR3DL1:13926→T                42.75        29.00        13.75      0.000039    
+94     KIR3DL1:13886→C                34.30        22.00        12.30      0.000039    
+95     KIR2DS4:7145→T                 37.46        25.00        12.46      0.000037    
+96     KIR3DL1:13707→G                71.92        55.00        16.92      0.000037    
+97     KIR3DL1:2207→T                 49.29        71.00        -21.71     0.000036    
+98     KIR2DL1:13433→A                12.02        23.00        -10.98     0.000036    
+99     KIR3DL1:13950→C                68.16        52.00        16.16      0.000035    
+100    KIR2DL4:2655→A                 45.00        65.00        -20.00     0.000034    
+101    KIR2DL3:3892→C                 39.51        58.00        -18.49     0.000033    
+102    KIR2DL3:3814→G                 39.51        58.00        -18.49     0.000033    
+103    KIR3DL1:13993→G                71.93        56.00        15.93      0.000033    
+104    KIR3DL1:13710→C                71.93        56.00        15.93      0.000033    
+105    KIR3DL1:13713→A                71.92        56.00        15.92      0.000033    
+106    KIR3DL1:13736→T                51.23        38.00        13.23      0.000031    
+107    KIR3DL1:13737→G                51.23        38.00        13.23      0.000031    
+108    KIR3DL2:8892→C                 51.13        38.00        13.13      0.000031    
+109    KIR2DP1:11726→A                14.96        26.00        -11.04     0.000031    
+110    KIR3DL1:5581→C                 49.30        69.00        -19.70     0.000030    
+111    KIR2DL3:3813→G                 39.51        57.00        -17.49     0.000030    
+112    KIR2DL3:3778→C                 39.58        57.00        -17.42     0.000029    
+113    KIR3DL2:3829→G                 22.63        14.00        8.63       0.000029    
+114    KIR2DS4:7011→C                 37.46        54.00        -16.54     0.000028    
+115    KIR2DS4:7009→C                 37.46        54.00        -16.54     0.000028    
+116    KIR2DL4:10397→G                45.00        63.00        -18.00     0.000027    
+117    KIR2DL4:2649→C                 45.00        63.00        -18.00     0.000027    
+118    KIR2DL4:2762→A                 45.00        63.00        -18.00     0.000027    
+119    KIR3DL1:2203→A                 49.29        68.00        -18.71     0.000027    
+120    KIR3DL2:16175→G                51.13        39.00        12.13      0.000026    
+121    KIR3DL1:13743→C                20.86        13.00        7.86       0.000026    
+122    KIR3DL1:13744→G                20.86        13.00        7.86       0.000026    
+123    KIR2DS4:5169→G                 37.46        27.00        10.46      0.000026    
+124    KIR2DL3:9063→C                 42.01        59.00        -16.99     0.000026    
+125    KIR2DL3:3809→T                 52.01        71.00        -18.99     0.000026    
+126    KIR2DL3:14110→A                20.80        13.00        7.80       0.000026    
+127    KIR2DL3:14109→C                20.80        13.00        7.80       0.000026    
+128    KIR3DL1:13718→C                71.93        58.00        13.93      0.000026    
+129    KIR2DP1:5790→G                 44.84        62.00        -17.16     0.000025    
+130    KIR2DL4:1624→G                 45.00        34.00        11.00      0.000025    
+131    KIR2DL4:1639→G                 45.00        34.00        11.00      0.000025    
+132    KIR2DL4:2642→C                 45.00        62.00        -17.00     0.000024    
+133    KIR2DL4:2644→G                 45.00        62.00        -17.00     0.000024    
+134    KIR3DL1:2172→G                 49.29        67.00        -17.71     0.000024    
+135    KIR3DL1:2258→G                 49.29        67.00        -17.71     0.000024    
+136    KIR3DL1:2306→A                 49.30        67.00        -17.70     0.000024    
+137    KIR2DL3:3801→A                 54.51        73.00        -18.49     0.000023    
+138    KIR2DL3:3931→T                 39.51        55.00        -15.49     0.000023    
+139    KIR2DL3:1210→G                 39.52        55.00        -15.48     0.000023    
+140    KIR3DP1:3816→A                 14.61        24.00        -9.39      0.000023    
+141    KIR2DL3:9086→G                 39.58        55.00        -15.42     0.000023    
+142    KIR3DL2:16199→A                51.13        40.00        11.13      0.000023    
+143    KIR3DL1:2245→A                 49.29        66.00        -16.71     0.000021    
+144    KIR3DL1:2315→C                 49.30        66.00        -16.70     0.000021    
+145    KIR2DL4:1667→A                 45.00        35.00        10.00      0.000021    
+146    KIR2DL4:1632→A                 45.00        35.00        10.00      0.000021    
+147    KIR2DL4:1658→G                 45.00        35.00        10.00      0.000021    
+148    KIR2DL4:1654→T                 45.00        35.00        10.00      0.000021    
+149    KIR3DL1:13726→A                20.86        14.00        6.86       0.000020    
+150    KIR3DL1:13919→G                56.85        46.00        10.85      0.000020    
+151    KIR3DL1:13230→G                51.23        41.00        10.23      0.000019    
+152    KIR3DL1:13726→G                51.23        41.00        10.23      0.000019    
+153    KIR3DL1:2212→A                 33.44        25.00        8.44       0.000019    
+154    KIR3DL2:15700→G                51.13        41.00        10.13      0.000019    
+155    KIR2DL4:10376→G                45.00        60.00        -15.00     0.000018    
+156    KIR2DL4:10377→G                45.00        60.00        -15.00     0.000018    
+157    KIR2DL4:2862→C                 45.00        60.00        -15.00     0.000018    
+158    KIR3DL1:2308→C                 49.29        65.00        -15.71     0.000018    
+159    KIR3DL1:5573→T                 49.29        65.00        -15.71     0.000018    
+160    KIR3DL1:2229→C                 49.30        65.00        -15.70     0.000018    
+161    KIR2DS4:6995→A                 37.46        51.00        -13.54     0.000018    
+162    KIR2DL4:2863→G                 28.35        40.00        -11.65     0.000018    
+163    KIR3DL2:1030→G                 22.63        33.00        -10.37     0.000018    
+164    KIR2DL3:3852→C                 13.13        21.00        -7.87      0.000018    
+165    KIR3DL3:3389→A                 26.11        19.00        7.11       0.000017    
+166    KIR3DL2:3814→G                 22.63        16.00        6.63       0.000017    
+167    KIR3DL1:13918→C                55.91        46.00        9.91       0.000017    
+168    KIR3DL1:5557→T                 28.60        40.00        -11.40     0.000017    
+169    KIR2DL3:273→G                  39.51        53.00        -13.49     0.000017    
+170    KIR2DL3:268→A                  39.51        53.00        -13.49     0.000017    
+171    KIR2DL3:5545→C                 39.51        53.00        -13.49     0.000017    
+172    KIR3DL1:13866→A                57.80        48.00        9.80       0.000017    
+173    KIR3DL1:13867→C                57.80        48.00        9.80       0.000017    
+174    KIR3DL2:16193→G                51.13        42.00        9.13       0.000016    
+175    KIR3DL1:2273→C                 49.29        64.00        -14.71     0.000016    
+176    KIR3DL1:5567→C                 49.29        64.00        -14.71     0.000016    
+177    KIR3DL1:2296→C                 49.30        64.00        -14.70     0.000016    
+178    KIR2DL1:3789→G                 38.24        51.00        -12.76     0.000016    
+179    KIR2DS4:7048→A                 37.46        50.00        -12.54     0.000016    
+180    KIR3DL1:2094→A                 33.43        26.00        7.43       0.000015    
+181    KIR3DL1:2233→A                 33.38        26.00        7.38       0.000015    
+182    KIR3DL1:13737→C                20.86        15.00        5.86       0.000015    
+183    KIR3DL1:13736→C                20.86        15.00        5.86       0.000015    
+184    KIR3DL1:13722→A                20.86        15.00        5.86       0.000015    
+185    KIR3DL1:13740→C                20.86        15.00        5.86       0.000015    
+186    KIR3DL1:13230→A                20.86        15.00        5.86       0.000015    
+187    KIR2DL3:293→T                  39.51        52.00        -12.49     0.000014    
+188    KIR2DL3:5582→G                 39.51        52.00        -12.49     0.000014    
+189    KIR3DL3:3389→G                 34.25        27.00        7.25       0.000014    
+190    KIR3DP1:5550→T                 17.85        26.00        -8.15      0.000014    
+191    KIR2DL4:1648→T                 45.00        37.00        8.00       0.000014    
+192    KIR2DL4:9866→G                 45.00        37.00        8.00       0.000014    
+193    KIR3DL1:13901→G                50.25        42.00        8.25       0.000014    
+194    KIR3DL1:5570→C                 49.30        63.00        -13.70     0.000014    
+195    KIR2DL4:9837→C                 28.35        22.00        6.35       0.000013    
+196    KIR3DL2:16188→G                51.13        43.00        8.13       0.000013    
+197    KIR3DL2:5427→T                 22.63        17.00        5.63       0.000013    
+198    KIR3DL2:1899→G                 22.63        17.00        5.63       0.000013    
+199    KIR3DL1:13910→G                53.08        45.00        8.08       0.000013    
+200    KIR3DL3:10986→C                60.22        75.00        -14.78     0.000012    
+201    KIR2DP1:5840→A                 29.98        40.00        -10.02     0.000012    
+202    KIR3DL1:1304→G                 33.44        44.00        -10.56     0.000012    
+203    KIR2DL3:5603→A                 39.51        51.00        -11.49     0.000012    
+204    KIR2DL3:5605→C                 39.51        51.00        -11.49     0.000012    
+205    KIR2DL3:14109→T                39.60        51.00        -11.40     0.000012    
+206    KIR2DL3:14110→G                39.60        51.00        -11.40     0.000012    
+207    KIR3DP1:5528→G                 17.69        25.00        -7.31      0.000011    
+208    KIR3DL1:2190→A                 49.29        62.00        -12.71     0.000011    
+209    KIR2DL4:2827→G                 45.00        57.00        -12.00     0.000011    
+210    KIR2DL4:2864→C                 45.00        57.00        -12.00     0.000011    
+211    KIR2DL4:9798→G                 45.00        38.00        7.00       0.000011    
+212    KIR2DL4:9886→A                 45.00        38.00        7.00       0.000011    
+213    KIR2DL4:9815→A                 45.00        38.00        7.00       0.000011    
+214    KIR2DS4:7116→C                 37.46        31.00        6.46       0.000011    
+215    KIR3DL1:13722→G                51.23        44.00        7.23       0.000011    
+216    KIR3DL2:16190→G                51.13        44.00        7.13       0.000011    
+217    KIR3DL3:3428→G                 26.31        21.00        5.31       0.000010    
+218    KIR2DP1:288→G                  30.00        39.00        -9.00      0.000010    
+219    KIR2DL3:5559→C                 39.51        50.00        -10.49     0.000010    
+220    KIR2DL3:5531→C                 39.51        50.00        -10.49     0.000010    
+221    KIR2DL3:5532→G                 39.51        50.00        -10.49     0.000010    
+222    KIR2DL3:5709→A                 39.51        50.00        -10.49     0.000010    
+223    KIR2DL3:5558→G                 39.51        50.00        -10.49     0.000010    
+224    KIR2DL3:5677→G                 39.51        50.00        -10.49     0.000010    
+225    KIR2DL3:5691→C                 39.51        50.00        -10.49     0.000010    
+226    KIR3DL1:2110→T                 49.29        61.00        -11.71     0.000009    
+227    KIR3DL1:2162→A                 49.30        61.00        -11.70     0.000009    
+228    KIR2DL4:2851→G                 45.00        56.00        -11.00     0.000009    
+229    KIR2DL4:2633→C                 45.00        56.00        -11.00     0.000009    
+230    KIR2DL4:10358→A                45.00        56.00        -11.00     0.000009    
+231    KIR2DL4:2853→G                 45.00        56.00        -11.00     0.000009    
+232    KIR3DL2:5538→C                 22.63        18.00        4.63       0.000009    
+233    KIR3DL2:5437→G                 22.63        18.00        4.63       0.000009    
+234    KIR3DL2:5546→G                 22.63        18.00        4.63       0.000009    
+235    KIR3DL2:1803→A                 22.63        18.00        4.63       0.000009    
+236    KIR3DL2:5439→C                 22.63        18.00        4.63       0.000009    
+237    KIR3DL2:5545→C                 22.63        18.00        4.63       0.000009    
+238    KIR3DL1:5450→G                 49.29        43.00        6.29       0.000009    
+239    KIR3DL1:5407→T                 49.29        43.00        6.29       0.000009    
+240    KIR3DL1:5449→G                 49.29        43.00        6.29       0.000009    
+241    KIR3DL2:3751→G                 22.63        30.00        -7.37      0.000009    
+242    KIR3DL2:3691→C                 22.63        30.00        -7.37      0.000009    
+243    KIR3DL2:3730→G                 22.63        30.00        -7.37      0.000009    
+244    KIR3DL2:3729→C                 22.63        30.00        -7.37      0.000009    
+245    KIR3DL1:13900→C                50.25        44.00        6.25       0.000009    
+246    KIR2DL4:1588→A                 45.00        39.00        6.00       0.000009    
+247    KIR3DL1:13217→G                71.93        65.00        6.93       0.000009    
+248    KIR3DL3:5428→C                 34.25        29.00        5.25       0.000008    
+249    KIR2DL1:3823→A                 26.25        34.00        -7.75      0.000008    
+250    KIR3DL2:16316→C                49.94        61.00        -11.06     0.000008    
+251    KIR2DL3:3778→G                 20.09        16.00        4.09       0.000008    
+252    KIR2DL3:5616→G                 39.51        49.00        -9.49      0.000008    
+253    KIR2DL3:5721→C                 39.51        49.00        -9.49      0.000008    
+254    KIR2DP1:12340→G                44.84        55.00        -10.16     0.000008    
+255    KIR3DL1:2165→G                 49.29        60.00        -10.71     0.000008    
+256    KIR3DL1:2112→G                 49.30        60.00        -10.70     0.000008    
+257    KIR3DL1:2132→G                 49.30        60.00        -10.70     0.000008    
+258    KIR3DP1:1080→C                 8.72         6.00         2.72       0.000008    
+259    KIR3DP1:335→G                  0.44         0.00         0.44       0.000007    
+260    KIR2DL4:2889→C                 45.00        55.00        -10.00     0.000007    
+261    KIR2DL4:2850→C                 45.00        55.00        -10.00     0.000007    
+262    KIR3DL1:13130→A                20.86        17.00        3.86       0.000007    
+263    KIR3DL1:14009→A                20.86        17.00        3.86       0.000007    
+264    KIR3DL1:5392→C                 49.29        44.00        5.29       0.000007    
+265    KIR3DL1:13897→A                20.81        27.00        -6.19      0.000007    
+266    KIR3DL3:1876→T                 26.11        22.00        4.11       0.000007    
+267    KIR2DL4:10647→C                45.00        40.00        5.00       0.000007    
+268    KIR2DL4:10655→G                45.00        40.00        5.00       0.000007    
+269    KIR2DL4:10653→G                45.00        40.00        5.00       0.000007    
+270    KIR2DL4:10659→T                45.00        40.00        5.00       0.000007    
+271    KIR2DL4:10652→A                45.00        40.00        5.00       0.000007    
+272    KIR2DL4:10658→G                44.96        40.00        4.96       0.000007    
+273    KIR3DL3:5251→A                 26.05        33.00        -6.95      0.000007    
+274    KIR3DL2:16499→G                51.14        46.00        5.14       0.000007    
+275    KIR3DL2:16503→G                51.14        46.00        5.14       0.000007    
+276    KIR3DL2:15694→C                51.13        46.00        5.13       0.000006    
+277    KIR3DL2:3660→G                 22.63        29.00        -6.37      0.000006    
+278    KIR3DL2:3715→G                 22.63        29.00        -6.37      0.000006    
+279    KIR3DL1:2131→C                 49.29        59.00        -9.71      0.000006    
+280    KIR3DL1:2133→A                 49.29        59.00        -9.71      0.000006    
+281    KIR3DL1:2119→G                 49.29        59.00        -9.71      0.000006    
+282    KIR3DL2:2041→G                 22.63        19.00        3.63       0.000006    
+283    KIR3DL2:5511→C                 22.63        19.00        3.63       0.000006    
+284    KIR3DL2:1828→A                 22.63        19.00        3.63       0.000006    
+285    KIR3DL2:1829→C                 22.63        19.00        3.63       0.000006    
+286    KIR3DL2:1877→G                 22.63        19.00        3.63       0.000006    
+287    KIR3DL2:5516→A                 22.63        19.00        3.63       0.000006    
+288    KIR3DL2:2040→G                 22.63        19.00        3.63       0.000006    
+289    KIR3DL2:5453→C                 22.63        19.00        3.63       0.000006    
+290    KIR3DL2:1841→G                 22.63        19.00        3.63       0.000006    
+291    KIR3DL2:5510→T                 22.63        19.00        3.63       0.000006    
+292    KIR3DL2:1819→C                 22.63        19.00        3.63       0.000006    
+293    KIR3DL2:2056→C                 22.63        19.00        3.63       0.000006    
+294    KIR3DL2:1837→C                 22.63        19.00        3.63       0.000006    
+295    KIR3DL2:1862→A                 22.63        19.00        3.63       0.000006    
+296    KIR3DL2:5528→A                 22.63        19.00        3.63       0.000006    
+297    KIR3DL2:1836→G                 22.63        19.00        3.63       0.000006    
+298    KIR3DL2:1858→C                 22.63        19.00        3.63       0.000006    
+299    KIR2DL1:5612→T                 38.33        34.00        4.33       0.000006    
+300    KIR3DL3:5297→C                 34.31        42.00        -7.69      0.000006    
+301    KIR3DL3:5251→G                 34.31        42.00        -7.69      0.000006    
+302    KIR3DL1:13902→C                71.92        67.00        4.92       0.000005    
+303    KIR3DL1:2347→G                 49.29        45.00        4.29       0.000005    
+304    KIR3DL1:5415→G                 49.29        45.00        4.29       0.000005    
+305    KIR3DL1:3730→C                 49.29        45.00        4.29       0.000005    
+306    KIR3DL2:16345→C                19.08        16.00        3.08       0.000005    
+307    KIR2DL4:2718→G                 28.54        25.00        3.54       0.000005    
+308    KIR2DL4:9877→A                 28.49        25.00        3.49       0.000005    
+309    KIR3DL2:16489→G                51.15        47.00        4.15       0.000005    
+310    KIR2DL4:9846→T                 45.00        41.00        4.00       0.000005    
+311    KIR2DL4:10654→C                45.00        41.00        4.00       0.000005    
+312    KIR2DL4:10638→A                45.00        41.00        4.00       0.000005    
+313    KIR3DL2:16510→A                51.14        47.00        4.14       0.000005    
+314    KIR3DP1:1080→G                 0.27         0.00         0.27       0.000005    
+315    KIR3DP1:1080→T                 0.27         0.00         0.27       0.000005    
+316    KIR3DP1:1080→A                 0.27         0.00         0.27       0.000005    
+317    KIR3DP1:1080→P                 0.27         0.00         0.27       0.000005    
+318    KIR3DL1:13694→A                71.93        83.00        -11.07     0.000005    
+319    KIR3DL1:2168→A                 49.29        58.00        -8.71      0.000005    
+320    KIR3DL1:5516→C                 49.29        58.00        -8.71      0.000005    
+321    KIR3DL1:5515→C                 49.30        58.00        -8.70      0.000005    
+322    KIR3DL1:5586→G                 20.81        26.00        -5.19      0.000004    
+323    KIR3DL1:13886→G                20.83        26.00        -5.17      0.000004    
+324    KIR2DL3:5632→C                 39.51        47.00        -7.49      0.000004    
+325    KIR3DL2:3678→A                 22.63        28.00        -5.37      0.000004    
+326    KIR3DL2:3685→G                 22.63        28.00        -5.37      0.000004    
+327    KIR3DL2:3680→G                 22.63        28.00        -5.37      0.000004    
+328    KIR3DL2:3686→T                 22.63        28.00        -5.37      0.000004    
+329    KIR3DL1:13133→C                20.86        18.00        2.86       0.000004    
+330    KIR3DL1:13132→C                20.86        18.00        2.86       0.000004    
+331    KIR2DS4:7108→C                 37.46        34.00        3.46       0.000004    
+332    KIR2DL4:10350→G                45.00        53.00        -8.00      0.000004    
+333    KIR3DL3:5363→G                 34.31        41.00        -6.69      0.000004    
+334    KIR3DL1:5461→T                 49.30        46.00        3.30       0.000004    
+335    KIR3DL2:5494→T                 22.63        20.00        2.63       0.000004    
+336    KIR3DL2:1873→C                 22.63        20.00        2.63       0.000004    
+337    KIR3DL2:1879→G                 22.63        20.00        2.63       0.000004    
+338    KIR3DL2:1912→A                 22.63        20.00        2.63       0.000004    
+339    KIR3DL2:2054→C                 22.63        20.00        2.63       0.000004    
+340    KIR3DL2:1919→A                 22.63        20.00        2.63       0.000004    
+341    KIR3DL2:5472→C                 22.63        20.00        2.63       0.000004    
+342    KIR3DL2:1917→C                 22.63        20.00        2.63       0.000004    
+343    KIR3DL2:5473→G                 22.63        20.00        2.63       0.000004    
+344    KIR3DL2:1916→G                 22.63        20.00        2.63       0.000004    
+345    KIR3DL2:1851→C                 22.63        20.00        2.63       0.000004    
+346    KIR3DL2:1855→G                 22.63        20.00        2.63       0.000004    
+347    KIR3DL2:16515→G                51.13        48.00        3.13       0.000003    
+348    KIR2DL4:267→A                  45.00        42.00        3.00       0.000003    
+349    KIR2DL4:1528→C                 45.00        42.00        3.00       0.000003    
+350    KIR2DL4:10667→C                45.00        42.00        3.00       0.000003    
+351    KIR2DL4:10539→C                45.00        42.00        3.00       0.000003    
+352    KIR3DL1:2084→G                 49.29        57.00        -7.71      0.000003    
+353    KIR3DL1:2087→A                 49.29        57.00        -7.71      0.000003    
+354    KIR3DL1:5504→C                 49.30        57.00        -7.70      0.000003    
+355    KIR3DL1:2125→G                 49.30        57.00        -7.70      0.000003    
+356    KIR2DL3:3707→N                 0.19         0.00         0.19       0.000003    
+357    KIR2DL3:3707→P                 0.19         0.00         0.19       0.000003    
+358    KIR2DL3:3707→G                 0.19         0.00         0.19       0.000003    
+359    KIR2DL3:3707→C                 0.19         0.00         0.19       0.000003    
+360    KIR2DL3:3707→A                 0.19         0.00         0.19       0.000003    
+361    KIR3DL2:16381→G                51.15        59.00        -7.85      0.000003    
+362    KIR3DL3:3428→T                 34.05        40.00        -5.95      0.000003    
+363    KIR2DL3:5633→G                 39.51        46.00        -6.49      0.000003    
+364    KIR2DL3:1973→G                 39.51        46.00        -6.49      0.000003    
+365    KIR2DL3:14159→T                0.18         0.00         0.18       0.000003    
+366    KIR2DL3:14153→C                0.18         0.00         0.18       0.000003    
+367    KIR2DL3:14153→T                0.18         0.00         0.18       0.000003    
+368    KIR2DL3:14153→P                0.18         0.00         0.18       0.000003    
+369    KIR2DL3:14153→N                0.18         0.00         0.18       0.000003    
+370    KIR2DL3:14147→N                0.18         0.00         0.18       0.000003    
+371    KIR2DL3:14147→P                0.18         0.00         0.18       0.000003    
+372    KIR2DL3:14159→N                0.18         0.00         0.18       0.000003    
+373    KIR2DL3:14147→C                0.18         0.00         0.18       0.000003    
+374    KIR2DL3:14147→G                0.18         0.00         0.18       0.000003    
+375    KIR2DL3:14159→A                0.18         0.00         0.18       0.000003    
+376    KIR2DL3:14147→A                0.18         0.00         0.18       0.000003    
+377    KIR2DL3:14194→C                0.18         0.00         0.18       0.000003    
+378    KIR2DL3:14194→P                0.18         0.00         0.18       0.000003    
+379    KIR2DL3:14109→P                0.18         0.00         0.18       0.000003    
+380    KIR2DL3:14159→P                0.18         0.00         0.18       0.000003    
+381    KIR2DL3:14194→A                0.18         0.00         0.18       0.000003    
+382    KIR2DL3:14110→T                0.18         0.00         0.18       0.000003    
+383    KIR2DL3:14109→N                0.18         0.00         0.18       0.000003    
+384    KIR2DL3:14194→N                0.18         0.00         0.18       0.000003    
+385    KIR2DL3:14159→G                0.18         0.00         0.18       0.000003    
+386    KIR2DL3:14110→C                0.18         0.00         0.18       0.000003    
+387    KIR2DL3:14109→A                0.18         0.00         0.18       0.000003    
+388    KIR2DL3:14109→G                0.18         0.00         0.18       0.000003    
+389    KIR2DL3:14194→T                0.18         0.00         0.18       0.000003    
+390    KIR2DL3:14110→P                0.18         0.00         0.18       0.000003    
+391    KIR2DL3:14110→N                0.18         0.00         0.18       0.000003    
+392    KIR2DL4:10349→T                45.00        52.00        -7.00      0.000003    
+393    KIR2DL1:5612→N                 0.17         0.00         0.17       0.000003    
+394    KIR2DL1:5612→G                 0.17         0.00         0.17       0.000003    
+395    KIR2DL1:5612→A                 0.17         0.00         0.17       0.000003    
+396    KIR2DL1:5612→P                 0.17         0.00         0.17       0.000003    
+397    KIR3DL1:13971→G                0.16         0.00         0.16       0.000003    
+398    KIR3DL1:13983→C                0.16         0.00         0.16       0.000003    
+399    KIR3DL1:13971→P                0.16         0.00         0.16       0.000003    
+400    KIR3DL1:13726→P                0.16         0.00         0.16       0.000003    
+401    KIR3DL1:13134→G                0.16         0.00         0.16       0.000003    
+402    KIR3DL1:13147→T                0.16         0.00         0.16       0.000003    
+403    KIR3DL1:13211→P                0.16         0.00         0.16       0.000003    
+404    KIR3DL1:13713→T                0.16         0.00         0.16       0.000003    
+405    KIR3DL1:13983→A                0.16         0.00         0.16       0.000003    
+406    KIR3DL1:13910→C                0.16         0.00         0.16       0.000003    
+407    KIR3DL1:13130→G                0.16         0.00         0.16       0.000003    
+408    KIR3DL1:8826→C                 0.16         0.00         0.16       0.000003    
+409    KIR3DL1:8826→T                 0.16         0.00         0.16       0.000003    
+410    KIR3DL1:13700→G                0.16         0.00         0.16       0.000003    
+411    KIR3DL1:13700→N                0.16         0.00         0.16       0.000003    
+412    KIR3DL1:13707→T                0.16         0.00         0.16       0.000003    
+413    KIR3DL1:13718→P                0.16         0.00         0.16       0.000003    
+414    KIR3DL1:13710→N                0.16         0.00         0.16       0.000003    
+415    KIR3DL1:13902→A                0.16         0.00         0.16       0.000003    
+416    KIR3DL1:13866→T                0.16         0.00         0.16       0.000003    
+417    KIR3DL1:13866→C                0.16         0.00         0.16       0.000003    
+418    KIR3DL1:13726→C                0.16         0.00         0.16       0.000003    
+419    KIR3DL1:14009→N                0.16         0.00         0.16       0.000003    
+420    KIR3DL1:13744→N                0.16         0.00         0.16       0.000003    
+421    KIR3DL1:13147→C                0.16         0.00         0.16       0.000003    
+422    KIR3DL1:14009→P                0.16         0.00         0.16       0.000003    
+423    KIR3DL1:13910→A                0.16         0.00         0.16       0.000003    
+424    KIR3DL1:13147→P                0.16         0.00         0.16       0.000003    
+425    KIR3DL1:13726→T                0.16         0.00         0.16       0.000003    
+426    KIR3DL1:13713→P                0.16         0.00         0.16       0.000003    
+427    KIR3DL1:14009→C                0.16         0.00         0.16       0.000003    
+428    KIR3DL1:13713→N                0.16         0.00         0.16       0.000003    
+429    KIR3DL1:13867→P                0.16         0.00         0.16       0.000003    
+430    KIR3DL1:13886→N                0.16         0.00         0.16       0.000003    
+431    KIR3DL1:13147→N                0.16         0.00         0.16       0.000003    
+432    KIR3DL1:13134→N                0.16         0.00         0.16       0.000003    
+433    KIR3DL1:13710→G                0.16         0.00         0.16       0.000003    
+434    KIR3DL1:13713→C                0.16         0.00         0.16       0.000003    
+435    KIR3DL1:13901→N                0.16         0.00         0.16       0.000003    
+436    KIR3DL1:13910→N                0.16         0.00         0.16       0.000003    
+437    KIR3DL1:13707→N                0.16         0.00         0.16       0.000003    
+438    KIR3DL1:13130→C                0.16         0.00         0.16       0.000003    
+439    KIR3DL1:13700→A                0.16         0.00         0.16       0.000003    
+440    KIR3DL1:13134→T                0.16         0.00         0.16       0.000003    
+441    KIR3DL1:8826→P                 0.16         0.00         0.16       0.000003    
+442    KIR3DL1:13943→T                0.16         0.00         0.16       0.000003    
+443    KIR3DL1:13744→P                0.16         0.00         0.16       0.000003    
+444    KIR3DL1:8826→A                 0.16         0.00         0.16       0.000003    
+445    KIR3DL1:13217→P                0.16         0.00         0.16       0.000003    
+446    KIR3DL1:13700→T                0.16         0.00         0.16       0.000003    
+447    KIR3DL1:13886→P                0.16         0.00         0.16       0.000003    
+448    KIR3DL1:13983→P                0.16         0.00         0.16       0.000003    
+449    KIR3DL1:13707→A                0.16         0.00         0.16       0.000003    
+450    KIR3DL1:13740→A                0.16         0.00         0.16       0.000003    
+451    KIR3DL1:13211→C                0.16         0.00         0.16       0.000003    
+452    KIR3DL1:8826→N                 0.16         0.00         0.16       0.000003    
+453    KIR3DL1:13901→C                0.16         0.00         0.16       0.000003    
+454    KIR3DL1:13901→T                0.16         0.00         0.16       0.000003    
+455    KIR3DL1:13867→A                0.16         0.00         0.16       0.000003    
+456    KIR3DL1:13740→P                0.16         0.00         0.16       0.000003    
+457    KIR3DL1:13707→C                0.16         0.00         0.16       0.000003    
+458    KIR3DL1:13943→G                0.16         0.00         0.16       0.000003    
+459    KIR3DL1:13744→T                0.16         0.00         0.16       0.000003    
+460    KIR3DL1:13867→T                0.16         0.00         0.16       0.000003    
+461    KIR3DL1:13943→P                0.16         0.00         0.16       0.000003    
+462    KIR3DL1:13950→P                0.16         0.00         0.16       0.000003    
+463    KIR3DL1:13134→P                0.16         0.00         0.16       0.000003    
+464    KIR3DL1:13910→T                0.16         0.00         0.16       0.000003    
+465    KIR3DL1:13867→N                0.16         0.00         0.16       0.000003    
+466    KIR3DL1:13866→G                0.16         0.00         0.16       0.000003    
+467    KIR3DL1:13971→A                0.16         0.00         0.16       0.000003    
+468    KIR3DL1:13983→N                0.16         0.00         0.16       0.000003    
+469    KIR3DL1:13993→N                0.16         0.00         0.16       0.000003    
+470    KIR3DL1:13737→T                0.16         0.00         0.16       0.000003    
+471    KIR3DL1:13918→N                0.16         0.00         0.16       0.000003    
+472    KIR3DL1:13134→A                0.16         0.00         0.16       0.000003    
+473    KIR3DL1:13902→T                0.16         0.00         0.16       0.000003    
+474    KIR3DL1:13950→G                0.16         0.00         0.16       0.000003    
+475    KIR3DL1:13707→P                0.16         0.00         0.16       0.000003    
+476    KIR3DL1:13918→P                0.16         0.00         0.16       0.000003    
+477    KIR3DL1:13865→N                0.16         0.00         0.16       0.000003    
+478    KIR3DL1:13132→G                0.16         0.00         0.16       0.000003    
+479    KIR3DL1:13710→T                0.16         0.00         0.16       0.000003    
+480    KIR3DL1:13867→G                0.16         0.00         0.16       0.000003    
+481    KIR3DL1:13910→P                0.16         0.00         0.16       0.000003    
+482    KIR3DL1:13919→N                0.16         0.00         0.16       0.000003    
+483    KIR3DL1:13710→P                0.16         0.00         0.16       0.000003    
+484    KIR3DL1:13744→A                0.16         0.00         0.16       0.000003    
+485    KIR3DL1:13211→A                0.16         0.00         0.16       0.000003    
+486    KIR3DL1:13152→A                0.16         0.00         0.16       0.000003    
+487    KIR3DL1:13952→A                0.16         0.00         0.16       0.000003    
+488    KIR3DL1:13207→N                0.16         0.00         0.16       0.000003    
+489    KIR3DL1:13718→T                0.16         0.00         0.16       0.000003    
+490    KIR3DL1:13971→N                0.16         0.00         0.16       0.000003    
+491    KIR3DL1:13130→N                0.16         0.00         0.16       0.000003    
+492    KIR3DL1:13943→N                0.16         0.00         0.16       0.000003    
+493    KIR3DL1:13902→G                0.16         0.00         0.16       0.000003    
+494    KIR3DL1:13886→T                0.16         0.00         0.16       0.000003    
+495    KIR3DL1:13993→T                0.16         0.00         0.16       0.000003    
+496    KIR3DL1:13713→G                0.16         0.00         0.16       0.000003    
+497    KIR3DL1:13737→N                0.16         0.00         0.16       0.000003    
+498    KIR3DL1:13952→T                0.16         0.00         0.16       0.000003    
+499    KIR3DL1:13952→N                0.16         0.00         0.16       0.000003    
+500    KIR3DL1:13993→C                0.16         0.00         0.16       0.000003    
+501    KIR3DL1:13740→G                0.16         0.00         0.16       0.000003    
+502    KIR3DL1:13146→A                0.16         0.00         0.16       0.000003    
+503    KIR3DL1:13211→N                0.16         0.00         0.16       0.000003    
+504    KIR3DL1:13743→N                0.16         0.00         0.16       0.000003    
+505    KIR3DL1:13943→A                0.16         0.00         0.16       0.000003    
+506    KIR3DL1:13217→C                0.16         0.00         0.16       0.000003    
+507    KIR3DL1:13985→C                0.16         0.00         0.16       0.000003    
+508    KIR3DL1:13865→T                0.16         0.00         0.16       0.000003    
+509    KIR3DL1:13133→P                0.16         0.00         0.16       0.000003    
+510    KIR3DL1:13718→A                0.16         0.00         0.16       0.000003    
+511    KIR3DL1:13726→N                0.16         0.00         0.16       0.000003    
+512    KIR3DL1:13865→P                0.16         0.00         0.16       0.000003    
+513    KIR3DL1:13901→A                0.16         0.00         0.16       0.000003    
+514    KIR3DL1:14009→T                0.16         0.00         0.16       0.000003    
+515    KIR3DL1:13941→T                0.16         0.00         0.16       0.000003    
+516    KIR3DL1:13740→N                0.16         0.00         0.16       0.000003    
+517    KIR3DL1:13972→N                0.16         0.00         0.16       0.000003    
+518    KIR3DL1:13718→N                0.16         0.00         0.16       0.000003    
+519    KIR3DL1:13866→P                0.16         0.00         0.16       0.000003    
+520    KIR3DL1:13972→C                0.16         0.00         0.16       0.000003    
+521    KIR3DL1:13700→P                0.16         0.00         0.16       0.000003    
+522    KIR3DL1:13952→P                0.16         0.00         0.16       0.000003    
+523    KIR3DL1:13919→A                0.16         0.00         0.16       0.000003    
+524    KIR3DL1:13146→N                0.16         0.00         0.16       0.000003    
+525    KIR3DL1:13919→P                0.16         0.00         0.16       0.000003    
+526    KIR3DL1:13174→G                0.16         0.00         0.16       0.000003    
+527    KIR3DL1:13993→A                0.16         0.00         0.16       0.000003    
+528    KIR3DL1:13886→A                0.16         0.00         0.16       0.000003    
+529    KIR3DL1:13972→P                0.16         0.00         0.16       0.000003    
+530    KIR3DL1:13152→P                0.16         0.00         0.16       0.000003    
+531    KIR3DL1:13901→P                0.16         0.00         0.16       0.000003    
+532    KIR3DL1:13918→G                0.16         0.00         0.16       0.000003    
+533    KIR3DL1:13217→T                0.16         0.00         0.16       0.000003    
+534    KIR3DL1:13952→G                0.16         0.00         0.16       0.000003    
+535    KIR3DL1:13132→A                0.16         0.00         0.16       0.000003    
+536    KIR3DL1:13230→T                0.16         0.00         0.16       0.000003    
+537    KIR3DL1:13146→G                0.16         0.00         0.16       0.000003    
+538    KIR3DL1:13865→A                0.16         0.00         0.16       0.000003    
+539    KIR3DL1:13941→A                0.16         0.00         0.16       0.000003    
+540    KIR3DL1:13152→C                0.16         0.00         0.16       0.000003    
+541    KIR3DL1:13710→A                0.16         0.00         0.16       0.000003    
+542    KIR3DL1:13127→T                0.16         0.00         0.16       0.000003    
+543    KIR3DL1:13718→G                0.16         0.00         0.16       0.000003    
+544    KIR3DL1:13743→T                0.16         0.00         0.16       0.000003    
+545    KIR3DL1:13902→P                0.16         0.00         0.16       0.000003    
+546    KIR3DL1:13993→P                0.16         0.00         0.16       0.000003    
+547    KIR3DL1:13217→N                0.16         0.00         0.16       0.000003    
+548    KIR3DL1:13152→N                0.16         0.00         0.16       0.000003    
+549    KIR3DL1:13865→C                0.16         0.00         0.16       0.000003    
+550    KIR3DL1:13174→N                0.16         0.00         0.16       0.000003    
+551    KIR3DL1:13902→N                0.16         0.00         0.16       0.000003    
+552    KIR3DL1:13130→P                0.16         0.00         0.16       0.000003    
+553    KIR3DL1:13230→C                0.16         0.00         0.16       0.000003    
+554    KIR3DL1:13918→A                0.16         0.00         0.16       0.000003    
+555    KIR3DL1:13866→N                0.16         0.00         0.16       0.000003    
+556    KIR3DL1:13941→P                0.16         0.00         0.16       0.000003    
+557    KIR3DL1:13941→N                0.16         0.00         0.16       0.000003    
+558    KIR3DL1:13985→N                0.16         0.00         0.16       0.000003    
+559    KIR3DL1:13694→G                0.16         0.00         0.16       0.000003    
+560    KIR3DL1:13133→A                0.16         0.00         0.16       0.000003    
+561    KIR3DL1:13694→N                0.16         0.00         0.16       0.000003    
+562    KIR3DL1:13950→N                0.16         0.00         0.16       0.000003    
+563    KIR3DL1:13127→P                0.16         0.00         0.16       0.000003    
+564    KIR3DL1:13950→T                0.16         0.00         0.16       0.000003    
+565    KIR3DL1:13230→N                0.16         0.00         0.16       0.000003    
+566    KIR3DL1:13737→A                0.16         0.00         0.16       0.000003    
+567    KIR3DL1:13217→A                0.16         0.00         0.16       0.000003    
+568    KIR3DL1:13743→A                0.16         0.00         0.16       0.000003    
+569    KIR3DL1:13919→C                0.16         0.00         0.16       0.000003    
+570    KIR3DL1:13146→P                0.16         0.00         0.16       0.000003    
+571    KIR3DL1:13918→T                0.16         0.00         0.16       0.000003    
+572    KIR3DL1:13207→G                0.16         0.00         0.16       0.000003    
+573    KIR3DL1:13737→P                0.16         0.00         0.16       0.000003    
+574    KIR3DL1:13722→P                0.16         0.00         0.16       0.000003    
+575    KIR3DL1:13132→N                0.16         0.00         0.16       0.000003    
+576    KIR3DL1:13736→N                0.16         0.00         0.16       0.000003    
+577    KIR3DL1:13694→C                0.16         0.00         0.16       0.000003    
+578    KIR3DL1:13950→A                0.16         0.00         0.16       0.000003    
+579    KIR3DL1:13127→A                0.16         0.00         0.16       0.000003    
+580    KIR3DL1:13736→G                0.16         0.00         0.16       0.000003    
+581    KIR3DL1:13127→C                0.16         0.00         0.16       0.000003    
+582    KIR3DL1:13722→N                0.16         0.00         0.16       0.000003    
+583    KIR3DL1:13174→P                0.16         0.00         0.16       0.000003    
+584    KIR3DL1:13207→P                0.16         0.00         0.16       0.000003    
+585    KIR3DL1:13926→G                0.16         0.00         0.16       0.000003    
+586    KIR3DL1:13972→G                0.16         0.00         0.16       0.000003    
+587    KIR3DL1:13132→P                0.16         0.00         0.16       0.000003    
+588    KIR3DL1:13985→A                0.16         0.00         0.16       0.000003    
+589    KIR3DL1:13133→N                0.16         0.00         0.16       0.000003    
+590    KIR3DL1:13152→T                0.16         0.00         0.16       0.000003    
+591    KIR3DL1:13743→P                0.16         0.00         0.16       0.000003    
+592    KIR3DL1:13133→T                0.16         0.00         0.16       0.000003    
+593    KIR3DL1:13230→P                0.16         0.00         0.16       0.000003    
+594    KIR3DL1:13127→N                0.16         0.00         0.16       0.000003    
+595    KIR3DL1:13919→T                0.16         0.00         0.16       0.000003    
+596    KIR3DL1:13926→P                0.16         0.00         0.16       0.000003    
+597    KIR3DL1:13900→N                0.16         0.00         0.16       0.000003    
+598    KIR3DL1:13926→A                0.16         0.00         0.16       0.000003    
+599    KIR3DL1:13985→P                0.16         0.00         0.16       0.000003    
+600    KIR3DL1:13174→C                0.16         0.00         0.16       0.000003    
+New best model with final loss: 16345.03
 
 === Multi-Seed VAE Results ===
-Best model had seed 42 with final loss: 16976.54
+Best model had seed 42 with final loss: 16345.03
 All seeds final losses:
-  Seed 42: Total=16976.54 (Recon=14695.44, A_KL=415.70, B_KL=1843625.75) <- Best
-[time] run_vae took 278.84s (18,048.046875 MB; 18,436.25390625 MB)
+  Seed 42: Total=16345.03 (Recon=15177.69, A_KL=391.32, B_KL=768104.62) <- Best
+[time] run_vae took 383.28s (18,071.33203125 MB; 18,459.92578125 MB)
 [Raw]:
-KIR2DL1*003: norm=0.093341, unnorm=0.056519
-KIR2DL3*001: norm=0.037189, unnorm=0.027869
-KIR2DL3*006: norm=0.072595, unnorm=0.054409
-KIR2DL4*013: norm=0.144540, unnorm=0.121183
-KIR2DP1*002: norm=0.031817, unnorm=0.026402
-KIR2DP1*007: norm=0.080007, unnorm=0.069788
-KIR2DS4*001: norm=0.037821, unnorm=0.026584
-KIR3DL1*059: norm=0.077097, unnorm=0.232110
-KIR3DL1*081: norm=0.059681, unnorm=0.164262
-KIR3DL2*010: norm=0.053940, unnorm=0.152568
-KIR3DL3*012: norm=0.096380, unnorm=0.018773
-KIR3DL3*055: norm=0.068570, unnorm=0.013356
-KIR3DP1*010: norm=0.121269, unnorm=0.023621
+KIR2DL1*003: norm=0.090244, unnorm=0.054366
+KIR2DL3*001: norm=0.032645, unnorm=0.024355
+KIR2DL3*006: norm=0.066758, unnorm=0.049814
+KIR2DL4*001: norm=0.080776, unnorm=0.067425
+KIR2DL4*008: norm=0.047215, unnorm=0.039411
+KIR2DP1*002: norm=0.039428, unnorm=0.032248
+KIR2DP1*007: norm=0.076031, unnorm=0.066029
+KIR2DS4*001: norm=0.055031, unnorm=0.038512
+KIR3DL1*059: norm=0.080077, unnorm=0.240024
+KIR3DL1*081: norm=0.045107, unnorm=0.123605
+KIR3DL2*010: norm=0.058454, unnorm=0.164611
+KIR3DL3*015: norm=0.096994, unnorm=0.018810
+KIR3DL3*055: norm=0.074112, unnorm=0.014372
+KIR3DP1*010: norm=0.091211, unnorm=0.017688
+KIR3DP1*017: norm=0.041463, unnorm=0.008041
 
 [Alleles]
 KIR2DL1*003
 KIR2DL1*003
 KIR2DL3*001
 KIR2DL3*006
-KIR2DL4*013
-KIR2DL4*013
+KIR2DL4*001
+KIR2DL4*008
 KIR2DP1*002
 KIR2DP1*007
 KIR2DS4*001
 KIR3DL1*059
 KIR3DL1*081
 KIR3DL2*010
-KIR3DL3*012
+KIR3DL3*015
 KIR3DL3*055
 KIR3DP1*010
-KIR3DP1*010
+KIR3DP1*017
+	Command being timed: "python kir_jsd_ablation.py --input /project/shared/inumanag-kir/data/hprc/HG03540.final.cram"
+	User time (seconds): 2171.54
+	System time (seconds): 101.13
+	Percent of CPU this job got: 219%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 17:15.01
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 18902964
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 31978279
+	Voluntary context switches: 1658790
+	Involuntary context switches: 3205
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 510928
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

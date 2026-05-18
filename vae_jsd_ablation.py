@@ -565,7 +565,9 @@ class VAE(nn.Module):
                     kld_weight=1.0, base_kld_weight=0.001, functional_kld_weight = 0.6, debug_functional = False):
         
         strength_mask = self.get_strength_mask()
-        beta_adjusted = beta * strength_mask.unsqueeze(0)
+        # beta_adjusted = beta * strength_mask.unsqueeze(0)
+        beta_adjusted = beta 
+
         row_sums = beta_adjusted.sum(dim=2, keepdim=True)
         beta_adjusted = beta_adjusted / (row_sums + 1e-10)
         

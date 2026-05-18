@@ -565,7 +565,9 @@ class VAE(nn.Module):
                     kld_weight=1.0, base_kld_weight=0.001, functional_kld_weight = 0.6, debug_functional = False):
         
         strength_mask = self.get_strength_mask()
-        beta_adjusted = beta * strength_mask.unsqueeze(0)
+        # beta_adjusted = beta * strength_mask.unsqueeze(0)
+        beta_adjusted = beta  # bias ablation
+
         row_sums = beta_adjusted.sum(dim=2, keepdim=True)
         beta_adjusted = beta_adjusted / (row_sums + 1e-10)
         
@@ -867,9 +869,9 @@ def create_strength_parameters(sample, db, lb_factor=0.8, ub_factor=1.2):
 
     return initial_strength, strength_lb, strength_ub
 
-
+@timeit
 def run_vae(total_mut_counts, valid_alleles, mut_counts,
-            sample=None, db=None, num_iterations=3000, bam_id = None):
+            sample=None, db=None, num_iterations=3000, bam_id = None, seeds = None):
     print('running 1017 version')
     # from V9_helper_1017 import create_sparse_priors_V2
     mut_counts = mut_counts.to(device)
@@ -904,7 +906,9 @@ def run_vae(total_mut_counts, valid_alleles, mut_counts,
     
     # seeds = [88]
     # seeds = [42,123,456]
-    seeds = [42]
+    # seeds = [42]
+    seeds = seeds
+
     theta, theta_un, _, learned_beta = run_vae_multi_seed(
         total_mut_counts, 
         valid_alleles, 
