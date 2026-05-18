@@ -431,7 +431,7 @@ class TimeInterval:
         self.start = time.time()
 
     def __exit__(self, *_):
-        logging.info(self.report(self.msg))
+        print(self.report(self.msg))
 
     def report(self, msg="") -> str:
         import psutil, resource

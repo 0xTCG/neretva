@@ -28,7 +28,7 @@ from pprint import pprint
 import pickle
 
 #%%
-from helper import * # needs attention of common class import override
+from core.helper import * # needs attention of common class import override
 from common_0620B import  *
 
 
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     with timing("initializaiton"):
      
-        db = Database("kir.pickle")
+        db = Database("data/kir.pickle")
 
     
 #%% Read BAM reads
@@ -152,17 +152,16 @@ def calculate_coverage(path: str, cn_region=("chr22", 19941772, 19969975)):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='KIR gene typing tool')
-    parser.add_argument('--test', action='store_true', help='Run in test mode with simulated data', default=False)
     parser.add_argument('--input', help='Path to input FASTA/BAM file')
     parser.add_argument('--threads', type=int, default=16, help='Number of threads to use')
     parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--mapper', help='Path to minimap2 binary')
     
     if not NOTEBOOK:
         args = parser.parse_args()
         path = args.input
     else:
         args = parser.parse_args([])
-        args.test = False
  
 
         files = []
@@ -196,41 +195,12 @@ if __name__ == "__main__":
         sample = get_bam_reads(path)
         cov = calculate_coverage(path)
     
-    if args.test:
-        print(f"[!!!] running in test mode")
-        sample.ground_truth = []
-        # sample.preset_valid_alleles = ['KIR3DP1*0030101','KIR3DP1*007'] # only use those alleles as valid alleles
-        
-        sample.preset_valid_alleles = [] # only use those alleles as valid alleles
-        # Extract ground truth from the input file name
-        # Expected format: path/to/KIR2DL1-0010101-KIR2DL1-0020101.fq
-        try:
-            basename = os.path.basename(path)
-            # Remove file extension
-            basename = os.path.splitext(basename)[0]
-            
-            # Parse gene-allele pairs
-            pairs = basename.split('-')
-            for i in range(0, len(pairs), 2):
-                if i+1 < len(pairs):
-                    gene = pairs[i]
-                    allele = pairs[i+1]
-                    sample.ground_truth.append(f"{gene}*{allele}")
-            
-            print(f"[!!!] ground truth alleles: {sample.ground_truth}")
-        except Exception as e:
-            print(f"[!!!] Error parsing ground truth from filename: {e}")
-            print(f"[!!!] Expected format: KIR2DL1-0010101-KIR2DL1-0020101.fq")
-    sample.ground_truth = ['KIR3DL2*0010101']
+
     sample.expected_coverage = cov
     sample.min_coverage = 3 # math.floor(cov / 3)
     sample.total_error = 0
     print(f"[read] {os.path.basename(sample.path)}: {len(sample.reads):,} reads loaded ({sample.expected_coverage=:.1f}x)")
-    # get_indices(sample,db)
-    
-    # create_mutation_indices_maps(sample,db)
-    # get_allele_db(sample,db)
-    
+
 #%%
 #-%% Map reads
 def align_minimap(file, database, MAX_NM, threads):
@@ -242,7 +212,7 @@ def align_minimap(file, database, MAX_NM, threads):
                 print(a.seq, file=fo)
     with timing("minimap2"):
         cmd = [
-            "minimap2",
+            args.mapper,
             "-x", "sr", "--secondary=yes",  # short-read preset. TODO: check if normal works or if -k needs decreasing
             "-c",  # calculate CIGAR
             "-P", "--dual=no",  # do all-to-all mapping
@@ -319,12 +289,12 @@ if __name__ == "__main__":
                 print(f">{ri}", file=fo)
                 print(f"{r.seq}", file=fo)
     MAX_NM = 3
-    with open("kirdb_new.fa", 'w') as fo:
+    with open("data/kirdb_new.fa", 'w') as fo:
         for a in db.alleles():
             print(f">{a.gene.name}.{a.name}", file=fo)
             print(a.seq, file=fo)
 
-    sample.alignments = align_minimap(fa, "kirdb_new.fa", MAX_NM, threads=THREADS)
+    sample.alignments = align_minimap(fa, "data/kirdb_new.fa", MAX_NM, threads=THREADS)
     #%%
     filter_best_alignments_globally(sample)
 
@@ -897,29 +867,8 @@ def parse_gene_alignments(g, args):
                     found_variant.coverage.add_coverage(h)
     for a in g.alleles.values():
         a.enabled = False
-        if not args.test:
-            filter_allele(a,verbose=False)
-        else:
-            if sample.preset_valid_alleles:
-                for gt in sample.preset_valid_alleles:
-                    gg, aa = gt.split('*')
-                    if a.gene.name == gg and a.name == aa:
-                        a.enabled = True
-            else:
-                # do not use allele filter in test mode
-                g_enabled = False
-                for gt in sample.ground_truth:
-                    parts = gt.split('*')
-                    if len(parts) == 2:
-                        gg = parts[0]  # Gene name
-                        aa = parts[1]  # Allele name
-                        if gg == g.name:
-                            g_enabled = True
-                            break
-                
-                # Enable or disable alleles based on whether this gene is in ground truth
-                for allele in g.alleles.values():
-                    allele.enabled = g_enabled
+        filter_allele(a,verbose=False)
+   
     
     return g.name, g.alleles, {
         an: [(h.enabled, h.cover, h.covered_variants, h.covered_muts, h.variant_read_positions) 
@@ -955,7 +904,7 @@ if __name__ == "__main__":
                     h.enabled, h.cover, h.covered_variants, h.covered_muts, h.variant_read_positions = gal[an][hi]
         
     for g in db.genes.values():
-        if not args.test:
+        # if not args.test:
             ax = {}
             for a in g.alleles.values():
                 if a.enabled:
@@ -1239,7 +1188,7 @@ if __name__ == "__main__":
     # filter_unique_patterns(sample)
     # from helper import *
     # save_mutations_new_implementation(sample,db,'new_avec.pkl')
-    from coverage import *
+    from cn.coverage import *
     bcn = bin_copy_numbers(estimate_CN(sample,db))
     for g in bcn:
         if bcn[g]>=1:
@@ -1462,14 +1411,14 @@ def discretize_cn(gene, cn):
 if __name__ == "__main__":
     import importlib
     import sys
-    modules_to_reload = ['cn_estimator']
+    # modules_to_reload = ['cn_estimator']
     # modules_to_reload = ['V9_2_3_1106', 'V9_helper_10172039', 'common_0620B']
     
-    for module_name in modules_to_reload:
-        if module_name in sys.modules:
-            importlib.reload(sys.modules[module_name])
-    from cn_estimator import run_cn_estimator
-    
+    # for module_name in modules_to_reload:
+    #     if module_name in sys.modules:
+    #         importlib.reload(sys.modules[module_name])
+    from cn.cn_estimator import run_cn_estimator
+
     populate_gene_coverage(sample, db)
     populate_region_coverage(sample, db)
     
@@ -1501,8 +1450,8 @@ if __name__ == "__main__":
     # # from V9_2_3_1007 import *
     # from V9_helper_1007 import *
     
-    from vae import *
-    from vae_helper import *
+    from core.vae import *
+    from core.vae_helper import *
     from common_0620B import *
     
     #%%

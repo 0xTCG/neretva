@@ -28,7 +28,7 @@ from pprint import pprint
 import pickle
 
 #%%
-from helper import * # needs attention of common class import override
+from core.helper import * # needs attention of common class import override
 
 class SimpleSample:
     def __init__(self, path):
@@ -89,8 +89,17 @@ if __name__ == "__main__":
     from aldy.sam import Sample
     from aldy.common import script_path
     from common_cyp import Database
+    import argparse
+    parser = argparse.ArgumentParser(description='CYP gene typing tool')
     # GENE = 'CYP4F2'
-    GENE = sys.argv[1]
+    # GENE = sys.argv[1]
+    parser.add_argument('--input', help='Path to input FASTA/BAM file')
+    parser.add_argument('--gene', help='CYP gene to genotype')
+    parser.add_argument("--reference", "-r", type=str, required=True, help="Path to the human reference genome FASTA file")
+    args = parser.parse_args()
+    GENE = args.gene
+
+
     # GENE = 'CYP2C19'
     gene = Gene(script_path(f"aldy.resources.genes/{GENE.lower()}.yml"), genome="hg19")
 
@@ -98,15 +107,17 @@ if __name__ == "__main__":
     # /project/shared/aldy-data/wgs/NA07055.wgs.cram'
     # path = '/project/shared/aldy-data/wgs/HG00276.wgs.cram'
 
-    path = sys.argv[2]
+    path = args.input
     aldy_sample = Sample(
         gene=gene,
         profile=profile,
         path=path,
-        reference="/project/shared/aldy-data/Homo_sapiens_assembly19_1000genomes_decoy.fasta"
+        # reference="/project/shared/aldy-data/Homo_sapiens_assembly19_1000genomes_decoy.fasta"
+        reference=args.reference
+
     )
     # aldy_sample.coverage._normalize_coverage()
-    db = Database(f"{GENE.lower()}.pkl")
+    db = Database(f"data/{GENE.lower()}.pkl")
     sample = SimpleSample(path)
     sample.min_coverage = 3
     sample.expected_coverage = aldy_sample.coverage.diploid_avg_coverage() / 2
@@ -433,7 +444,7 @@ def rescue_allele_by_own_func(allele, sample, db):
 
 #%%
 def linear_regression_cn(region_observed, cn_config_mask, cn_config_names, max_cn=6.0, num_iterations=500):
-    from cn_estimator import run_cn_estimator
+    from cn.cn_estimator import run_cn_estimator
 
     cn_estimates = run_cn_estimator(
         region_cov=region_observed,
@@ -842,7 +853,7 @@ def rebuild_allele_vectors_for_fusion(db, aldy_gene):
         #     print(f"  {allele.name} (cn_config={cn_config_name}): updated {updated_count} positions to N")
 #%%
 if __name__ == "__main__":
-    from cn_estimator import run_cn_estimator
+    from cn.cn_estimator import run_cn_estimator
 
     region_names, region_mask = create_region_mask(sample, db.genes[GENE].aldy_gene)
     region_cov = get_region_coverage(aldy_sample, db.genes[GENE].aldy_gene)
@@ -1026,8 +1037,8 @@ def check_rescue_68(aldy_sample, fusion_allocated, pce_threshold=0.9):
 #%% with functional penalty
 # run ae
 if __name__ == "__main__":
-    from vae_cyp_B4 import *
-    from vae_cyp_helper import *
+    from core.vae_cyp_B4 import *
+    from core.vae_cyp_helper import *
 
     #%%
     total_mut_counts = sum(variant.coverage.count
