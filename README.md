@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/logo.png" width="300" alt="Neretva logo">
+</p>
 # Neretva
 
 **Neural Variational Inference for Allele-level Genotyping of Highly Polymorphic Genes**
