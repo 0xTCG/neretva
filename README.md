@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" width="200" alt="Neretva logo">
+  <img src="assets/logo.png" width="160" alt="Neretva logo">
 </p>
 
 # Neretva
