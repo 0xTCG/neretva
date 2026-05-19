@@ -53,8 +53,8 @@ python neretva.py <gene> --input <bam> [options]
 | Argument | Description |
 |----------|-------------|
 | `gene` | Gene to genotype: `kir`, `cyp2b6`, `cyp2c8`, `cyp2c9`, `cyp2c19`, `cyp2d6`, `cyp3a5`, `cyp4f2` |
-| `--input`, `-i` | Path to input BAM/CRAM file (required) |
-| `--reference`, `-r` | Path to human reference genome FASTA (required for CYP) |
+| `--input`| Path to input BAM/CRAM file (required) |
+| `--reference`| Path to human reference genome FASTA (required for CYP) |
 | `--threads` | Number of threads, default: 16 (KIR only) |
 | `--seed` | Random seed, default: 42 |
 | `--mapper` | Path to minimap2 binary (KIR only) |
