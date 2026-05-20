@@ -30,10 +30,10 @@ Neretva is a unified framework that models the genotyping problem as a probabili
 
 ### Setup
 ```bash
-git clone https://github.com/0xTCG/neretva.git
-cd neretva
-python3 -m pip install -r requirements.txt --ignore-installed 2>/dev/null || true
+pip install https://github.com/0xTCG/neretva.git
 ```
+
+> **Warning:** some dependencies (such as Aldy) might not work well in Conda environments. Use uv or pip instead.
 
 ---
 
@@ -41,17 +41,17 @@ python3 -m pip install -r requirements.txt --ignore-installed 2>/dev/null || tru
 
 ### KIR genotyping
 ```bash
-python neretva.py kir --input <bam_path> --mapper <minimap2 path>
+neretva kir --input <bam_path> --mapper <minimap2 path>
 ```
 
-### CYP genotyping
+### Pharmacogene genotyping
 ```bash
-python neretva.py cyp2d6 --input <bam_path> --reference <ref_fasta>
+neretva <gene> --input <bam_path> --reference <ref_fasta>
 ```
 
 ### Full options
 ```
-python neretva.py <gene> --input <bam> [options]
+neretva <gene> --input <bam> [options]
 ```
 
 | Argument | Description |

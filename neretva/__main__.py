@@ -33,6 +33,7 @@ def main():
                "--reference", args.reference]
     else:
         parser.error(f"Unknown gene: {args.gene}. Supported: kir, {', '.join(sorted(CYP_GENES))}")
+        parser.print_help()
 
     os.execv(cmd[0], cmd)
 

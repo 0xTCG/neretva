@@ -1,9 +1,8 @@
 # %% Imports & Initialization
-# find /data/qinghuiz/inumanag-kir/data/sim -type f -name "*.fa" ! -name "*.extract.fa" | xargs -I{} sh -c 'python kir.py {} > LDA_res/$(basename {}).log'
+# find data/sim -type f -name "*.fa" ! -name "*.extract.fa" | xargs -I{} sh -c 'python kir.py {} > LDA_res/$(basename {}).log'
 import pickle
 import os
 import sys
-sys.path.append('/data/qinghuiz/inumanag-kir/aldy-kir-fast-geny')
 import copy
 import re
 import numpy as np
@@ -1085,7 +1084,7 @@ if __name__ == "__main__":
             major_allele_densities_unnorm[major_key] = 0
         major_allele_densities[major_key] += density
         major_allele_densities_unnorm[major_key] += densities_un[i]
-    
+
     # Report major alleles above threshold
     final_results = []
     # Filter by threshold and group by gene
