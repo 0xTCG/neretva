@@ -17,7 +17,7 @@ Neretva is a unified framework that models the genotyping problem as a probabili
 | Family | Genes |
 |--------|-------|
 | **KIR** | All 17 KIR genes |
-| **CYP** | CYP2B6, CYP2C8, CYP2C9, CYP2C19, CYP2D6, CYP3A5, CYP4F2 |
+| **CYP** | CYP2B6, CYP2C8, CYP2C9, CYP2C19, CYP2D6, CYP3A5|
 
 ---
 
@@ -56,7 +56,7 @@ python neretva.py <gene> --input <bam> [options]
 
 | Argument | Description |
 |----------|-------------|
-| `gene` | Gene to genotype: `kir`, `cyp2b6`, `cyp2c8`, `cyp2c9`, `cyp2c19`, `cyp2d6`, `cyp3a5`, `cyp4f2` |
+| `gene` | Gene to genotype: `kir`, `cyp2b6`, `cyp2c8`, `cyp2c9`, `cyp2c19`, `cyp2d6`, `cyp3a5`|
 | `--input`| Path to input BAM/CRAM file (required) |
 | `--reference`| Path to human reference genome FASTA (required for CYP) |
 | `--threads` | Number of threads, default: 16 (KIR only) |
