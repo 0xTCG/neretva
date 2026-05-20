@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 ### KIR genotyping
 ```bash
-python neretva.py kir --input <bam_path> --threads 8
+python neretva.py kir --input <bam_path> --mapper <minimap2 path> --threads 8
 ```
 
 ### CYP genotyping
