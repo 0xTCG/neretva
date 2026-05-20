@@ -32,7 +32,7 @@ Neretva is a unified framework that models the genotyping problem as a probabili
 ```bash
 git clone https://github.com/0xTCG/neretva.git
 cd neretva
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt --ignore-installed 2>/dev/null || true
 ```
 
 ---
