@@ -41,7 +41,7 @@ pip install https://github.com/0xTCG/neretva.git
 
 ### KIR genotyping
 ```bash
-neretva kir --input <bam_path> --mapper <minimap2 path>
+neretva kir --input <bam_path/fastq_path> --mapper <minimap2 path>
 ```
 
 ### Pharmacogene genotyping
@@ -57,7 +57,7 @@ neretva <gene> --input <bam> [options]
 | Argument | Description |
 |----------|-------------|
 | `gene` | Gene to genotype: `kir`, `cyp2b6`, `cyp2c8`, `cyp2c9`, `cyp2c19`, `cyp2d6`, `cyp3a5`|
-| `--input`| Path to input BAM/CRAM file (required) |
+| `--input`| Path to input BAM/CRAM/FASTQ file (required) |
 | `--reference`| Path to human reference genome FASTA (required for CYP) |
 | `--threads` | Number of threads, default: 16 (KIR only) |
 | `--seed` | Random seed, default: 42 |
