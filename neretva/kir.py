@@ -20,7 +20,6 @@ from tqdm import tqdm
 
 import os
 
-import tensorflow as tf
 import numpy as np
 import argparse
 from shutil import which
