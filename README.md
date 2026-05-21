@@ -70,7 +70,7 @@ neretva <gene> --input <bam> [options]
 A small test FASTA is included to verify installation:
 
 ```bash
-neretva kir --input sample/test.fa --mapper minimap2/2.24/bin/minimap2
+neretva kir --input sample/test.fa --mapper $(which minimap2)
 ```
 
 Expected output:

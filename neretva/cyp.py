@@ -9,6 +9,7 @@ import numpy as np
 import multiprocessing as mp
 import subprocess as sp
 import collections
+import importlib.resources
 from pprint import pprint
 import pysam
 import math
@@ -116,7 +117,7 @@ if __name__ == "__main__":
 
     )
     # aldy_sample.coverage._normalize_coverage()
-    db = Database(f"data/{GENE.lower()}.pkl")
+    db = Database(importlib.resources.files("neretva") / "data" / f"{GENE.lower()}.pkl")
     sample = SimpleSample(path)
     sample.min_coverage = 3
     sample.expected_coverage = aldy_sample.coverage.diploid_avg_coverage() / 2

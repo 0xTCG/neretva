@@ -25,3 +25,6 @@ include = ["neretva*"]
 
 [project.scripts]
 neretva = "neretva.__main__:main"
+
+[tool.setuptools.package-data]
+neretva = ["*.pkl", "*.pickle", "*.fa"]

@@ -7,6 +7,7 @@ import copy
 import re
 import numpy as np
 import multiprocessing as mp
+import importlib.resources
 import subprocess as sp
 import collections
 from pprint import pprint
@@ -53,7 +54,7 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     with timing("initializaiton"):
 
-        db = Database("data/kir.pickle")
+        db = Database(importlib.resources.files("neretva") / "data" / "kir.pickle")
 
 
 #%% Read BAM reads
@@ -288,12 +289,12 @@ if __name__ == "__main__":
                 print(f">{ri}", file=fo)
                 print(f"{r.seq}", file=fo)
     MAX_NM = 3
-    with open("data/kirdb_new.fa", 'w') as fo:
+    with open(importlib.resources.files("neretva") / "data" / "kirdb_new.fa", 'w') as fo:
         for a in db.alleles():
             print(f">{a.gene.name}.{a.name}", file=fo)
             print(a.seq, file=fo)
 
-    sample.alignments = align_minimap(fa, "data/kirdb_new.fa", MAX_NM, threads=THREADS)
+    sample.alignments = align_minimap(fa, importlib.resources.files("neretva") / "data" / "kirdb_new.fa", MAX_NM, threads=THREADS)
     #%%
     filter_best_alignments_globally(sample)
 
