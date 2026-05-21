@@ -33,7 +33,12 @@ Neretva is a unified framework that models the genotyping problem as a probabili
 pip install git+https://github.com/0xTCG/neretva.git
 ```
 
-> **Warning:** some dependencies (such as Aldy) might not work well in Conda environments. Use uv or pip instead.
+> 💡 You can also use `uv pip install` for faster setup if you have `uv`.
+
+> ⚠️ You might need to install git, gcc and python-devel (or equivalent packages) to compile the dependencies.
+
+> ‼️ **Warning:** some dependencies (such as Aldy) might not work well in Conda environments. Use uv or pip instead.
+
 
 ---
 
