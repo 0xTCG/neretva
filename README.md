@@ -65,6 +65,20 @@ neretva <gene> --input <bam> [options]
 
 ---
 
+## Quick Test
+
+A small test FASTA is included to verify installation:
+
+```bash
+neretva kir --input sample/test.fa --mapper minimap2/2.24/bin/minimap2
+```
+
+Expected output:
+```
+[Alleles]
+KIR2DL1*003
+KIR2DS3*001
+```
 ## Reproducing Paper Results
 
 See the [`experiments/`](experiments/experiment.ipynb) notebook for full benchmark reproduction, including all tool outputs and evaluation scripts.
