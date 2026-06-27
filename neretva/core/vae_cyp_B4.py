@@ -516,8 +516,8 @@ def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_
         # functional_kld_end = functional_kld_weight
         progress = step / num_iterations 
 
-        functional_kld_weight = progress * functional_kld_end
-
+        # functional_kld_weight = progress * functional_kld_end
+        functional_kld_weight = (progress ** 2) * functional_kld_end
         # functional_kld_weight = 0 + progress * (functional_kld_end - 0)
         # functional_kld_weight = functional_kld_end*(1-progress)
         # functional_kld_weight = functional_kld_end
