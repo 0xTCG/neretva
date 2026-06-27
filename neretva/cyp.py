@@ -104,8 +104,8 @@ if __name__ == "__main__":
     
     profile = Profile.load(gene, "illumina")
     # /project/shared/aldy-data/wgs/NA07055.wgs.cram'
-    path = '/project/shared/aldy-data/wgs/NA06991.wgs.cram'
-    # path = sys.argv[2]
+    # path = '/project/shared/aldy-data/wgs/NA19143.wgs.cram'
+    path = sys.argv[2]
     # path = args.input
     aldy_sample = Sample(
         gene=gene,
@@ -1040,7 +1040,7 @@ def check_rescue_68(aldy_sample, fusion_allocated, pce_threshold=0.9):
 if __name__ == "__main__":
     from core.vae_cyp_B4 import *
     from core.vae_cyp_helper import *
-    
+
     #%%
     total_mut_counts = sum(variant.coverage.count
                      for gene in db.genes.values()
