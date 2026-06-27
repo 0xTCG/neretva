@@ -90,33 +90,35 @@ if __name__ == "__main__":
     from common_cyp import Database
     import argparse
     parser = argparse.ArgumentParser(description='CYP gene typing tool')
-    # GENE = 'CYP4F2'
-    # GENE = sys.argv[1]
-    parser.add_argument('--input', help='Path to input FASTA/BAM file')
-    parser.add_argument('--gene', help='CYP gene to genotype')
-    parser.add_argument("--reference", "-r", type=str, required=True, help="Path to the human reference genome FASTA file")
-    args = parser.parse_args()
-    GENE = args.gene
+    # GENE = 'CYP2D6'
+    GENE = sys.argv[1]
+    # parser.add_argument('--input', help='Path to input FASTA/BAM file')
+    # parser.add_argument('--gene', help='CYP gene to genotype')
+    # parser.add_argument("--reference", "-r", type=str, required=True, help="Path to the human reference genome FASTA file")
+    # args = parser.parse_args()
+    # GENE = args.gene
 
 
-    # GENE = 'CYP2C19'
+    GENE = 'CYP2D6'
     gene = Gene(script_path(f"aldy.resources.genes/{GENE.lower()}.yml"), genome="hg19")
 
     profile = Profile.load(gene, "illumina")
     # /project/shared/aldy-data/wgs/NA07055.wgs.cram'
-    # path = '/project/shared/aldy-data/wgs/HG00276.wgs.cram'
-
-    path = args.input
+    # path = '/project/shared/aldy-data/wgs/NA19143.wgs.cram'
+    path = sys.argv[2]
+    # path = args.input
     aldy_sample = Sample(
         gene=gene,
         profile=profile,
         path=path,
-        # reference="/project/shared/aldy-data/Homo_sapiens_assembly19_1000genomes_decoy.fasta"
-        reference=args.reference
+        reference="/project/shared/aldy-data/Homo_sapiens_assembly19_1000genomes_decoy.fasta"
+        # reference=args.reference
 
     )
     # aldy_sample.coverage._normalize_coverage()
-    db = Database(importlib.resources.files("neretva") / "data" / f"{GENE.lower()}.pkl")
+    # db = Database(importlib.resources.files("neretva") / "data" / f"{GENE.lower()}.pkl")
+    db = Database(f"data/{GENE.lower()}.pkl")
+
     sample = SimpleSample(path)
     sample.min_coverage = 3
     sample.expected_coverage = aldy_sample.coverage.diploid_avg_coverage() / 2
@@ -1056,21 +1058,33 @@ if __name__ == "__main__":
         learnt_beta = None
     else:
         # densities = run_vae(sample.total_mutations, valid_allele_names, mut_counts_tensor,sample.beta,num_iterations=6000)
-        densities, densities_un, learnt_beta = run_vae(
-            total_mut_counts,
-            valid_allele_names,
-            mut_counts_tensor,
-            sample = sample,
-            db = db,
-            num_iterations=3000
-        )
+        if GENE == 'CYP2D6':
+            densities, densities_un, learnt_beta = run_vae(
+                total_mut_counts,
+                valid_allele_names,
+                mut_counts_tensor,
+                sample = sample,
+                db = db,
+                num_iterations=3000,
+                jsd_ignore_positions={42525076, 42525820} # CYP2D6 only
+            )
+        else:
+                densities, densities_un, learnt_beta = run_vae(
+                total_mut_counts,
+                valid_allele_names,
+                mut_counts_tensor,
+                sample = sample,
+                db = db,
+                num_iterations=3000,
+            )
+
     # debug_beta_matrix_detailed(beta, sample, db)
 
     #%%
     # ma = prepare_results_with_dummy(densities, valid_allele_names, 0.25)
     major_allele_densities = {}
     major_allele_densities_unnorm = {}
-    threshold = 0.12
+    threshold = 0.15
 
     # print('[Alleles]:')
     for i, density in enumerate(densities):

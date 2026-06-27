@@ -117,7 +117,9 @@ class VAE(nn.Module):
                  mapping_indices, sample, db, hidden=256, dropout=0, 
                  initial_strength=None, strength_lb=None, strength_ub=None, 
                   functional_observation_counts = None,
-                 functional_indices = None):
+                 functional_indices = None, 
+                jsd_ignore_positions = None
+                 ):
         
         super().__init__()
         self.num_mutations = num_mutations 
@@ -143,11 +145,23 @@ class VAE(nn.Module):
 
         self.register_buffer('functional_observation_counts', functional_observation_counts)
         self.register_buffer('functional_indices', functional_indices)
+        
+        if jsd_ignore_positions:
+            func_mut_indices = torch.where(functional_indices.cpu())[0]
+            jsd_active = torch.ones(len(func_mut_indices), dtype=torch.bool)
+            for i, idx in enumerate(func_mut_indices):
+                variant_idx = sample.valid_indices[idx.item()]
+                pos = db.variants()[variant_idx].pos
+                if pos in jsd_ignore_positions:
+                    jsd_active[i] = False
+            self.register_buffer('jsd_active_mask', jsd_active.to(device))
+        else:
+            self.register_buffer('jsd_active_mask', None)
+
         initial_logits = torch.logit(normalized)
         self.strength_logits = nn.Parameter(initial_logits)
 
 
-      
         # self._create_gene_masks()
         self._calculate_normalization_weights()
     
@@ -299,6 +313,11 @@ class VAE(nn.Module):
         beta_functional = beta[:, self.functional_indices]
         obs_functional = self.functional_observation_counts[self.functional_indices]
         
+        if self.jsd_active_mask is not None:
+            obs_functional = obs_functional[self.jsd_active_mask]
+            beta_functional = beta_functional[:, self.jsd_active_mask]
+            
+
         expected_unnorm = torch.matmul(theta.unsqueeze(0), beta_functional).squeeze(0)
         
         P_observed = obs_functional / (obs_functional.sum() + eps)
@@ -408,7 +427,8 @@ class VAE(nn.Module):
         allele_sparsity_loss = self.compute_allele_sparsity_loss(allele_props.squeeze(0))
 
         # functional_kld_weight = 6e-5
-
+        if debug_functional:
+            print(f"functional kld weight {functional_kld_weight}")
         loss = -log_likelihood + kld_weight * allele_kld + base_kld_weight * base_kld + functional_kld_weight*functional_kl + 100*base_entropy + 0.3*allele_sparsity_loss
         
         return loss, -log_likelihood, allele_kld, base_kld, functional_kl
@@ -441,9 +461,10 @@ def create_sparse_to_beta_indices(sample, db):
 def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_entries, 
                         sparse_prior_mu, sparse_prior_logvar, mapping_indices, sample,db,
                         seed=0, num_iterations=3000, lr=0.005, print_every=500, 
-                         initial_strength=None, strength_lb=None, strength_ub=None, 
-                          functional_observation_counts = None,
-                         functional_indices = None
+                        initial_strength=None, strength_lb=None, strength_ub=None, 
+                        functional_observation_counts = None,
+                        functional_indices = None,
+                        jsd_ignore_positions = None
                          ):
    
     torch.manual_seed(seed)
@@ -460,6 +481,8 @@ def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_
 
         functional_observation_counts = functional_observation_counts,
         functional_indices = functional_indices,
+        jsd_ignore_positions=jsd_ignore_positions
+
 
     ).to(device)
     
@@ -476,10 +499,12 @@ def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_
     # Train the model
     model.train()
     loss_history = []
-    if list(db.genes.keys())[0] in ['CYP2C8','CYP2C9','CYP2C19','CYP2D6']:
-        functional_kld_weight = 0
-    else:
-        functional_kld_weight = 6e3
+    # if list(db.genes.keys())[0] in ['CYP2C8','CYP2C9','CYP2C19','CYP2D6']:
+    #     functional_kld_weight = 0
+    # else:
+    functional_kld_end = 6e3
+    # functional_kld_weight = 0
+
     for step in range(num_iterations):
         optimizer.zero_grad()
         
@@ -488,10 +513,11 @@ def run_vae_single_seed(total_mut_counts, valid_alleles, mut_counts, num_sparse_
         base_mu, base_logvar,
         allele_props,
         base_probs) = model(mut_counts.unsqueeze(0))
-        functional_kld_end = functional_kld_weight
+        # functional_kld_end = functional_kld_weight
         progress = step / num_iterations 
 
-        
+        functional_kld_weight = progress * functional_kld_end
+
         # functional_kld_weight = 0 + progress * (functional_kld_end - 0)
         # functional_kld_weight = functional_kld_end*(1-progress)
         # functional_kld_weight = functional_kld_end
@@ -688,14 +714,14 @@ def create_strength_parameters(sample, db, lb_factor=0.8, ub_factor=1.2):
 
 @timeit
 def run_vae(total_mut_counts, valid_alleles, mut_counts,
-            sample=None, db=None, num_iterations=3000):
+            sample=None, db=None, num_iterations=3000, jsd_ignore_positions = None):
     mut_counts = mut_counts.to(device)
 
     lb_factor = 0.80 # uninformed, lowerbound and upperbound of the coverage wrt 1x expected coverage.
     ub_factor = 1.20
 
-    # set_expected_position_strength(sample, db, lb_factor=lb_factor, ub_factor=ub_factor)
-    # initial_strength, strength_lb, strength_ub = create_strength_parameters(sample, db, lb_factor=lb_factor, ub_factor=ub_factor)
+    set_expected_position_strength(sample, db, lb_factor=lb_factor, ub_factor=ub_factor)
+    initial_strength, strength_lb, strength_ub = create_strength_parameters(sample, db, lb_factor=lb_factor, ub_factor=ub_factor)
 
     num_alleles = len(sample.valid_alleles)
     num_mutations = len(sample.valid_indices)
@@ -731,8 +757,8 @@ def run_vae(total_mut_counts, valid_alleles, mut_counts,
     functional_observation_counts = functional_observation_counts.to(device)
     
     # seeds = [88]
-    seeds = [42,123,456]
-    # seeds = [42]
+    # seeds = [42,123,456]
+    seeds = [42]
     theta, theta_un, _, learned_beta = run_vae_multi_seed(
         total_mut_counts, 
         valid_alleles, 
