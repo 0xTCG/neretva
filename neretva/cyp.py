@@ -95,6 +95,8 @@ if __name__ == "__main__":
     parser.add_argument('--input', help='Path to input FASTA/BAM file')
     parser.add_argument('--gene', help='CYP gene to genotype')
     parser.add_argument("--reference", "-r", type=str, required=True, help="Path to the human reference genome FASTA file")
+    parser.add_argument('--seed', type=int, default=42)
+
     args = parser.parse_args()
     GENE = args.gene
 
@@ -1056,21 +1058,34 @@ if __name__ == "__main__":
         learnt_beta = None
     else:
         # densities = run_vae(sample.total_mutations, valid_allele_names, mut_counts_tensor,sample.beta,num_iterations=6000)
-        densities, densities_un, learnt_beta = run_vae(
-            total_mut_counts,
-            valid_allele_names,
-            mut_counts_tensor,
-            sample = sample,
-            db = db,
-            num_iterations=3000
-        )
+        if GENE == 'CYP2D6':
+            densities, densities_un, learnt_beta = run_vae(
+                total_mut_counts,
+                valid_allele_names,
+                mut_counts_tensor,
+                sample = sample,
+                db = db,
+                num_iterations=3000,
+                jsd_ignore_positions={42525076, 42525820}, # CYP2D6 only
+                seeds = [args.seed]
+            )
+        else:
+                densities, densities_un, learnt_beta = run_vae(
+                total_mut_counts,
+                valid_allele_names,
+                mut_counts_tensor,
+                sample = sample,
+                db = db,
+                num_iterations=3000,
+                seeds = [args.seed]
+            )
     # debug_beta_matrix_detailed(beta, sample, db)
 
     #%%
     # ma = prepare_results_with_dummy(densities, valid_allele_names, 0.25)
     major_allele_densities = {}
     major_allele_densities_unnorm = {}
-    threshold = 0.12
+    threshold = 0.15
 
     # print('[Alleles]:')
     for i, density in enumerate(densities):
