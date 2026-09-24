@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neretva"
+version = "0.1.0"
+description = ""
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.25",
+    "pysam>=0.22",
+    "biopython>=1.84",
+    "scipy>=1.11",
+    "mappy>=2.24",
+    "tqdm",
+    "aldy",
+    "psutil"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["neretva*"]
+
+[project.scripts]
+neretva = "neretva.__main__:main"
+
+[tool.setuptools.package-data]
+neretva = ["data/*.pkl", "data/*.pickle", "data/*.fa"]

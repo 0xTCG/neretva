@@ -1,0 +1,92 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##fileDate=20260106
+##source=freeBayes v1.3.7
+##reference=/project/home/pouria/opt/src/kir-mapper/db/kir-mapper_db_latest//reference/hg38/reference.fasta
+##contig=<ID=chr19,length=58617616>
+##contig=<ID=chr19_KI270890v1_alt,length=184499>
+##contig=<ID=chr19_KI270921v1_alt,length=282224>
+##contig=<ID=chr19_KI270923v1_alt,length=189352>
+##contig=<ID=chr19_KI270938v1_alt,length=1066800>
+##contig=<ID=chr6,length=170805979>
+##phasing=none
+##commandline="/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v4/Compiler/gcccore/freebayes/1.3.7/bin/freebayes --report-all-haplotype-alleles --use-best-n-alleles 8 --min-alternate-count 3 -A results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1_copynumbers.txt -f /project/home/pouria/opt/src/kir-mapper/db/kir-mapper_db_latest//reference/hg38/reference.fasta -r chr19:54816496-54816539 -v results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1.chr19.54816496.54816539.vcf -L results/HG01071//genotype/cds/KIR3DL1/vcf/bamlist.txt -b /project/home/pouria/opt/src/kir-mapper/db/kir-mapper_db_latest//genotype//bam/KIR3DL1_chr.cds.bam"
+##INFO=<ID=NS,Number=1,Type=Integer,Description="Number of samples with data">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total read depth at the locus">
+##INFO=<ID=DPB,Number=1,Type=Float,Description="Total read depth per bp at the locus; bases in reads overlapping / bases in haplotype">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Total number of alternate alleles in called genotypes">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Estimated allele frequency in the range (0,1]">
+##INFO=<ID=RO,Number=1,Type=Integer,Description="Count of full observations of the reference haplotype.">
+##INFO=<ID=AO,Number=A,Type=Integer,Description="Count of full observations of this alternate haplotype.">
+##INFO=<ID=PRO,Number=1,Type=Float,Description="Reference allele observation count, with partial observations recorded fractionally">
+##INFO=<ID=PAO,Number=A,Type=Float,Description="Alternate allele observations, with partial observations recorded fractionally">
+##INFO=<ID=QR,Number=1,Type=Integer,Description="Reference allele quality sum in phred">
+##INFO=<ID=QA,Number=A,Type=Integer,Description="Alternate allele quality sum in phred">
+##INFO=<ID=PQR,Number=1,Type=Float,Description="Reference allele quality sum in phred for partial observations">
+##INFO=<ID=PQA,Number=A,Type=Float,Description="Alternate allele quality sum in phred for partial observations">
+##INFO=<ID=SRF,Number=1,Type=Integer,Description="Number of reference observations on the forward strand">
+##INFO=<ID=SRR,Number=1,Type=Integer,Description="Number of reference observations on the reverse strand">
+##INFO=<ID=SAF,Number=A,Type=Integer,Description="Number of alternate observations on the forward strand">
+##INFO=<ID=SAR,Number=A,Type=Integer,Description="Number of alternate observations on the reverse strand">
+##INFO=<ID=SRP,Number=1,Type=Float,Description="Strand balance probability for the reference allele: Phred-scaled upper-bounds estimate of the probability of observing the deviation between SRF and SRR given E(SRF/SRR) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=SAP,Number=A,Type=Float,Description="Strand balance probability for the alternate allele: Phred-scaled upper-bounds estimate of the probability of observing the deviation between SAF and SAR given E(SAF/SAR) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=AB,Number=A,Type=Float,Description="Allele balance at heterozygous sites: a number between 0 and 1 representing the ratio of reads showing the reference allele to all reads, considering only reads from individuals called as heterozygous">
+##INFO=<ID=ABP,Number=A,Type=Float,Description="Allele balance probability at heterozygous sites: Phred-scaled upper-bounds estimate of the probability of observing the deviation between ABR and ABA given E(ABR/ABA) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=RUN,Number=A,Type=Integer,Description="Run length: the number of consecutive repeats of the alternate allele in the reference genome">
+##INFO=<ID=RPP,Number=A,Type=Float,Description="Read Placement Probability: Phred-scaled upper-bounds estimate of the probability of observing the deviation between RPL and RPR given E(RPL/RPR) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=RPPR,Number=1,Type=Float,Description="Read Placement Probability for reference observations: Phred-scaled upper-bounds estimate of the probability of observing the deviation between RPL and RPR given E(RPL/RPR) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=RPL,Number=A,Type=Float,Description="Reads Placed Left: number of reads supporting the alternate balanced to the left (5') of the alternate allele">
+##INFO=<ID=RPR,Number=A,Type=Float,Description="Reads Placed Right: number of reads supporting the alternate balanced to the right (3') of the alternate allele">
+##INFO=<ID=EPP,Number=A,Type=Float,Description="End Placement Probability: Phred-scaled upper-bounds estimate of the probability of observing the deviation between EL and ER given E(EL/ER) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=EPPR,Number=1,Type=Float,Description="End Placement Probability for reference observations: Phred-scaled upper-bounds estimate of the probability of observing the deviation between EL and ER given E(EL/ER) ~ 0.5, derived using Hoeffding's inequality">
+##INFO=<ID=DPRA,Number=A,Type=Float,Description="Alternate allele depth ratio.  Ratio between depth in samples with each called alternate allele and those without.">
+##INFO=<ID=ODDS,Number=1,Type=Float,Description="The log odds ratio of the best genotype combination to the second-best.">
+##INFO=<ID=GTI,Number=1,Type=Integer,Description="Number of genotyping iterations required to reach convergence or bailout.">
+##INFO=<ID=TYPE,Number=A,Type=String,Description="The type of allele, either snp, mnp, ins, del, or complex.">
+##INFO=<ID=CIGAR,Number=A,Type=String,Description="The extended CIGAR representation of each alternate allele, with the exception that '=' is replaced by 'M' to ease VCF parsing.  Note that INDEL alleles do not have the first matched base (which is provided by default, per the spec) referred to by the CIGAR.">
+##INFO=<ID=NUMALT,Number=1,Type=Integer,Description="Number of unique non-reference alleles in called genotypes at this position.">
+##INFO=<ID=MEANALT,Number=A,Type=Float,Description="Mean number of unique non-reference allele observations per sample with the corresponding alternate alleles.">
+##INFO=<ID=LEN,Number=A,Type=Integer,Description="allele length">
+##INFO=<ID=MQM,Number=A,Type=Float,Description="Mean mapping quality of observed alternate alleles">
+##INFO=<ID=MQMR,Number=1,Type=Float,Description="Mean mapping quality of observed reference alleles">
+##INFO=<ID=PAIRED,Number=A,Type=Float,Description="Proportion of observed alternate alleles which are supported by properly paired read fragments">
+##INFO=<ID=PAIREDR,Number=1,Type=Float,Description="Proportion of observed reference alleles which are supported by properly paired read fragments">
+##INFO=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum depth in gVCF output block.">
+##INFO=<ID=END,Number=1,Type=Integer,Description="Last position (inclusive) in gVCF output record.">
+##INFO=<ID=technology.illumina,Number=A,Type=Float,Description="Fraction of observations supporting the alternate observed in reads from illumina">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=GQ,Number=1,Type=Float,Description="Genotype Quality, the Phred-scaled marginal (or unconditional) probability of the called genotype">
+##FORMAT=<ID=GL,Number=G,Type=Float,Description="Genotype Likelihood, log10-scaled likelihoods of the data given the called genotype for each possible genotype generated from the reference and alternate alleles given the sample ploidy">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Number of observation for each allele">
+##FORMAT=<ID=RO,Number=1,Type=Integer,Description="Reference allele observation count">
+##FORMAT=<ID=QR,Number=1,Type=Integer,Description="Sum of quality of the reference observations">
+##FORMAT=<ID=AO,Number=A,Type=Integer,Description="Alternate allele observation count">
+##FORMAT=<ID=QA,Number=A,Type=Integer,Description="Sum of quality of the alternate observations">
+##FORMAT=<ID=MIN_DP,Number=1,Type=Integer,Description="Minimum depth in gVCF output block.">
+##FORMAT=<ID=PS,Number=1,Type=Integer,Description="Phase set identifier">
+##bcftools_viewVersion=1.18+htslib-1.18
+##bcftools_viewCommand=view --trim-alt-alleles -o results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1.combined.trim.vcf results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1.combined.vcf; Date=Tue Jan  6 13:27:58 2026
+##bcftools_normVersion=1.18+htslib-1.18
+##bcftools_normCommand=norm -f /project/home/pouria/opt/src/kir-mapper/db/kir-mapper_db_latest//reference/hg38/reference.fasta -o results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1.combined.trim.treated.norm.vcf results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1.combined.trim.treated.vcf; Date=Tue Jan  6 13:27:58 2026
+##bcftools_viewCommand=view -s HG01071 -o results/HG01071//genotype/cds/KIR3DL1/phasing/split_vcf/HG01071.vcf results/HG01071//genotype/cds/KIR3DL1/vcf/KIR3DL1.combined.trim.treated.norm.vcf; Date=Tue Jan  6 13:27:58 2026
+##bcftools_viewCommand=view --trim-alt-alleles --min-ac 1 -o results/HG01071//genotype/cds/KIR3DL1/phasing/split_vcf/HG01071.trim.vcf results/HG01071//genotype/cds/KIR3DL1/phasing/split_vcf/HG01071.vcf; Date=Tue Jan  6 13:27:58 2026
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	HG01071
+chr19	54816505	.	C	T	22639.6	.	AB=0.631579;ABP=5.8675;AC=1;AF=0.527027;AN=2;AO=1167;CIGAR=1X;DP=2209;DPB=2209;DPRA=1.00342;EPP=2485.27;EPPR=2222.46;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=1;ODDS=68.9017;PAIRED=0.0102828;PAIREDR=0.00671785;PAO=0;PQA=0;PQR=0;PRO=0;QA=37320;QR=33330;RO=1042;RPL=5;RPP=2493.88;RPPR=2222.46;RPR=1162;RUN=1;SAF=1166;SAP=2528.44;SAR=1;SRF=1042;SRP=2265.68;SRR=0;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:19:7,12:.
+chr19	54817538	.	G	C	23011.1	.	AB=0.585366;ABP=5.60547;AC=1;AF=0.52027;AN=2;AO=1164;CIGAR=1X;DP=2231;DPB=2231;DPRA=1.02251;EPP=2410.46;EPPR=2285.36;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=1;ODDS=68.9765;PAIRED=0.0206186;PAIREDR=0.0159325;PAO=0;PQA=0;PQR=0;PRO=0;QA=37200;QR=34110;RO=1067;RPL=10;RPP=2444.49;RPPR=2285.36;RPR=1154;RUN=1;SAF=1152;SAP=2427.45;SAR=12;SRF=1063;SRP=2285.36;SRR=4;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:41:17,24:.
+chr19	54817566	.	A	G	18503.4	.	AB=0.568182;ABP=4.78696;AC=1;AF=0.418919;AN=2;AO=940;CIGAR=1X;DP=2234;DPB=2234;DPRA=1.03118;EPP=1907.59;EPPR=2675.64;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=1;ODDS=68.9763;PAIRED=0.0265957;PAIREDR=0.0146832;PAO=0;PQA=0;PQR=0;PRO=0;QA=30030;QR=41370;RO=1294;RPL=932;RPP=1975.3;RPPR=2692.61;RPR=8;RUN=1;SAF=928;SAP=1941.29;SAR=12;SRF=1290;SRP=2778.26;SRR=4;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:44:19,25:.
+chr19	54818328	.	A	G	24277.4	.	AB=0.484848;ABP=3.0761;AC=1;AF=0.550336;AN=2;AO=1231;CIGAR=1X;DP=2238;DPB=2238;DPRA=1.01463;EPP=2581.4;EPPR=2103.69;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=1;ODDS=68.9699;PAIRED=0.0129976;PAIREDR=0.0168818;PAO=0;PQA=0;PQR=0;PRO=0;QA=39360;QR=32190;RO=1007;RPL=10;RPP=2589.94;RPPR=2120.75;RPR=1221;RUN=1;SAF=1222;SAP=2598.49;SAR=9;SRF=1001;SRP=2137.88;SRR=6;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:33:17,16:.
+chr19	54818396	.	ATCGTCA	ATCATCA	6508.83	.	AB=0.52;ABP=3.09716;AC=1;AF=0.14094;AN=2;AO=313;CIGAR=3M1X3M;DP=2230;DPB=2230;DPRA=1.03175;EPP=623.24;EPPR=4065.91;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=3;ODDS=53.6861;PAIRED=0.0415335;PAIREDR=0.0063593;PAO=0;PQA=0;PQR=0;PRO=0;QA=9990;QR=60356;RO=1887;RPL=9;RPP=606.756;RPPR=4040;RPR=304;RUN=1;SAF=307;SAP=631.565;SAR=6;SRF=1878;SRP=4022.78;SRR=9;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:25:12,13:.
+chr19	54818437	.	A	G	5809.09	.	AB=0.354839;ABP=8.68415;AC=1;AF=0.14094;AN=2;AO=311;CIGAR=1X;DP=2236;DPB=2236;DPRA=1.05079;EPP=644.042;EPPR=4131.14;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=1;ODDS=65.8755;PAIRED=0.0353698;PAIREDR=0.0103896;PAO=0;PQA=0;PQR=0;PRO=0;QA=9930;QR=61560;RO=1925;RPL=4;RPP=644.042;RPPR=4139.78;RPR=307;RUN=1;SAF=307;SAP=644.042;SAR=4;SRF=1916;SRP=4105.29;SRR=9;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:31:20,11:.
+chr19	54818446	.	A	G	23203.5	.	AB=0.65625;ABP=9.79615;AC=1;AF=0.52349;AN=2;AO=1176;CIGAR=1X;DP=2237;DPB=2237;DPRA=1.01453;EPP=2496.22;EPPR=2239.76;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=2;ODDS=53.3708;PAIRED=0.0178571;PAIREDR=0.0105163;PAO=0;PQA=0;PQR=0;PRO=0;QA=37570;QR=33450;RO=1046;RPL=5;RPP=2513.42;RPPR=2239.76;RPR=1171;RUN=1;SAF=1166;SAP=2470.54;SAR=10;SRF=1042;SRP=2239.76;SRR=4;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:32:11,21:.
+chr19	54818467	.	A	T	23261.6	.	AB=0.645161;ABP=8.68415;AC=1;AF=0.52349;AN=2;AO=1175;CIGAR=1X;DP=2236;DPB=2236;DPRA=1.01368;EPP=2434.34;EPPR=2255.12;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=1;ODDS=68.9929;PAIRED=0.0170213;PAIREDR=0.0103676;PAO=0;PQA=0;PQR=0;PRO=0;QA=37560;QR=33930;RO=1061;RPL=1161;RPP=2434.34;RPPR=2263.72;RPR=14;RUN=1;SAF=1167;SAP=2485.48;SAR=8;SRF=1056;SRP=2263.72;SRR=5;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:31:11,20:.
+chr19	54818563	.	TCG	TTG	5814.49	.	AB=0.40625;ABP=5.45321;AC=1;AF=0.120805;AN=2;AO=268;CIGAR=2M1X1M;DP=2237;DPB=2229.5;DPRA=1.06296;EPP=550.74;EPPR=4094.52;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=3;ODDS=53.7797;PAIRED=0.0485075;PAIREDR=0.00987526;PAO=0;PQA=0;PQR=0;PRO=0;QA=8550;QR=61527;RO=1924;RPL=262;RPP=534.016;RPPR=4120.34;RPR=6;RUN=1;SAF=260;SAP=517.552;SAR=8;SRF=1915;SRP=4103.12;SRR=9;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:32:19,13:.
+chr19	54819853	.	C	A	3317.67	.	AB=0.5;ABP=3.0103;AC=1;AF=0.0671141;AN=2;AO=156;CIGAR=1X;DP=2247;DPB=2247;DPRA=1.18;EPP=252.952;EPPR=4398.78;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=2;ODDS=52.2942;PAIRED=0.134615;PAIREDR=0.0101156;PAO=0;PQA=0;PQR=0;PRO=0;QA=4950;QR=66390;RO=2076;RPL=11;RPP=252.952;RPPR=4407.36;RPR=145;RUN=1;SAF=146;SAP=260.469;SAR=10;SRF=2067;SRP=4433.15;SRR=9;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:42:21,21:.
+chr19	54819964	.	C	T	11830.7	.	AB=0.586957;ABP=6.03148;AC=1;AF=0.255034;AN=2;AO=582;CIGAR=1X;DP=2251;DPB=2251;DPRA=1.05439;EPP=1131.65;EPPR=3516.88;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=2;ODDS=52.7935;PAIRED=0.0463918;PAIREDR=0.0114873;PAO=0;PQA=0;PQR=0;PRO=0;QA=18570;QR=52890;RO=1654;RPL=568;RPP=1148.13;RPPR=3525.47;RPR=14;RUN=1;SAF=564;SAP=1115.3;SAR=18;SRF=1643;SRP=3499.72;SRR=11;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:46:19,27:.
+chr19	54821791	.	C	T	13962	.	AB=0.555556;ABP=3.9754;AC=1;AF=0.315436;AN=2;AO=710;CIGAR=1X;DP=2241;DPB=2241;DPRA=1.02979;EPP=1433.91;EPPR=3249.82;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=1;ODDS=68.2356;PAIRED=0.028169;PAIREDR=0.0104507;PAO=0;PQA=0;PQR=0;PRO=0;QA=22670;QR=48960;RO=1531;RPL=697;RPP=1433.91;RPPR=3258.41;RPR=13;RUN=1;SAF=700;SAP=1459.12;SAR=10;SRF=1520;SRP=3232.68;SRR=11;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:36:16,20:.
+chr19	54821820	.	G	T	14007.7	.	AB=0.473684;ABP=3.23888;AC=1;AF=0.322148;AN=2;AO=723;CIGAR=1X;DP=2243;DPB=2243;DPRA=1.03194;EPP=1504.27;EPPR=3225.94;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=148;NUMALT=1;ODDS=68.0455;PAIRED=0.0248963;PAIREDR=0.0131579;PAO=0;PQA=0;PQR=0;PRO=0;QA=23060;QR=48600;RO=1520;RPL=714;RPP=1495.78;RPPR=3208.8;RPR=9;RUN=1;SAF=714;SAP=1495.78;SAR=9;SRF=1510;SRP=3217.36;SRR=10;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:38:20,18:.
+chr19	54829380	.	CA	TG	11531.9	.	AB=0.564103;ABP=4.40227;AC=1;AF=0.202703;AN=2;AO=457;CIGAR=2X;DP=2229;DPB=2229;DPRA=1.05333;EPP=893.879;EPPR=3447.4;GTI=0;LEN=2;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=2;ODDS=64.1331;PAIRED=0.04814;PAIREDR=0.0104809;PAO=0;PQA=0;PQR=0;PRO=0;QA=14570;QR=51860;RO=1622;RPL=10;RPP=910.415;RPPR=3464.6;RPR=447;RUN=1;SAF=451;SAP=943.942;SAR=6;SRF=1614;SRP=3455.99;SRR=8;TYPE=complex;technology.illumina=1	GT:DP:AD:PS	0/1:39:17,22:.
+chr19	54829386	.	G	C	6896.43	.	AB=0.560976;ABP=4.33437;AC=1;AF=0.155405;AN=2;AO=353;CIGAR=1X;DP=2231;DPB=2231;DPRA=1.07536;EPP=660.782;EPPR=3994.64;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=1;ODDS=67.014;PAIRED=0.0651558;PAIREDR=0.00958466;PAO=0;PQA=0;PQR=0;PRO=0;QA=11250;QR=60060;RO=1878;RPL=13;RPP=660.782;RPPR=3994.64;RPR=340;RUN=1;SAF=347;SAP=718.311;SAR=6;SRF=1870;SRP=4011.84;SRR=8;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:41:18,23:.
+chr19	54829451	.	G	A	5865.53	.	AB=0.477273;ABP=3.20771;AC=1;AF=0.135135;AN=2;AO=306;CIGAR=1X;DP=2234;DPB=2234;DPRA=1.09667;EPP=583.46;EPPR=4068.89;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=1;ODDS=66.4663;PAIRED=0.0686275;PAIREDR=0.0119295;PAO=0;PQA=0;PQR=0;PRO=0;QA=9750;QR=61650;RO=1928;RPL=298;RPP=599.81;RPPR=4077.45;RPR=8;RUN=1;SAF=300;SAP=616.387;SAR=6;SRF=1919;SRP=4111.8;SRR=9;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:44:23,21:.
+chr19	54830120	.	G	C	13020	.	AB=0.470588;ABP=3.26577;AC=1;AF=0.304054;AN=2;AO=676;CIGAR=1X;DP=2224;DPB=2224;DPRA=1.02815;EPP=1427.82;EPPR=3278.15;GTI=0;LEN=1;MEANALT=1;MQM=60;MQMR=60;NS=147;NUMALT=1;ODDS=67.7698;PAIRED=0.0236686;PAIREDR=0.0116279;PAO=0;PQA=0;PQR=0;PRO=0;QA=21600;QR=49500;RO=1548;RPL=9;RPP=1393.79;RPPR=3295.32;RPR=667;RUN=1;SAF=670;SAP=1419.27;SAR=6;SRF=1538;SRP=3278.15;SRR=10;TYPE=snp;technology.illumina=1	GT:DP:AD:PS	0/1:34:18,16:.
