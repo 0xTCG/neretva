@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# SCRIPT=$1
-# SUFFIX=$2
+PREFIX=${1:-results_CYP_WGS}
+DATA=${DATA:-/project/shared/aldy-data/wgs}
+REF=${REF:?set REF to the GRCh37 reference FASTA the CRAMs were converted against}
+PKG=${PKG:-$(cd "$(dirname "$0")/../.." && pwd)}
+JOBS=${JOBS:-6}
 
-PREFIX="results_CYP_WGS_0511"
+export PYTHONPATH=$PKG:$PKG/neretva
+cd $PKG/neretva
+
 mkdir -p "$PREFIX"
 
 for gene in CYP2D6; do
-# for gene in CYP2C8 CYP2C9 CYP2C19 ; do
-
     mkdir -p "${PREFIX}/${gene}"
-    ls /project/shared/aldy-data/wgs/*.wgs.cram | \
-    /cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/parallel -j6 \
-    "id=\$(basename {} .wgs.cram); /cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/time -v python cyp.py ${gene} {} > ${PREFIX}/${gene}/\${id}.log 2>&1"
+    ls $DATA/*.wgs.cram | parallel -j $JOBS \
+    "id=\$(basename {} .wgs.cram); python cyp.py --gene ${gene} --input {} --reference $REF --seed 42 > ${PREFIX}/${gene}/\${id}.log 2>&1"
 done

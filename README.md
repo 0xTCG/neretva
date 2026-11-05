@@ -87,7 +87,7 @@ Coordinates are defined in [`neretva/data/kir_regions.json`](neretva/data/kir_re
 A small test FASTA is included to verify installation:
 
 ```bash
-neretva kir --input sample/test.fa --mapper $(which minimap2)
+neretva kir --input neretva/sample/test.fa --mapper $(which minimap2)
 ```
 
 Expected output:
