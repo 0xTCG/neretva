@@ -12,6 +12,7 @@ def main():
     parser.add_argument("--threads", type=int, default=16, help="Number of threads)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     parser.add_argument("--mapper", help="Path to minimap2 binary")
+    parser.add_argument("--config", help="Path to region config JSON (KIR only)")
     args = parser.parse_args()
 
     gene = args.gene.lower()
@@ -24,6 +25,8 @@ def main():
                "--seed", str(args.seed)]
         if args.mapper:
             cmd += ["--mapper", args.mapper]
+        if args.config:
+            cmd += ["--config", args.config]
     elif gene in CYP_GENES:
         if not args.reference:
             parser.error("--reference is required for CYP genes")

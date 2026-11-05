@@ -42,6 +42,13 @@ pip install git+https://github.com/0xTCG/neretva.git
 
 ---
 
+## Input
+
+- KIR: BAM/CRAM aligned to **GRCh38**, coordinate-sorted and indexed. FASTQ/FASTA also accepted
+- CYP: BAM/CRAM aligned to **hg19**, coordinate-sorted and indexed, with `--reference`
+
+---
+
 ## Usage
 
 ### KIR genotyping
@@ -67,6 +74,11 @@ neretva <gene> --input <bam> [options]
 | `--threads` | Number of threads, default: 16 (KIR only) |
 | `--seed` | Random seed, default: 42 |
 | `--mapper` | Path to minimap2 binary (KIR only) |
+| `--config` | Path to region config JSON, default: packaged `kir_regions.json` (KIR only) |
+
+### Different assembly or loci
+
+Coordinates are defined in [`neretva/data/kir_regions.json`](neretva/data/kir_regions.json) and can be overridden with `--config`.
 
 ---
 

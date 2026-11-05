@@ -1,6 +1,7 @@
 # %% Imports & Initialization
 # find data/sim -type f -name "*.fa" ! -name "*.extract.fa" | xargs -I{} sh -c 'python kir.py {} > LDA_res/$(basename {}).log'
 import pickle
+import json
 import os
 import sys
 import copy
@@ -74,21 +75,22 @@ class Sample:
             self.comment = comment
             self.alignments = {}
 
+def load_region_config(path=None):
+    if path is None:
+        path = importlib.resources.files("neretva") / "data" / "kir_regions.json"
+    with open(path) as fo:
+        return json.load(fo)
+
 @timeit
-def get_bam_reads(path: str) -> Sample:
+def get_bam_reads(path: str, config=None) -> Sample:
     f = Sample(path)
     print(f'[sample] bam: {path}')
-    regions = [
-        "chr2:142731000-142734000",
-        "chr12:98943000-98946000",
-        "chr19:12733000-12736000",
-        "chr19:41300000-41400000",
-        "chr19:46000000-47000000",
-        "chr19:52000000-56000000",
-    ]
+    if config is None:
+        config = load_region_config()
+    regions = list(config["regions"])
     with pysam.AlignmentFile(path) as bam:
         for contig in bam.header.references:
-            if contig.startswith("chr19_"):
+            if contig.startswith(config["alt_contig_prefix"]):
                 regions.append(contig)
     for r in regions:
         with pysam.AlignmentFile(path) as bam:
@@ -127,8 +129,12 @@ def get_fq_reads(path: str) -> Sample:
     return f
 
 @timeit
-def calculate_coverage(path: str, cn_region=("chr22", 19941772, 19969975)):
+def calculate_coverage(path: str, cn_region=None, config=None):
     # cn_region=("chr19", 46120067, 46124688)
+    if cn_region is None:
+        if config is None:
+            config = load_region_config()
+        cn_region = tuple(config["cn_region"])
     cn = collections.defaultdict(int)
     with pysam.AlignmentFile(path) as bam:
         for read in bam.fetch(region=f"{cn_region[0]}:{cn_region[1]}-{cn_region[2]}"):
@@ -155,6 +161,7 @@ if __name__ == "__main__":
     parser.add_argument('--threads', type=int, default=16, help='Number of threads to use')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--mapper', help='Path to minimap2 binary')
+    parser.add_argument('--config', default=None, help='Path to region config JSON (defaults to the packaged kir_regions.json)')
 
     if not NOTEBOOK:
         args = parser.parse_args()
@@ -187,12 +194,14 @@ if __name__ == "__main__":
         path = 'data/hprc/HG01258.final.cram'
 
 
+    region_config = load_region_config(args.config)
+
     if path.endswith('.fa') or path.endswith('.fq'):
         sample = get_fq_reads(path)
         cov = 20
     else:
-        sample = get_bam_reads(path)
-        cov = calculate_coverage(path)
+        sample = get_bam_reads(path, region_config)
+        cov = calculate_coverage(path, config=region_config)
 
 
     sample.expected_coverage = cov
@@ -888,6 +897,143 @@ def populate_deleted_positions(sample, db):
             else:
                 position.has_no_coverage = False
 
+def extract_mismatch_positions(read, hit, gene_name, allele_id, db):
+    mismatches = []
+    allele = db.genes[gene_name].alleles[allele_id]
+
+    read_seq = mappy.revcomp(read.seq) if hit.reversed else read.seq
+
+    for i in range(hit.en - hit.st):
+        read_pos = hit.read_st + i
+        allele_pos = hit.st + i
+
+        if read_pos < len(read_seq) and allele_pos < len(allele.seq):
+            read_base = read_seq[read_pos]
+            allele_base = allele.seq[allele_pos]
+
+            if read_base != allele_base:
+                mismatches.append((read_pos, read_base, allele_base, allele_pos))
+
+    return mismatches
+
+
+def collect_novel_positions_from_ambiguous_reads(sample, db):
+    for read in sample.reads:
+        min_cost = float('inf')
+        enabled_alleles = []
+
+        for gene_name in read.alignments:
+            for allele_name, hits in read.alignments[gene_name].items():
+                allele = db.genes[gene_name].alleles[allele_name]
+                if not allele.enabled:
+                    continue
+                for hit in hits:
+                    if hit.enabled:
+                        min_cost = min(min_cost, hit.cost)
+                        enabled_alleles.append((gene_name, allele_name, hit))
+
+        if min_cost < 1:
+            continue
+
+        all_read_mismatch_positions = set()
+        allele_mismatch_data = {}
+
+        for gene_name, allele_name, hit in enabled_alleles:
+            if hit.cigar != f'{len(read.seq)}M':
+                continue
+            mismatches = extract_mismatch_positions(read, hit, gene_name, allele_name, db)
+            assert len(mismatches) == hit.cost, \
+                f"Mismatch count mismatch: read {read.id}, {gene_name}*{allele_name}, " \
+                f"found {len(mismatches)} mismatches but hit.cost={hit.cost}"
+            allele_mismatch_data[(gene_name, allele_name)] = {
+                'hit': hit,
+                'mismatches': {pos: (rb, ab, ap) for pos, rb, ab, ap in mismatches},
+            }
+            all_read_mismatch_positions.update(pos for pos, _, _, _ in mismatches)
+
+        for gene_name, allele_name, hit in enabled_alleles:
+            if hit.cigar != f'{len(read.seq)}M':
+                continue
+
+            allele = db.genes[gene_name].alleles[allele_name]
+
+            if not hasattr(allele, 'extra_positions'):
+                allele.extra_positions = set()
+
+            mismatch_info = allele_mismatch_data[(gene_name, allele_name)]
+
+            for read_pos in all_read_mismatch_positions:
+                if read_pos in mismatch_info['mismatches']:
+                    allele_pos = mismatch_info['mismatches'][read_pos][2]
+                else:
+                    allele_pos = hit.st + (read_pos - hit.read_st)
+
+                allele.extra_positions.add(allele_pos)
+                gene_pos = allele.translate_allele_position_to_gene(allele_pos)
+                assert gene_pos >= 0
+
+                if gene_pos not in allele.gene.positions:
+                    pos = Position(allele.gene, gene_pos)
+                    pos.is_novel = True
+                    for base in ['A', 'C', 'G', 'T', 'N', 'P']:
+                        variant = Variant(pos, base)
+                        variant.is_minor = True
+                        pos.variants[base] = variant
+                    allele.gene.positions[gene_pos] = pos
+
+
+def populate_all_alleles_with_novel_positions(db):
+    for gene in db.genes.values():
+        novel_gene_positions = [
+            pos for pos, position in gene.positions.items()
+            if getattr(position, 'is_novel', False)
+        ]
+
+        if not novel_gene_positions:
+            continue
+
+        for allele in gene.alleles.values():
+            allele.extra_positions = set()
+            for gene_pos in novel_gene_positions:
+                allele_pos = allele.translate_gene_position_to_allele(gene_pos)
+                allele.extra_positions.add((gene_pos, allele_pos))
+
+
+def update_variant_coverage_for_novel_positions(sample, db):
+    for read in sample.reads:
+        for gene_name, gene_alignments in read.alignments.items():
+            for allele_name, hits in gene_alignments.items():
+                allele = db.genes[gene_name].alleles[allele_name]
+
+                if not hasattr(allele, 'extra_positions'):
+                    continue
+
+                for hit in hits:
+                    if not hit.enabled or hit.cigar != f"{len(read.seq)}M":
+                        continue
+
+                    read_seq = mappy.revcomp(read.seq) if hit.reversed else read.seq
+
+                    for gene_pos, allele_pos in allele.extra_positions:
+                        if not hit.st <= allele_pos < hit.en:
+                            continue
+                        if gene_pos not in allele.gene.positions:
+                            continue
+
+                        read_pos = hit.read_st + (allele_pos - hit.st)
+                        position = allele.gene.positions[gene_pos]
+                        read_base = read_seq[read_pos]
+
+                        if read_base not in position.variants:
+                            continue
+
+                        variant = position.variants[read_base]
+                        variant.coverage.add_coverage(hit)
+
+                        if variant not in hit.covered_variants:
+                            hit.covered_variants.add(variant)
+                        hit.variant_read_positions[variant] = read_pos
+
 
 #%%
 if __name__ == "__main__":
@@ -932,6 +1078,8 @@ def populate_valid_positions(sample):
     for gene in db.genes.values():
         for position in gene.positions.values():
             position.is_valid = False
+            if getattr(position, 'is_novel', False):
+                position.is_valid = True
 
     for allele in db.alleles():
         if not allele.enabled:

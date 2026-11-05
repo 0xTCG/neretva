@@ -554,6 +554,7 @@ class Position:
         self.position = position
         self.ref_base = ref_base # wildtype base/variant
         self.is_valid = False # whether we use this position to infer allele proportion
+        self.is_novel = False
         
         # All variants at this position
         self.variants = {}  # variant_tuple -> Variant object
